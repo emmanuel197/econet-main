@@ -11,3 +11,15 @@
 - The scaffold built in a separate `wona-web` folder now lives in `econet-main` (GitHub `emmanuel197/econet-main`, default branch `edward`),
   replacing the earlier AfriPlay copy ("econect early stages", 7e2a9da). Old untracked AfriPlay files moved to `C:\Users\bizza\econet-main-afriplay-leftovers` (local only).
 - Figma access restored via figma-console (token refreshed) → open question #1 resolved.
+
+## 2026-10-26 — Phase 1: design tokens
+- Tallied colours/fonts/radii from visible nodes on Figma page 4041:1094 (no published styles readable) → `pages/design-system.md`; tokens in `src/styles/global.css`.
+- Mapped every frame on the page → `pages/screen-map.md`. Desktop home `4041:21334` is hidden-content; use `4041:21538`. Auth/details/watch/profile/subscriptions screens are not on this page.
+- Exported nav logo SVG → `src/assets/brand/wona-logo.svg`.
+- Dev-only `/design` preview page. Gotcha: Tailwind 4 drops @theme variables no class uses → `@theme static`.
+
+## 2026-10-26 — Phase 1: design tokens
+- Tallied colours/fonts/radii from visible nodes on Figma page 4041:1094 (no published styles readable) → `pages/design-system.md`; tokens in `src/styles/global.css`.
+- Mapped every frame on the page → `pages/screen-map.md`. Desktop home `4041:21334` has hidden content; use `4041:21538`. Auth/details/watch/profile/subscriptions screens are not on this page.
+- Exported nav logo SVG → `src/assets/brand/wona-logo.svg`.
+- Dev-only `/design` preview page. Gotcha: Tailwind 4 drops @theme variables no class uses → `@theme static`.

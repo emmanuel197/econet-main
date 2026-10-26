@@ -95,6 +95,14 @@ AfriPlay render order: banners → 1st VOD category → 1st channel category →
 - AfriPlay's `--vw: clamp(768px,100vw,1728px)` scaling shrank everything to 0.444× on phones. Plan mobile from day one with its own basis (`clamp(320px,100vw,430px)`, 390 design width) and scale text/padding/radii inside cards, not just the box.
 - Every mobile route needs a working top bar (AfriPlay shipped dead bell/menu buttons).
 
+## Styling
+
+- Tailwind 4 only outputs a `@theme` variable when some class uses it, so `var(--color-x)` in inline styles came out empty → declare tokens with `@theme static`. `✅ VERIFIED` WONA 2026-10-26.
+
+## Styling
+
+- Tailwind 4 only outputs a `@theme` variable when some class uses it, so `var(--color-x)` in inline styles came out empty → declare tokens with `@theme static`. `✅ VERIFIED` WONA 2026-10-26.
+
 ## Dev process
 
 - Dev flags in gitignored `.env.local`; restart Vite after changing them.

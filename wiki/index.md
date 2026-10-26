@@ -7,6 +7,10 @@
 ## Start here
 - [pages/project-structure.md](pages/project-structure.md) — stack, folders, naming, how to run.
 - [pages/known-pitfalls.md](pages/known-pitfalls.md) — every API/auth/image/HLS/layout problem AfriPlay hit and its fix. **Read before writing API or player code.**
+- [pages/design-system.md](pages/design-system.md) — colours, gradients, fonts, radii from Figma, and how they were extracted.
+- [pages/screen-map.md](pages/screen-map.md) — every Figma frame id by feature (desktop + mobile); which frames to use/ignore.
+- [pages/design-system.md](pages/design-system.md) — colours, gradients, fonts, radii from Figma, and how they were extracted.
+- [pages/screen-map.md](pages/screen-map.md) — every Figma frame id by feature (desktop + mobile); which frames to use/ignore.
 - [pages/open-questions.md](pages/open-questions.md) — unresolved items and what they block.
 
 ## Raw (immutable)

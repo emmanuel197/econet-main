@@ -15,10 +15,12 @@ src/
   config/operator.js    WONA operator: id 274, uid econetzw, prefix ecozw
   config/apiUrls.js     CLIENT_API_URL / CRM_API_URL from env
   layout/AppLayout.jsx  frame around every page (header/nav), <Outlet/> = current page
-  styles/global.css     Tailwind import + @theme design tokens
+  styles/global.css     Tailwind import + @theme static design tokens (see design-system.md)
+  assets/brand/         logo and other brand files exported from Figma (import them, never string paths)
   features/<area>/      one folder per product area: its page(s), components, API calls, state
     home/HomePage.jsx
     not-found/NotFoundPage.jsx
+    design-preview/     dev-only /design page showing every token
 wiki/                   this knowledge base
 ```
 

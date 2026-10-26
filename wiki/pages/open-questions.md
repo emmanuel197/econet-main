@@ -9,3 +9,7 @@
 | 5 | Passwordless default-password model like AfriPlay? | Sign-in | ❓ open |
 | 6 | Homepage rail order and channel-rail slots for WONA | Homepage | ❓ open |
 | 7 | Username format: is the 10-digit number sent with the leading 0 (`ecozw0777123456`) as in the brief? | Sign-in | 🔶 brief example says yes |
+| 8 | Where are the sign-in, details, watch, My Stuff, profile, subscriptions and notifications designs? Not on "All pages (developers)" | Those phases | ❓ open |
+| 9 | Designer to confirm `4041:26313` (mislabelled?) and which desktop home frame is final | Home, EPG | ❓ open |
+| 8 | Where are the sign-in, details, watch, My Stuff, profile, subscriptions and notifications designs? Not on "All pages (developers)" | Those phases | ❓ open |
+| 9 | Designer to confirm `4041:26313` (mislabelled?) and which desktop home frame is final | Home, EPG | ❓ open |
