@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Design tokens (colours, fonts) from the WONA Figma file go in this @theme block. */
+@theme {
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+}

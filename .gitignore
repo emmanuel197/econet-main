@@ -1,0 +1,14 @@
+node_modules
+build
+*.log
+
+# Environment files hold machine-specific settings; only .env.example is committed
+.env
+.env.local
+.env.*.local
+
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+.claude/
