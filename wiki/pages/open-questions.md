@@ -2,7 +2,7 @@
 
 | # | Question | Blocks | Status |
 |---|---|---|---|
-| 1 | Figma access: enable Figma's Dev Mode MCP server (Figma desktop → Preferences) or refresh the figma-console access token | Design tokens, every screen | ❓ open (2026-10-26) |
+| 1 | Figma access (figma-console token) | Design tokens, every screen | ✅ resolved 2026-10-26 |
 | 2 | Test account (`ecozw` + 10-digit number) | Live verification of auth + content | deferred by user |
 | 3 | Do the AfriPlay API hosts serve `econetzw`? CRM settings call failed to connect from the dev machine (for AfriPlay's uid too) | Homepage | ❓ open |
 | 4 | Network check: Econet IP ranges; what wifi/broadband users see | Sign-in | ❓ open |
