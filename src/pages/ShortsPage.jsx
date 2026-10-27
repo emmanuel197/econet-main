@@ -89,7 +89,7 @@ function ShortsPage() {
         className={classNames(
           "flex justify-between gap-x-[calc(24/1728*var(--vw))]",
           "pl-[calc(53/1728*var(--vw))] pr-[calc(53/1728*var(--vw))]",
-          "pt-[calc(146/1728*var(--vw))] pb-[calc(64/1728*var(--vw))]"
+          "pt-[calc(171/1728*var(--vw))] pb-[calc(64/1728*var(--vw))]"
         )}
       >
         {/* Width is driven by the grid's real tile dimensions rather than a guess;
@@ -99,11 +99,9 @@ function ShortsPage() {
           className="flex shrink-0 flex-col gap-[calc(32/1728*var(--vw))]"
           style={{ width: `calc(${GRID_COLUMNS * TILE_WIDTH + (GRID_COLUMNS - 1) * GRID_GAP} / 1728 * var(--vw))` }}
         >
-          <div className="flex flex-col gap-[calc(4/1728*var(--vw))]">
-            <h1 className="font-primary font-bold text-h5 text-gray-1">
-              Shorts <span className="text-brand">for You</span>
-            </h1>
-            <p className="font-primary text-lg text-gray-1/70">
+          <div className="flex flex-col gap-[calc(8/1728*var(--vw))]">
+            <h1 className="font-primary font-medium text-h6 text-gray-1">Shorts for You</h1>
+            <p className="font-primary text-xl text-gray-1/80">
               Tap any shorts to start watching
             </p>
           </div>

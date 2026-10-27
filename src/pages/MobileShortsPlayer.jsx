@@ -45,7 +45,7 @@ const HeartIcon = ({ filled, className }) => (
 
 const railBtn = "flex flex-col items-center gap-[calc(4/390*var(--mvw))] cursor-pointer";
 const railCircle = "flex size-[calc(46/390*var(--mvw))] items-center justify-center rounded-full border border-brand/70 bg-black/30";
-const railLabel = "font-primary text-[calc(11/390*var(--mvw))] text-brand";
+const railLabel = "font-primary text-[calc(10/390*var(--mvw))] font-semibold text-brand";
 
 /**
  * MobileShortsPlayer — full-bleed vertical reel player (below md). Self-renders its chrome
@@ -202,7 +202,7 @@ const MobileShortsPlayer = () => {
     toggleLike();
   };
 
-  const shareUrl = `afriplay.com/r/${slugify(reel?.title || reel?.id || "reel")}`;
+  const shareUrl = `wona.com/r/${slugify(reel?.title || reel?.id || "reel")}`;
   const copyLink = () => {
     navigator.clipboard?.writeText(`https://${shareUrl}`);
     setCopied(true);
@@ -343,7 +343,7 @@ const MobileShortsPlayer = () => {
         <button type="button" onClick={goBack} aria-label="Back" className="flex size-[calc(36/390*var(--mvw))] items-center justify-center rounded-full border border-brand/70 bg-black/30 cursor-pointer">
           <img src={backArrow} alt="" aria-hidden="true" className="size-[calc(16/390*var(--mvw))]" />
         </button>
-        <span className="font-primary text-[calc(17/390*var(--mvw))] font-semibold text-brand">Wona Shorts</span>
+        <span className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-brand-light">Wonashorts</span>
         <button type="button" aria-label="More" className="flex size-[calc(36/390*var(--mvw))] items-center justify-center rounded-full border border-brand/70 bg-black/30 cursor-pointer">
           <img src={moreIcon} alt="" aria-hidden="true" className="size-[calc(16/390*var(--mvw))]" />
         </button>
@@ -386,7 +386,7 @@ const MobileShortsPlayer = () => {
 
         <button type="button" onClick={handleSave} aria-label="Add to My Stuff" aria-pressed={saved} className={railBtn}>
           <span className={classNames(railCircle, saved && "bg-brand")}><img src={saveIcon} alt="" aria-hidden="true" className="size-[calc(18/390*var(--mvw))]" /></span>
-          <span className={railLabel}>My Stuff</span>
+          <span className={railLabel}>My List</span>
         </button>
       </div>
 
@@ -401,21 +401,21 @@ const MobileShortsPlayer = () => {
       {/* Caption + progress (above the nav) — auto-hides with the rest of the chrome. */}
       <div className={classNames("absolute inset-x-0 bottom-[calc(96/390*var(--mvw))] z-10 flex flex-col gap-[calc(8/390*var(--mvw))] px-[calc(16/390*var(--mvw))] transition-opacity duration-300", !chromeVisible && "pointer-events-none opacity-0")}>
         <div className="flex items-center gap-[calc(8/390*var(--mvw))]">
-          <span className="rounded-full border border-brand px-[calc(12/390*var(--mvw))] py-[calc(3/390*var(--mvw))] font-primary text-[calc(11/390*var(--mvw))] font-semibold text-brand">{reel.badge}</span>
-          <span className="font-primary text-[calc(13/390*var(--mvw))] font-semibold text-gray-1">{reel.handle}</span>
+          <span className="rounded-full border border-brand px-[calc(12/390*var(--mvw))] py-[calc(3/390*var(--mvw))] font-primary text-[calc(11/390*var(--mvw))] font-semibold uppercase text-brand">{reel.badge}</span>
+          <span className="font-primary text-[calc(14/390*var(--mvw))] font-bold text-gray-1">{reel.handle}</span>
         </div>
-        <p className="font-primary text-[calc(13/390*var(--mvw))] text-gray-1">{reel.title}</p>
-        <button type="button" onClick={openDetails} className="flex w-fit items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(14/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-semibold text-page cursor-pointer">
+        <p className="font-primary text-[calc(12/390*var(--mvw))] text-gray-1/90">{reel.title}</p>
+        <button type="button" onClick={openDetails} className="flex w-fit items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(14/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))] font-semibold text-gray-1 cursor-pointer">
           <img src={watchIcon} alt="" aria-hidden="true" className="size-[calc(12/390*var(--mvw))]" /> Watch full episode
         </button>
-        <p className="font-primary text-[calc(12/390*var(--mvw))] text-brand">{reel.hashtags.join(" ")}</p>
-        <p className="font-primary text-[calc(11/390*var(--mvw))] text-gray-1/70">◉ {reel.audio}</p>
+        <p className="font-primary text-[calc(12/390*var(--mvw))] font-bold text-brand/85">{reel.hashtags.join(" ")}</p>
+        <p className="font-primary text-[calc(10/390*var(--mvw))] text-gray-1/80">◉ {reel.audio}</p>
         <div className="mt-[calc(4/390*var(--mvw))] flex items-center gap-[calc(8/390*var(--mvw))]">
-          <span className="font-primary text-[calc(10/390*var(--mvw))] text-gray-1/80">{currentTimeLabel}</span>
+          <span className="font-primary text-[calc(11/390*var(--mvw))] text-gray-1/70">{currentTimeLabel}</span>
           <div className="h-[calc(3/390*var(--mvw))] flex-1 overflow-clip rounded-full bg-gray-1/25">
             <div className="h-full rounded-full bg-brand" style={{ width: `${progress * 100}%` }} />
           </div>
-          <span className="font-primary text-[calc(10/390*var(--mvw))] text-gray-1/80">{totalTimeLabel}</span>
+          <span className="font-primary text-[calc(11/390*var(--mvw))] text-gray-1/90">{totalTimeLabel}</span>
         </div>
       </div>
 
@@ -478,7 +478,7 @@ const MobileShortsPlayer = () => {
 
             <div className="flex items-center gap-[calc(10/390*var(--mvw))] rounded-full border border-gray-1/15 bg-black/30 py-[calc(6/390*var(--mvw))] pl-[calc(16/390*var(--mvw))] pr-[calc(6/390*var(--mvw))]">
               <span className="min-w-0 flex-1 truncate font-primary text-[calc(12/390*var(--mvw))] text-gray-1/70">{shareUrl}</span>
-              <button type="button" onClick={copyLink} className="flex shrink-0 items-center gap-[calc(4/390*var(--mvw))] rounded-full bg-brand px-[calc(16/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-semibold text-page cursor-pointer">
+              <button type="button" onClick={copyLink} className="flex shrink-0 items-center gap-[calc(4/390*var(--mvw))] rounded-full bg-brand px-[calc(16/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))] font-semibold text-gray-1 cursor-pointer">
                 {copied ? "✓ Copied" : "Copy"}
               </button>
             </div>

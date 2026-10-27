@@ -55,3 +55,9 @@
 - Sidebar: 18px semibold header with black/32 count pill, pink "See All", 24px card gap. On Air Today: 18px semibold heading, 16px date/tabs.
 - Mobile: title 16px semibold, chips 12px (active white text), meta 10px `#9e9e9e`, channel name `#9999b2`, featured title 18px semibold, white Watch Now text, glass Full Guide, list header 14px; AfriPlay purple `#160a29` removed from the featured gradient.
 - Figma image renders are rate-limited (429, retry-after ~85h) — comparisons used the cached node data (`/v1/files/.../nodes`) instead.
+
+## 2026-10-27 — Shorts / Reels matched to WONA Figma (desktop 4041:27213/27349, mobile 4041:10665/10530 + spec frames)
+- Desktop feed: "Shorts for You" 30px medium (all white), 18px subtitle, 18px chips (active pink, white text). Live preview (`LiveReelBanner`) is now a 381×286 full-bleed card with a 2px red border, Live pill, pink creator handle, title and views on the artwork. Trending: 22px heading, 30px `#ec1882` rank circles, 18px titles, 14px counts, 14px radius.
+- Desktop player: caption 18px bold handle, 16px badge/caption, white-text "Watch full …" CTA, 14px bold hashtags; action labels 14px semibold pink, save action reads "My List"; 14px times. Player kept at 420px wide (comp is 500×881) so the 9:16 video fits 1080p laptop screens — see open questions.
+- Mobile feed/player: "WonaShorts"/"Wonashorts" 16px semibold headers, 12px chips, comp text sizes throughout; `@AfriSportsHQ` fixture handles → `@WonaSportsHQ`; share link domain `afriplay.com/r/…` → `wona.com/r/…` (per the Share Reel spec).
+- Spec frames say "gold" heart/ring/pill (copied from AfriPlay) — implemented with WONA pink.

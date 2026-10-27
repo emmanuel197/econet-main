@@ -22,3 +22,6 @@
 | 16 | Mobile search comps show a different bottom nav (Home, Movies, Live Tv, Search, avatar "More") from the mobile home comp (Home, Live Tv, Shorts, Search, More). Code keeps the home version everywhere — which is final? | Mobile nav | ❓ open |
 | 17 | Mobile search has no app bar in the comps (so no bell/avatar there) — confirm that's intended | Mobile search | ❓ open |
 | 18 | Featured live panel: viewer count, scoreboard (teams/score/minute) only exist in fixtures — is there an API/CRM source for them? | Live TV with real data | ❓ open |
+| 19 | Shorts player: comp is 500×881 but code keeps 420 wide (fits 1080p laptop viewports). Confirm 420 is acceptable | Shorts player | ❓ open |
+| 20 | Shorts spec frames say "gold" (likes, follow pill, share ring) — confirm WONA pink is intended | Shorts interactions | 🔶 assumed pink |
+| 21 | Share links use `wona.com/r/<slug>` per the spec — confirm the real domain and that deep links resolve | Sharing | ❓ open |

@@ -11,13 +11,13 @@ import arrowIcon from "../../assets/icons/home-afriplay-shorts-arrow-right.svg";
 
 const CHIPS = ["For You", "Trending", "Sports", "Movies"];
 
-// The page supplies its own header (the design's "AfriShorts" title replaces the logo),
+// The page supplies its own header (the design's "WonaShorts" title replaces the logo),
 // so the route runs with mobileTopBar="status" and MainLayout renders no bar here. The
 // right-hand controls come from the SHARED cluster — this header used to hand-roll them,
 // with a bell-labelled button that actually showed the avatar and did nothing on tap.
-const AfriShortsHeader = () => (
+const WonaShortsHeader = () => (
   <div className="flex items-center justify-between">
-    <span className="font-primary text-[calc(20/390*var(--mvw))] font-bold text-brand">Wona Shorts</span>
+    <span className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-brand">WonaShorts</span>
     <MobileNavActions />
   </div>
 );
@@ -64,21 +64,21 @@ const ForYouTile = ({ item, tall, onOpen }) => (
     {/* API content carries neither a duration nor a view count (the brief ignores counts),
        so both labels are conditional — otherwise they render as an empty pill / " views". */}
     {item.duration && (
-      <span className="absolute right-[calc(8/390*var(--mvw))] top-[calc(8/390*var(--mvw))] rounded bg-black/60 px-[calc(6/390*var(--mvw))] py-[calc(2/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))] text-gray-1">
+      <span className="absolute right-[calc(8/390*var(--mvw))] top-[calc(8/390*var(--mvw))] rounded bg-black/60 px-[calc(6/390*var(--mvw))] py-[calc(2/390*var(--mvw))] font-primary text-[calc(8/390*var(--mvw))] font-semibold text-gray-1">
         {item.duration}
       </span>
     )}
     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent px-[calc(10/390*var(--mvw))] pb-[calc(9/390*var(--mvw))] pt-[calc(26/390*var(--mvw))]">
-      <p className="line-clamp-1 font-primary text-[calc(13/390*var(--mvw))] font-semibold text-gray-1">{item.title}</p>
+      <p className="line-clamp-2 font-primary text-[calc(10/390*var(--mvw))] font-semibold text-gray-1/95">{item.title}</p>
       {item.views && (
-        <p className="font-primary text-[calc(11/390*var(--mvw))] text-gray-1/70">{item.views} views</p>
+        <p className="font-primary text-[calc(10/390*var(--mvw))] text-gray-4">{item.views} views</p>
       )}
     </div>
   </button>
 );
 
 /**
- * MobileShortsPage — mobile Afrishorts feed (below md). AfriShorts header + filter chips +
+ * MobileShortsPage — mobile Wona Shorts feed (below md). WonaShorts header + filter chips +
  * circular rail + LIVE hero + Trending Now (ranked, horizontal) + For You 2-col grid.
  * Tiles/hero link to /shorts/:id (the player). The loading skeleton only shows on a slow
  * connection (Network Information API) or the /shorts?loading=1 demo — NOT on every visit.
@@ -143,7 +143,7 @@ const MobileShortsPage = () => {
           <MobileShortsSkeleton />
         ) : (
           <>
-            <AfriShortsHeader />
+            <WonaShortsHeader />
 
             {/* Filter chips */}
             <div className="flex gap-[calc(10/390*var(--mvw))] overflow-x-auto scrollbar-hide">
@@ -153,8 +153,8 @@ const MobileShortsPage = () => {
                   type="button"
                   onClick={() => handleChip(c)}
                   className={classNames(
-                    "shrink-0 rounded-full px-[calc(18/390*var(--mvw))] py-[calc(8/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors",
-                    activeChip === c ? "bg-brand text-page" : "border border-gray-1/20 bg-gray-1/10 text-gray-1"
+                    "shrink-0 rounded-full px-[calc(16/390*var(--mvw))] py-[calc(8/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] leading-none transition-colors",
+                    activeChip === c ? "bg-brand font-semibold text-gray-1" : "border border-gray-1/20 bg-gray-1/10 text-gray-1/70"
                   )}
                 >
                   {c}
@@ -192,16 +192,15 @@ const MobileShortsPage = () => {
               {!apiMode && (
                 <>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <span className="absolute left-[calc(12/390*var(--mvw))] top-[calc(12/390*var(--mvw))] flex items-center gap-[calc(5/390*var(--mvw))] rounded-md bg-error-8 px-[calc(8/390*var(--mvw))] py-[calc(3/390*var(--mvw))] font-primary text-[calc(11/390*var(--mvw))] font-semibold text-gray-1">
-                    <span className="size-[calc(6/390*var(--mvw))] rounded-full bg-gray-1" /> LIVE
+                  <span className="absolute left-[calc(12/390*var(--mvw))] top-[calc(12/390*var(--mvw))] flex items-center gap-[calc(5/390*var(--mvw))] rounded-full bg-error-9 px-[calc(8/390*var(--mvw))] py-[calc(3/390*var(--mvw))] font-primary text-[calc(8/390*var(--mvw))] font-semibold text-gray-1">
+                    <span className="size-[calc(4/390*var(--mvw))] rounded-full bg-gray-1" /> Live
                   </span>
-                  <div className="absolute inset-x-0 bottom-0 flex flex-col gap-[calc(3/390*var(--mvw))] p-[calc(12/390*var(--mvw))]">
-                    <div className="flex items-center gap-[calc(6/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] text-gray-1/80">
-                      <span className="text-brand">@AfriSportsHQ</span>
-                      <span>·</span>
-                      <span>{liveReelPreview.views}</span>
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-[calc(8/390*var(--mvw))] p-[calc(12/390*var(--mvw))]">
+                    <div className="flex min-w-0 flex-col gap-[calc(4/390*var(--mvw))]">
+                      <span className="font-primary text-[calc(10/390*var(--mvw))] font-bold text-brand">{liveReelPreview.handle}</span>
+                      <span className="font-primary text-[calc(12/390*var(--mvw))] font-semibold text-[#eef0f7]">{liveReelPreview.title}</span>
                     </div>
-                    <span className="font-primary text-[calc(14/390*var(--mvw))] font-semibold text-gray-1">{liveReelPreview.title}</span>
+                    <span className="shrink-0 font-primary text-[calc(10/390*var(--mvw))] text-gray-4">{liveReelPreview.views}</span>
                   </div>
                 </>
               )}
@@ -211,7 +210,7 @@ const MobileShortsPage = () => {
             <section className="flex flex-col gap-[calc(12/390*var(--mvw))]">
               <div className="flex items-center gap-[calc(8/390*var(--mvw))]">
                 <span className="h-[calc(16/390*var(--mvw))] w-[calc(3/390*var(--mvw))] rounded-full bg-brand" />
-                <h2 className="flex-1 font-primary text-[calc(16/390*var(--mvw))] font-bold text-gray-1">Trending Now</h2>
+                <h2 className="flex-1 font-primary text-[calc(14/390*var(--mvw))] font-medium text-gray-1">Trending Now</h2>
                 <img src={arrowIcon} alt="" aria-hidden="true" className="size-[calc(16/390*var(--mvw))]" />
               </div>
               <div className="flex gap-[calc(12/390*var(--mvw))] overflow-x-auto scrollbar-hide">
@@ -224,15 +223,15 @@ const MobileShortsPage = () => {
                     className="relative block h-[calc(130/390*var(--mvw))] w-[calc(110/390*var(--mvw))] shrink-0 cursor-pointer overflow-clip rounded-xl text-left"
                   >
                     <img src={item.image} alt={item.title} className="absolute inset-0 size-full object-cover" />
-                    <span className="absolute left-[calc(8/390*var(--mvw))] top-[calc(8/390*var(--mvw))] flex size-[calc(22/390*var(--mvw))] items-center justify-center rounded-md bg-brand font-primary text-[calc(12/390*var(--mvw))] font-bold text-page">
+                    <span className="absolute left-[calc(8/390*var(--mvw))] top-[calc(8/390*var(--mvw))] flex size-[calc(22/390*var(--mvw))] items-center justify-center rounded-full bg-[#ec1882] font-primary text-[calc(12/390*var(--mvw))] font-semibold text-[#060a16]">
                       {item.rank}
                     </span>
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-[calc(8/390*var(--mvw))] pb-[calc(8/390*var(--mvw))] pt-[calc(20/390*var(--mvw))]">
-                      <p className="line-clamp-2 font-primary text-[calc(12/390*var(--mvw))] font-semibold leading-tight text-gray-1">{item.title}</p>
+                      <p className="line-clamp-2 font-primary text-[calc(10/390*var(--mvw))] font-semibold leading-tight text-gray-1">{item.title}</p>
                       {/* Brief: view counts are ignored for API content — `views` is ""
                          there, so the label only renders for fixtures. */}
                       {item.views && (
-                        <p className="mt-[calc(2/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))] text-gray-1/70">{item.views}</p>
+                        <p className="mt-[calc(2/390*var(--mvw))] font-primary text-[calc(9/390*var(--mvw))] text-gray-1">{item.views}</p>
                       )}
                     </div>
                   </button>
@@ -244,7 +243,7 @@ const MobileShortsPage = () => {
                column starts short (145); each alternates, so tall/short checkerboard and
                both columns end level. */}
             <section className="flex flex-col gap-[calc(12/390*var(--mvw))]">
-              <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-bold text-gray-1">For You</h2>
+              <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">For You</h2>
               <div className="flex gap-[calc(12/390*var(--mvw))]">
                 <div className="flex flex-1 flex-col gap-[calc(12/390*var(--mvw))]">
                   {forYouGrid.filter((_, i) => i % 2 === 0).map((item, j) => (

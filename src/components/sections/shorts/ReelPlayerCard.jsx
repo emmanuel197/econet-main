@@ -227,7 +227,7 @@ const ReelPlayerCard = ({
 
       <div className="absolute inset-x-0 bottom-0 flex flex-col bg-gradient-to-t from-black/70 to-transparent px-[calc(16/1728*var(--vw))] pb-[calc(14/1728*var(--vw))] pt-[calc(40/1728*var(--vw))]">
         <div className="flex items-center gap-[calc(8/1728*var(--vw))]">
-          <span className="font-primary text-xs text-gray-1/80">{currentTimeLabel}</span>
+          <span className="font-primary text-base text-gray-1/70">{currentTimeLabel}</span>
           <input
             type="range"
             min={0}
@@ -247,7 +247,7 @@ const ReelPlayerCard = ({
             aria-label="Seek"
             className="h-[calc(4/1728*var(--vw))] flex-1 cursor-pointer accent-brand"
           />
-          <span className="font-primary text-xs text-gray-1/80">{totalTimeLabel ?? reel.totalTime}</span>
+          <span className="font-primary text-base text-gray-1/90">{totalTimeLabel ?? reel.totalTime}</span>
         </div>
       </div>
     </div>

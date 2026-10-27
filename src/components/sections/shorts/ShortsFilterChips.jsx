@@ -16,7 +16,7 @@ const ShortsFilterChips = ({ filters = FILTERS, active: activeProp, initial, onC
   };
 
   return (
-    <div className={classNames("flex items-center gap-[calc(12/1728*var(--vw))]", className)}>
+    <div className={classNames("flex items-center gap-[calc(16/1728*var(--vw))]", className)}>
       {filters.map((label) => {
         const isActive = label === active;
         return (
@@ -25,11 +25,11 @@ const ShortsFilterChips = ({ filters = FILTERS, active: activeProp, initial, onC
             type="button"
             onClick={() => handle(label)}
             className={classNames(
-              "flex h-[calc(38/1728*var(--vw))] items-center justify-center rounded-full px-[calc(20/1728*var(--vw))]",
-              "font-primary font-medium text-base cursor-pointer transition-colors",
+              "flex h-[calc(38/1728*var(--vw))] items-center justify-center rounded-[20px] px-[calc(16/1728*var(--vw))]",
+              "font-primary text-xl cursor-pointer transition-colors",
               isActive
-                ? "bg-brand text-page"
-                : "bg-gray-1/10 text-gray-1 border border-gray-1/15 hover:bg-gray-1/15"
+                ? "border-[0.5px] border-gray-1 bg-brand font-medium text-gray-1"
+                : "bg-gray-1/10 text-gray-1/75 hover:bg-gray-1/15 hover:text-gray-1"
             )}
           >
             {label}

@@ -84,7 +84,8 @@ export const liveReelPreview = {
   id: "live-1",
   image: livePreviewBg,
   title: "Top 10 African Football Goals 2024",
-  views: "1.5M views",
+  handle: "@WonaSportsHQ",
+  views: "2.4M views",
 };
 
 export const trendingNow = [
@@ -120,10 +121,10 @@ export const reels = [
   makeReel({
     id: "reel-1",
     badge: "Highlights",
-    handle: "@AfriSportsHQ",
+    handle: "@WonaSportsHQ",
     title: "Top 10 African football moments of 2024",
     hashtags: ["#Wona", "#Football", "#AFCON2024"],
-    audio: "Original audio · AfriSportsHQ",
+    audio: "Original audio · WonaSportsHQ",
   }),
   makeReel({
     id: "reel-2",
@@ -163,7 +164,7 @@ export function resolveReel(id) {
     id: source.id,
     badge,
     handle: "@Wona",
-    title: source.title ?? "AfriShorts clip",
+    title: source.title ?? "Wona Shorts clip",
     hashtags: ["#Wona"],
     audio: "Original audio · WONA",
   });

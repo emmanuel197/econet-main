@@ -12,7 +12,7 @@ const TrendingNowSidebar = ({ items = [], onSeeAll, onSelect, className = "" }) 
         className="h-[calc(16/1728*var(--vw))] w-[calc(3/1728*var(--vw))] rounded-full bg-brand"
         aria-hidden="true"
       />
-      <h3 className="flex-1 font-primary font-bold text-xl text-gray-1">Trending Now</h3>
+      <h3 className="flex-1 font-primary font-medium text-3xl text-gray-1">Trending Now</h3>
       <button
         type="button"
         onClick={onSeeAll}
@@ -23,7 +23,7 @@ const TrendingNowSidebar = ({ items = [], onSeeAll, onSelect, className = "" }) 
       </button>
     </div>
 
-    <div className="flex flex-col gap-[calc(14/1728*var(--vw))]">
+    <div className="flex flex-col gap-[calc(16/1728*var(--vw))]">
       {items.map((item) => (
         <TrendingListItem
           key={item.id}

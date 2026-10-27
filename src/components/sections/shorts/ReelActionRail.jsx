@@ -79,7 +79,7 @@ const ReelActionRail = ({ reel, liked = false, onToggleLike, onOpenDetails, clas
         <span className="flex size-[calc(40/1728*var(--vw))] items-center justify-center rounded-full bg-gray-1/15">
           <HeartIcon filled={liked} className="size-[calc(18/1728*var(--vw))]" />
         </span>
-        <span className="font-primary text-sm text-gray-1">{reel.likes}</span>
+        <span className="font-primary text-base font-semibold text-brand">{reel.likes}</span>
       </button>
 
       <button
@@ -91,7 +91,7 @@ const ReelActionRail = ({ reel, liked = false, onToggleLike, onOpenDetails, clas
         <span className="flex size-[calc(40/1728*var(--vw))] items-center justify-center rounded-full bg-gray-1/15">
           <img src={shareIcon} alt="" aria-hidden="true" className="size-[calc(18/1728*var(--vw))]" />
         </span>
-        <span className="font-primary text-sm text-gray-1">{justCopied ? "Copied!" : "Share"}</span>
+        <span className="font-primary text-base font-semibold text-brand">{justCopied ? "Copied!" : "Share"}</span>
       </button>
 
       <button
@@ -109,7 +109,7 @@ const ReelActionRail = ({ reel, liked = false, onToggleLike, onOpenDetails, clas
         >
           <img src={saveIcon} alt="" aria-hidden="true" className="size-[calc(18/1728*var(--vw))]" />
         </span>
-        <span className="font-primary text-sm text-gray-1">My Stuff</span>
+        <span className="font-primary text-base font-semibold text-brand">My List</span>
       </button>
     </div>
   );
