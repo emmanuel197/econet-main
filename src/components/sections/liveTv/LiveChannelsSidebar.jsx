@@ -4,11 +4,11 @@ import LiveChannelCard from "../../cards/LiveChannelCard";
 import seeAllArrow from "../../../../assets/icons/epg-sport-live-channels-sidebar-see-all-arrow.svg";
 
 const LiveChannelsSidebar = ({ items = [], totalCount, activeId, onSelect, onSeeAll, className = "" }) => (
-  <aside className={classNames("flex flex-col gap-[calc(16/1728*var(--vw))]", className)}>
-    <div className="flex items-center gap-[calc(10/1728*var(--vw))]">
-      <h3 className="font-primary font-bold text-xl text-gray-1">All Live Channels</h3>
+  <aside className={classNames("flex flex-col gap-[calc(33/1728*var(--vw))]", className)}>
+    <div className="flex items-center gap-[calc(11/1728*var(--vw))] border-b border-gray-1/10 py-[calc(21/1728*var(--vw))]">
+      <h3 className="font-primary font-semibold text-xl text-gray-1">All Live Channels</h3>
       {totalCount != null && (
-        <span className="rounded-full bg-gray-1/10 px-[calc(10/1728*var(--vw))] py-[calc(2/1728*var(--vw))] font-primary text-sm text-gray-1/70">
+        <span className="rounded-[calc(24/1728*var(--vw))] bg-black/32 px-[calc(12/1728*var(--vw))] py-[calc(5/1728*var(--vw))] font-primary text-lg font-medium text-gray-1/75">
           {totalCount}
         </span>
       )}
@@ -16,14 +16,14 @@ const LiveChannelsSidebar = ({ items = [], totalCount, activeId, onSelect, onSee
       <button
         type="button"
         onClick={onSeeAll}
-        className="flex items-center gap-[calc(6/1728*var(--vw))] font-primary text-sm text-gray-1/70 cursor-pointer hover:text-gray-1"
+        className="flex items-center gap-[calc(4/1728*var(--vw))] font-primary text-lg text-brand cursor-pointer hover:text-brand-light"
       >
         See All
-        <img src={seeAllArrow} alt="" aria-hidden="true" className="size-[calc(14/1728*var(--vw))]" />
+        <img src={seeAllArrow} alt="" aria-hidden="true" className="size-[calc(24/1728*var(--vw))] -rotate-90" />
       </button>
     </div>
 
-    <div className="flex flex-col gap-[calc(10/1728*var(--vw))]">
+    <div className="flex flex-col gap-[calc(24/1728*var(--vw))]">
       {items.map((ch, i) => (
         <LiveChannelCard
           key={ch.id}

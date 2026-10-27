@@ -21,3 +21,4 @@
 | 15 | Desktop comp has no WonaPremiere / Trending / Bundle rails — confirm they are mobile-only | Desktop home | ❓ open |
 | 16 | Mobile search comps show a different bottom nav (Home, Movies, Live Tv, Search, avatar "More") from the mobile home comp (Home, Live Tv, Shorts, Search, More). Code keeps the home version everywhere — which is final? | Mobile nav | ❓ open |
 | 17 | Mobile search has no app bar in the comps (so no bell/avatar there) — confirm that's intended | Mobile search | ❓ open |
+| 18 | Featured live panel: viewer count, scoreboard (teams/score/minute) only exist in fixtures — is there an API/CRM source for them? | Live TV with real data | ❓ open |

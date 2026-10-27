@@ -39,7 +39,9 @@ function LiveTvPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = categories.includes(searchParams.get("category")) ? searchParams.get("category") : "All";
   const [category, setCategoryState] = useState(initialCategory);
-  const [activeChannelId, setActiveChannelId] = useState(liveChannels[0]?.id);
+  // null = nothing picked yet → the curated featured programme shows (WONA comp 4041:22861:
+  // scoreboard + viewer count); the first sidebar card still reads as active.
+  const [activeChannelId, setActiveChannelId] = useState(null);
   const [query, setQuery] = useState("");
 
   // Selecting a channel retargets the featured panel at the TOP of the page —
@@ -57,8 +59,8 @@ function LiveTvPage() {
   // The initial render happens while the skeleton shows (fixture data), so the
   // preselected channel id can go stale once API channels land — resync it.
   useEffect(() => {
-    if (!liveChannels.some((c) => c.id === activeChannelId)) {
-      setActiveChannelId(liveChannels[0]?.id);
+    if (activeChannelId && !liveChannels.some((c) => c.id === activeChannelId)) {
+      setActiveChannelId(null);
     }
   }, [liveChannels]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -154,7 +156,7 @@ function LiveTvPage() {
           <LiveChannelsSidebar
             items={visibleChannels}
             totalCount={liveChannelsTotal}
-            activeId={activeChannelId}
+            activeId={activeChannelId ?? liveChannels[0]?.id}
             onSelect={stageChannel}
             className="w-[calc(380/1728*var(--vw))] shrink-0"
           />

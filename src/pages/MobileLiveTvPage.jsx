@@ -39,14 +39,14 @@ const MobileLiveChannelRow = ({ data, active = false, onClick }) => {
       <img src={logo} alt={channel} className="size-[calc(48/390*var(--mvw))] shrink-0 rounded-lg object-cover" />
       <div className="flex min-w-0 flex-1 flex-col gap-[calc(4/390*var(--mvw))]">
         <div className="flex items-center gap-[calc(8/390*var(--mvw))]">
-          <span className="font-primary text-[calc(12/390*var(--mvw))] text-gray-1/60">{channel}</span>
-          <span className={classNames("rounded-md px-[calc(6/390*var(--mvw))] py-[calc(1/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))]", CATEGORY_BADGE[category] || CATEGORY_BADGE.Sports)}>{category}</span>
+          <span className="font-primary text-[calc(11/390*var(--mvw))] text-text-muted/75">{channel}</span>
+          <span className={classNames("rounded-md px-[calc(6/390*var(--mvw))] py-[calc(1/390*var(--mvw))] font-primary text-[calc(7/390*var(--mvw))] font-medium", CATEGORY_BADGE[category] || CATEGORY_BADGE.Sports)}>{category}</span>
         </div>
         <div className="flex items-center gap-[calc(6/390*var(--mvw))]">
           <Badge variant="live">LIVE</Badge>
-          <span className="min-w-0 truncate font-primary text-[calc(13/390*var(--mvw))] font-semibold leading-snug text-gray-1">{title}</span>
+          <span className="min-w-0 truncate font-primary text-[calc(12/390*var(--mvw))] font-semibold leading-snug text-gray-1">{title}</span>
         </div>
-        <span className="truncate font-primary text-[calc(11/390*var(--mvw))] text-gray-1/60">Next: {next}</span>
+        <span className="truncate font-primary text-[calc(10/390*var(--mvw))] text-text-muted/65">Next: {next}</span>
         <div className="mt-[calc(2/390*var(--mvw))] h-[calc(3/390*var(--mvw))] w-[calc(120/390*var(--mvw))] overflow-clip rounded-full bg-gray-1/15">
           <div className="h-full rounded-full bg-brand" style={{ width: `${progress * 100}%` }} />
         </div>
@@ -158,7 +158,7 @@ const MobileLiveTvPage = () => {
            controls come from the SHARED cluster; they were hand-rolled here before, with a
            Get Bundle button that navigated nowhere and a bell with no handler. */}
         <div className="flex items-center justify-between">
-          <span className="font-primary text-[calc(20/390*var(--mvw))] font-bold text-brand">Wona Live Tv</span>
+          <span className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-brand">Wona Live Tv</span>
           <MobileNavActions />
         </div>
 
@@ -170,8 +170,8 @@ const MobileLiveTvPage = () => {
               type="button"
               onClick={() => selectCategory(c)}
               className={classNames(
-                "shrink-0 rounded-full px-[calc(16/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors",
-                category === c ? "bg-brand text-page" : "border border-gray-1/20 bg-gray-1/10 text-gray-1"
+                "shrink-0 rounded-full px-[calc(16/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] leading-none transition-colors",
+                category === c ? "bg-brand font-semibold text-gray-1" : "border border-gray-1/20 bg-gray-1/10 text-gray-1/70"
               )}
             >
               {c}
@@ -181,18 +181,24 @@ const MobileLiveTvPage = () => {
 
         {/* Featured live program — All + Sports only */}
         {showFeatured && (
-        <div ref={featuredRef} className="scroll-mt-[calc(12/390*var(--mvw))] flex flex-col gap-[calc(14/390*var(--mvw))] overflow-clip rounded-2xl bg-gradient-to-br from-[#1a2548] to-[#160a29] p-[calc(16/390*var(--mvw))]">
+        <div ref={featuredRef} className="scroll-mt-[calc(12/390*var(--mvw))] flex flex-col gap-[calc(14/390*var(--mvw))] overflow-clip rounded-2xl bg-gradient-to-br from-[#1a2548] to-[#0e152c] p-[calc(16/390*var(--mvw))]">
           <div className="flex items-start justify-between gap-[calc(12/390*var(--mvw))]">
             <div className="flex min-w-0 flex-col gap-[calc(8/390*var(--mvw))]">
               <div className="flex items-center gap-[calc(8/390*var(--mvw))]">
                 {p.status === "LIVE" && <Badge variant="live">LIVE</Badge>}
-                <span className="font-primary text-[calc(12/390*var(--mvw))] text-gray-1/70">{p.watching}</span>
+                <span className="font-primary text-[calc(10/390*var(--mvw))] text-gray-6">{p.watching}</span>
               </div>
               <div className="flex items-center gap-[calc(8/390*var(--mvw))]">
                 <img src={p.channelLogo} alt="" className="h-[calc(20/390*var(--mvw))] w-auto rounded object-contain" />
-                <span className="font-primary text-[calc(12/390*var(--mvw))] text-gray-1/80">{p.channelLabel}</span>
+                {/* "SuperSport · Ch 5": channel name 12px semibold, channel number 10px at 60% */}
+                <span className="font-primary text-[calc(12/390*var(--mvw))] font-semibold text-text-muted">
+                  {p.channelLabel?.split(" · ")[0]}
+                  {p.channelLabel?.includes(" · ") && (
+                    <span className="text-[calc(10/390*var(--mvw))] font-normal text-text-muted/60"> · {p.channelLabel.split(" · ").slice(1).join(" · ")}</span>
+                  )}
+                </span>
               </div>
-              <h2 className="font-primary text-[calc(19/390*var(--mvw))] font-bold leading-tight text-brand">
+              <h2 className="font-primary text-[calc(18/390*var(--mvw))] font-semibold leading-tight text-brand">
                 {p.title}<br />
                 <span className="text-brand">{p.subtitle}</span>
               </h2>
@@ -201,7 +207,7 @@ const MobileLiveTvPage = () => {
           </div>
 
           <div className="flex flex-col gap-[calc(6/390*var(--mvw))]">
-            <div className="flex items-center justify-between font-primary text-[calc(11/390*var(--mvw))] text-gray-1/60">
+            <div className="flex items-center justify-between font-primary text-[calc(10/390*var(--mvw))] text-gray-6">
               <span>{p.startTime}</span>
               <span>{p.remaining}</span>
               <span>{p.endTime}</span>
@@ -212,10 +218,10 @@ const MobileLiveTvPage = () => {
           </div>
 
           <div className="flex items-center gap-[calc(10/390*var(--mvw))]">
-            <button type="button" onClick={() => openChannel(p)} className="flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(20/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-semibold text-page cursor-pointer">
+            <button type="button" onClick={() => openChannel(p)} className="flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(20/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(11/390*var(--mvw))] font-semibold text-gray-1 cursor-pointer">
               <img src={playIcon} alt="" aria-hidden="true" className="size-[calc(14/390*var(--mvw))]" /> Watch Now
             </button>
-            <button type="button" onClick={() => navigate("/tv-guide")} className="flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-gray-1/15 px-[calc(18/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium text-gray-1 cursor-pointer">
+            <button type="button" onClick={() => navigate("/tv-guide")} className="flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-gray-1/30 px-[calc(18/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-medium text-gray-1 backdrop-blur-md cursor-pointer">
               <img src={fullGuideIcon} alt="" aria-hidden="true" className="size-[calc(14/390*var(--mvw))]" /> Full Guide
             </button>
           </div>
@@ -224,8 +230,8 @@ const MobileLiveTvPage = () => {
 
         {/* Channel list — title switches to the active category when featured is hidden */}
         <div className="flex items-center justify-between">
-          <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-bold text-gray-1">{listTitle}</h2>
-          <span className="font-primary text-[calc(12/390*var(--mvw))] text-gray-1/60">{liveChannelsTotal} channels</span>
+          <h2 className="font-primary text-[calc(14/390*var(--mvw))] font-semibold text-gray-1">{listTitle}</h2>
+          <span className="font-primary text-[calc(10/390*var(--mvw))] text-gray-6">{liveChannelsTotal} channels</span>
         </div>
         <div className="flex flex-col gap-[calc(10/390*var(--mvw))]">
           {channels.length ? (

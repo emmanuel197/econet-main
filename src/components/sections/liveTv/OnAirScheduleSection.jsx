@@ -69,8 +69,8 @@ const OnAirScheduleSection = ({ items = [], liveChannels = [], date, category = 
   return (
     <section className={classNames("flex flex-col gap-[calc(20/1728*var(--vw))]", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="font-primary font-bold text-h6 text-gray-1">On Air Today</h2>
-        <span className="font-primary text-base text-gray-1/60">{date}</span>
+        <h2 className="font-primary font-semibold text-xl text-gray-1">On Air Today</h2>
+        <span className="font-primary text-lg text-gray-1/60">{date}</span>
       </div>
 
       <div className="flex items-center gap-[calc(28/1728*var(--vw))] border-b border-gray-1/10">
@@ -80,7 +80,7 @@ const OnAirScheduleSection = ({ items = [], liveChannels = [], date, category = 
             type="button"
             onClick={() => setTab(t.id)}
             className={classNames(
-              "-mb-px border-b-2 pb-[calc(10/1728*var(--vw))] font-primary font-medium text-base cursor-pointer transition-colors",
+              "-mb-px border-b-2 pb-[calc(10/1728*var(--vw))] font-primary text-lg cursor-pointer transition-colors",
               tab === t.id ? "border-brand text-brand" : "border-transparent text-gray-1/60 hover:text-gray-1"
             )}
           >

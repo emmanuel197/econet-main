@@ -48,3 +48,10 @@
 - Desktop panel: one 40px-radius black/70 card, pink underline under the input, 18px semibold titles, pink "Clear All", 44px recent rows, outlined pink trending numerals with hairline dividers.
 - Desktop results: 18px tabs, "Found N results for ”q”" 20px semibold, Best Results hero inset 56px / 550 tall / 24px radius / 2px border with a navy "Best Results" tag; 28px group titles with zero-padded counts; 6-col grid; channels scroll in a row. Zero results: `Did you mean: ”…?”`.
 - Mobile: the empty state is now Recent + Top 5 Trending + Browse By Categories (AfriPlay showed a browse/results grid until the box was focused). No app bar on mobile search (`mobileTopBar="status"`), as in the comps. 111×124 category cards, 16px semibold titles, results tiles with `#e1e7f8` hairline.
+
+## 2026-10-27 — Live TV / EPG matched to WONA Figma (desktop 4041:22861, mobile 4041:13023)
+- Layout already matched (search, category chips, featured panel, On Air Today + All Live Channels).
+- Desktop featured panel (`FeaturedLiveProgram`): black/32, 24px radius, 40px padding, 549 tall; viewer count + "SuperSport · Ch 5" at 18px/60%; whole title pink 30px semibold; scoreboard 44px with a red minute pill; 450px image. The curated featured programme (scoreboard, viewers) now shows on load — `activeChannelId` starts null; picking a channel still restages the panel.
+- Sidebar: 18px semibold header with black/32 count pill, pink "See All", 24px card gap. On Air Today: 18px semibold heading, 16px date/tabs.
+- Mobile: title 16px semibold, chips 12px (active white text), meta 10px `#9e9e9e`, channel name `#9999b2`, featured title 18px semibold, white Watch Now text, glass Full Guide, list header 14px; AfriPlay purple `#160a29` removed from the featured gradient.
+- Figma image renders are rate-limited (429, retry-after ~85h) — comparisons used the cached node data (`/v1/files/.../nodes`) instead.
