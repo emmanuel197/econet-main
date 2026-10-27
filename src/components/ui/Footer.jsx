@@ -1,7 +1,6 @@
 import React from "react";
 import classNames from "../../utils/classNames";
 import logo from "../../../assets/logos/wona-logo.svg";
-import glow from "../../../assets/illustrations/home-footer-glow-ellipse.webp";
 import bgShape from "../../../assets/icons/home-footer-background-shape.svg";
 import iconInstagram from "../../../assets/icons/home-footer-social-instagram.svg";
 import iconTwitter from "../../../assets/icons/home-footer-social-twitter.svg";
@@ -18,7 +17,7 @@ const Footer = React.forwardRef(({ className, ...props }, ref) => (
   <footer
     ref={ref}
     className={classNames(
-      "relative h-[calc(339/1728*var(--vw))] overflow-clip bg-page border-t-2 border-[rgba(242,240,203,0.12)] font-primary",
+      "relative h-[calc(339/1728*var(--vw))] overflow-clip bg-page border-t border-[rgba(250,235,242,0.12)] font-primary",
       className
     )}
     {...props}
@@ -28,11 +27,12 @@ const Footer = React.forwardRef(({ className, ...props }, ref) => (
         <img src={bgShape} alt="" aria-hidden="true" className="block size-full max-w-none" />
       </div>
     </div>
-    <div className="absolute right-[calc(-78/1728*var(--vw))] top-[calc(50%+calc(40/1728*var(--vw)))] -translate-y-1/2 size-[calc(369/1728*var(--vw))] opacity-40 pointer-events-none">
-      <div className="absolute inset-[-54.2%]">
-        <img src={glow} alt="" aria-hidden="true" className="block size-full max-w-none" />
-      </div>
-    </div>
+    {/* WONA Figma "Ellipse 12": angular #3d4971 → #b0186a/30, layer blur 200, 40% opacity */}
+    <div
+      aria-hidden="true"
+      className="absolute right-[calc(-78/1728*var(--vw))] top-[calc(50%+calc(40/1728*var(--vw)))] -translate-y-1/2 size-[calc(369/1728*var(--vw))] rounded-full opacity-40 pointer-events-none blur-[calc(200/1728*var(--vw))]"
+      style={{ background: "conic-gradient(from 90deg, #3d4971 0deg, rgba(176,24,106,0.3) 180deg, #3d4971 360deg)" }}
+    />
 
     <div className="absolute left-[calc(61/1728*var(--vw))] top-[calc(54/1728*var(--vw))] flex w-[calc(1528/1728*var(--vw))] items-start justify-between">
       <div className="flex flex-col gap-[calc(16/1728*var(--vw))]">

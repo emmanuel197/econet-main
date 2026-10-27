@@ -10,14 +10,14 @@ import iconBack from "../../../assets/icons/shorts-play-back-arrow-back-arrow.sv
 /**
  * MobileTopBar — transparent overlay bar at the top of mobile app pages.
  *  - "app"    : logo (left) + the shared [[MobileNavActions]] cluster (right). Homepage etc.
- *  - "feed"   : AfriShorts title + Get Bundle / notification. Shorts feed.
+ *  - "feed"   : Wona Shorts title + Get Bundle / notification. Shorts feed.
  *  - "player" : back / title / more. Shorts player.
  * Sized against the 390 mobile comp via --mvw.
  *
  * The right-hand cluster lives in MobileNavActions so pages with their own mobile header
  * (Shorts feed, Live TV) share the identical working controls.
  */
-const MobileTopBar = ({ variant = "app", title = "AfriShorts", onBack, onMore, className = "" }) => {
+const MobileTopBar = ({ variant = "app", title = "Wona Shorts", onBack, onMore, className = "" }) => {
   const navigate = useNavigate();
 
   if (variant === "app") {

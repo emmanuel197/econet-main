@@ -27,8 +27,9 @@ const isActive = (tab, pathname, isMoreView) => {
 };
 
 /**
- * MobileBottomNav — floating pill tab bar (fixed, bottom-anchored, horizontally
- * centred, glass background). The active tab gets a lighter rounded highlight.
+ * MobileBottomNav — WONA Figma "Frame 171" (mobile home 4041:1518): 348×66 floating
+ * pill, white/10 frosted glass, five tabs (20px icon over 11px label, gap 4); the
+ * active tab is pink + semibold, the rest white at 90%.
  * Sized against the 390 mobile comp via --mvw so it scales with phone width.
  * Rendered only below md (MainLayout swaps it in for the desktop Navbar).
  */
@@ -39,8 +40,8 @@ const MobileBottomNav = ({ className = "" }) => {
   return (
     <nav
       className={classNames(
-        "fixed inset-x-0 bottom-[calc(16/390*var(--mvw))] z-50 mx-auto flex w-[calc(352/390*var(--mvw))] items-stretch justify-between gap-[calc(4/390*var(--mvw))]",
-        "rounded-full border border-gray-1/10 bg-black/60 p-[calc(6/390*var(--mvw))] shadow-2xl backdrop-blur-xl",
+        "fixed inset-x-0 bottom-[calc(16/390*var(--mvw))] z-50 mx-auto flex h-[calc(66/390*var(--mvw))] w-[calc(348/390*var(--mvw))] items-center justify-between gap-[calc(12/390*var(--mvw))]",
+        "rounded-full bg-gray-1/10 px-[calc(14/390*var(--mvw))] backdrop-blur-xl",
         className
       )}
     >
@@ -51,14 +52,14 @@ const MobileBottomNav = ({ className = "" }) => {
             key={tab.label}
             to={tab.to}
             className={classNames(
-              "flex flex-1 flex-col items-center justify-center gap-[calc(3/390*var(--mvw))] rounded-full py-[calc(8/390*var(--mvw))] transition-colors",
-              active ? "bg-gray-1/10 text-brand" : "text-gray-1/75"
+              "flex flex-1 flex-col items-center justify-center gap-[calc(4/390*var(--mvw))] transition-colors",
+              active ? "text-brand" : "text-gray-1/90"
             )}
           >
-            <tab.Icon aria-hidden="true" className="size-[calc(22/390*var(--mvw))]" />
+            <tab.Icon aria-hidden="true" className="size-[calc(20/390*var(--mvw))]" />
             <span
               className={classNames(
-                "font-primary text-[calc(10/390*var(--mvw))] leading-none",
+                "font-primary text-[calc(11/390*var(--mvw))] leading-[calc(13/390*var(--mvw))]",
                 active && "font-semibold"
               )}
             >

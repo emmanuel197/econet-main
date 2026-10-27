@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     // Import any "*.svg?react" as a React component. Figma exports colours as
     // `var(--stroke-0/--fill-0, <fallback>)`; map the monochrome fallbacks to
-    // currentColor so icons inherit Tailwind text colour (text-prim-gold etc.).
+    // currentColor so icons inherit Tailwind text colour (text-brand etc.).
     // Non-monochrome fills (e.g. the notification bubble's #ff0e10) are left alone.
     svgr({
       include: '**/*.svg?react',
@@ -17,7 +17,7 @@ export default defineConfig({
         replaceAttrValues: {
           'var(--stroke-0, white)': 'currentColor',
           'var(--stroke-0, black)': 'currentColor',
-          'var(--stroke-0, #c2b801)': 'currentColor',
+          'var(--stroke-0, #da1375)': 'currentColor',
           'var(--fill-0, white)': 'currentColor',
           'var(--fill-0, black)': 'currentColor',
         },
