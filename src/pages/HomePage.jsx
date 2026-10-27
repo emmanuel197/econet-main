@@ -23,6 +23,7 @@ import { updateWatchlist } from "../api/details";
 import { homeFixtures } from "../data/homeFixtures";
 import { goToDetails } from "../utils/contentNavigation";
 import useIsMobile from "../utils/useIsMobile";
+import { showPreviewNotice } from "../utils/toast";
 
 // solar:star-bold — WonaPremiere heading icon
 const IconStar = (props) => (
@@ -117,7 +118,7 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
   const [heroStuffAdded, setHeroStuffAdded] = useState(false);
   const heroType = (activeSlide?.raw?.vod_type || activeSlide?.raw?.type || "movie").toLowerCase();
   const heroWatchNow = () => {
-    if (!activeContentId) return;
+    if (!activeContentId) return showPreviewNotice();
     if (heroType === "series") {
       navigate(`/series/${activeContentId}`);
     } else {
@@ -127,7 +128,8 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
     }
   };
   const heroMyStuff = async () => {
-    if (!activeContentId || heroStuffAdded) return;
+    if (!activeContentId) return showPreviewNotice();
+    if (heroStuffAdded) return;
     if (heroType === "series") {
       // Series bookmarks are per-episode — the details page owns that flow.
       navigate(`/series/${activeContentId}`);

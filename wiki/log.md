@@ -72,3 +72,10 @@
 ## 2026-10-28 — TV Guide sample data; mobile top bar spacing
 - `/tv-guide` (navbar "Tv Channels") only loaded from the API, so in fixture mode it sat on its skeleton. It now uses `guideChannels` + `buildGuideShows()` from `data/liveTvFixtures.js` when `VITE_USE_FIXTURES` is on (2-hourly schedule, 6 AM → midnight, any day).
 - User saw the mobile top-bar controls cut off at the top (not reproducible here). Removed the Get Bundle pill's own backdrop blur (nested inside the scrolled bar's backdrop blur — a known Chrome clipping case) and raised the bar's top/bottom reservation 14 → 18px.
+
+## 2026-10-28 — Preview-mode dead ends
+- Sample-mode Shorts got `contentId = item.id` (a fake id), so "Watch full movie" opened a details page for a title that doesn't exist → error. `openAfrishortsPlayer` now leaves `contentId` null in fixture mode.
+- Home hero Watch Now / My Stuff (sample slides) and Shorts "Watch full …" (desktop + mobile) now show `showPreviewNotice()` (new `TOAST.info`, `utils/toast.js`) instead of doing nothing.
+- Movie/Series details show a skeleton while loading (was a blank 60vh box).
+- Like button vs double-tap kept as is (spec US-05: big heart on double-tap only; button just fills).
+- WonaPremiere (3894:687) and TVOD (3912:255) Figma pages: REST rate-limited (429, ~83h) — user exporting frames as images instead.

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Pulse } from "../components/shared/PageSkeleton";
 import { useNavigate, useParams } from "react-router-dom";
 import playIcon from "../../assets/icons/home-hero-watch-now-play.svg";
 import addIcon from "../../assets/icons/home-hero-my-stuff-add.svg";
@@ -96,7 +97,15 @@ const MovieDetailsPage = () => {
         </Button>
       </div>
     );
-  if (!details) return <div className="min-h-[60vh]" />;
+  if (!details)
+    return (
+      <div className="flex flex-col gap-[calc(24/1728*var(--vw))] px-[calc(53/1728*var(--vw))] pt-[calc(146/1728*var(--vw))] max-md:gap-[calc(14/390*var(--mvw))] max-md:px-[calc(16/390*var(--mvw))] max-md:pt-[calc(70/390*var(--mvw))]">
+        <Pulse className="h-[calc(520/1728*var(--vw))] w-full rounded-2xl max-md:h-[calc(240/390*var(--mvw))]" />
+        <Pulse className="h-[calc(36/1728*var(--vw))] w-1/3 max-md:h-[calc(22/390*var(--mvw))] max-md:w-2/3" />
+        <Pulse className="h-[calc(18/1728*var(--vw))] w-1/2 max-md:h-[calc(14/390*var(--mvw))] max-md:w-full" />
+        <Pulse className="h-[calc(18/1728*var(--vw))] w-2/5 max-md:h-[calc(14/390*var(--mvw))] max-md:w-4/5" />
+      </div>
+    );
 
   // Movie details ship images differently from series (verified live): a bare
   // image_store_id for the poster, plus a movie_image_stores collection that may

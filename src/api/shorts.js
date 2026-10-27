@@ -78,7 +78,7 @@ export const openAfrishortsPlayer = async (items, selectedId, navigate) => {
   const reels = items.map((item) => ({
     id: String(item.id),
     contentType: item.contentType || "movie",
-    contentId: item.raw?.id ?? item.id,
+    contentId: item.raw?.id ?? (USE_FIXTURES ? null : item.id),
     badge: "Wona Shorts",
     handle: `@${(item.title || "WONA").replace(/\s+/g, "")}`,
     title: item.title || "",

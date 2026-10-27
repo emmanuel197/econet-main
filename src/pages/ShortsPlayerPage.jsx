@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { showPreviewNotice } from "../utils/toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectShorts } from "../store/slice/shortsSlice";
@@ -156,7 +157,7 @@ function ShortsPlayerPage() {
   // page. Only reels seeded from real API items carry contentId — fixture reels
   // keep the no-op/follow behaviors.
   const reelDetailsPath = reel.contentId != null ? detailsPath(reel) : null;
-  const openDetails = reelDetailsPath ? () => navigate(reelDetailsPath) : undefined;
+  const openDetails = reelDetailsPath ? () => navigate(reelDetailsPath) : showPreviewNotice;
 
   // Real media reports its duration via loadedmetadata; fixtures use the label.
   const totalSeconds = mediaDuration || parseSeconds(reel.totalTime || "0:00");

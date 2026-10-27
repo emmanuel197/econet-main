@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { showPreviewNotice } from "../utils/toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectShorts } from "../store/slice/shortsSlice";
@@ -276,7 +277,7 @@ const MobileShortsPlayer = () => {
   // Brief: "Watch full episode" opens the content's details page. Only reels seeded
   // from real API items carry contentId — fixture reels keep the no-op behavior.
   const reelDetailsPath = reel.contentId != null ? detailsPath(reel) : null;
-  const openDetails = reelDetailsPath ? () => navigate(reelDetailsPath) : undefined;
+  const openDetails = reelDetailsPath ? () => navigate(reelDetailsPath) : showPreviewNotice;
 
   // Real media drives the bar/labels from playback; fixtures use their static labels.
   const progress = reel.videoUrl ? mediaProgress : reel.progress ?? 0;

@@ -31,4 +31,11 @@ const show = (message, background) => {
 export const TOAST = {
   error: (message) => show(message, "#c0392b"),
   success: (message) => show(message, "#1e8e3e"),
+  info: (message) => show(message, "#1a2548"),
 };
+
+// Sample-data mode (VITE_USE_FIXTURES) has no real titles behind its cards, so actions
+// that need one (play, details, My Stuff) say so instead of doing nothing or opening a
+// page that can only fail.
+export const showPreviewNotice = () =>
+  TOAST.info("Not available in preview — this needs the live WONA service.");
