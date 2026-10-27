@@ -34,3 +34,10 @@
 - Footer (`components/ui/Footer.jsx`, 4041:21740): layout already matched; AfriPlay purple glow image replaced by the WONA blob gradient, top border recoloured.
 - Mobile: Get Bundle pill restyled to WONA (navy glass, pink border, 94×32); bottom nav restyled to Figma "Frame 171" (348×66 white/10 glass, 20px icons, 11px labels). Bell + avatar kept on mobile although the mobile home comp shows only Get Bundle (they hold notifications and the account menu).
 - Gotcha: recolouring SVG gold → pink broke vite.config's svgr `var(--stroke-0, #c2b801)` → currentColor mapping; updated it to `#da1375`.
+
+## 2026-10-27 — Homepage matched to WONA Figma (desktop 4041:21538, mobile 4041:1130)
+- Desktop order already matched. Added the promo banner in fixture mode (between Live On Tv Now and Top 10); removed the AfriPlay-only "Upcoming TV Shows" rail from desktop. Top 10 numerals now `#d97aa9`, extra-bold, 3px `#e7eaf4` outline.
+- Mobile comp differs from desktop and is now followed: Wonashorts → Keep Watching → **WonaPremiere** (new `components/cards/PremiereCard.jsx`) → Because You Watched → Live on TV Now → Top 10 Movies & Shows → New Release → Browse Live Channels → **Trending Now** → **Wona Bundle** promo (new `components/cards/BundlePromoCard.jsx`) → Only on Wona → **Upcoming TV Shows** (wide 245×303). No Genres and no promo banner on mobile.
+- Per-rail mobile title styles via new `mobileTitleClassName` prop (ContentRail → SectionHeader); default mobile heading is now 16px semibold (was 17px bold).
+- Mobile card sizes now follow the comp: posters 118×182 (artwork only, 5px radius, `#e1e7f8` border), Keep Watching 199×130, Live 155×95, channels 164×92.
+- New images from Figma image fills → `assets/images/home-mobile-*.webp`.

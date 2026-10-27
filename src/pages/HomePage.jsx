@@ -13,6 +13,8 @@ import ContinueCard from "../components/cards/ContinueCard";
 import PosterCard from "../components/cards/PosterCard";
 import GenreCard from "../components/cards/GenreCard";
 import ChannelCard from "../components/cards/ChannelCard";
+import PremiereCard from "../components/cards/PremiereCard";
+import BundlePromoCard from "../components/cards/BundlePromoCard";
 
 import { selectHomeRails, selectHomeLoading } from "../store/slice/homeSlice";
 import PageSkeleton from "../components/shared/PageSkeleton";
@@ -21,6 +23,13 @@ import { updateWatchlist } from "../api/details";
 import { homeFixtures } from "../data/homeFixtures";
 import { goToDetails } from "../utils/contentNavigation";
 import useIsMobile from "../utils/useIsMobile";
+
+// solar:star-bold — WonaPremiere heading icon
+const IconStar = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M9.15 5.4C10.42 3.13 11.05 2 12 2s1.58 1.13 2.85 3.4l.33.59c.36.64.54.97.82 1.18.28.21.63.29 1.33.45l.64.14c2.46.56 3.69.84 3.98 1.78.3.94-.54 1.92-2.22 3.88l-.43.51c-.48.56-.72.84-.83 1.18-.1.35-.07.72-.03 1.47l.07.68c.25 2.62.38 3.93-.39 4.51-.77.58-1.92.05-4.23-1.01l-.6-.27c-.65-.3-.98-.45-1.33-.45-.35 0-.68.15-1.33.45l-.6.27c-2.31 1.06-3.46 1.59-4.23 1.01-.77-.58-.64-1.89-.39-4.51l.07-.68c.04-.75.07-1.12-.03-1.47-.11-.34-.35-.62-.83-1.18l-.43-.51c-1.68-1.96-2.52-2.94-2.22-3.88.29-.94 1.52-1.22 3.98-1.78l.64-.14c.7-.16 1.05-.24 1.33-.45.28-.21.46-.54.82-1.18l.33-.59z" />
+  </svg>
+);
 
 // DATA: no API endpoints yet — renders from local fixtures. useSelector + dispatch-in-useEffect
 // is wired via ../api/fetchMoviesApi.js (legacy-parity module name).
@@ -218,10 +227,10 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
       {/* Left gutter only — rails bleed to the right screen edge so posters scroll off/in at
          the very edge; headers re-add the right gutter via their own padding. */}
       <div className="flex flex-col gap-[calc(48/1728*var(--vw))] pl-[calc(53/1728*var(--vw))] py-[calc(64/1728*var(--vw))] max-md:pt-[calc(33/390*var(--mvw))]">
-        {/* WONA design labels this rail "Wona Shorts" (with a NEW badge) */}
+        {/* WONA desktop labels this rail "Wona Shorts"; the mobile comp says "Wonashorts" */}
         {!filterActive && (
         <ContentRail
-          title="Wona Shorts"
+          title={isMobile ? "Wonashorts" : "Wona Shorts"}
           isNew
           items={data.afriplayShorts}
           gap={40}
@@ -276,6 +285,19 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         />
         )}
 
+        {/* WonaPremiere (mobile comp only): live premieres + upcoming ones with a date.
+            Fixture-only until an API source is known. */}
+        {isMobile && !filterActive && !apiHome && (
+          <ContentRail
+            title="WonaPremiere"
+            titleIcon={<IconStar className="size-[calc(16/390*var(--mvw))] text-brand" />}
+            mobileTitleClassName="max-md:text-[calc(16/390*var(--mvw))] max-md:font-semibold max-md:text-brand"
+            items={homeFixtures.wonaPremiere}
+            gap={23}
+            renderItem={(p) => <PremiereCard image={p.image} title={p.title} live={p.live} date={p.date} />}
+          />
+        )}
+
         {/* CRM-configured dashboard rails (API mode) — otherwise the named fixture
             rails below render the as-designed dummy content. Brief: the Genre
             section (branded categories) sits halfway through the VOD listings —
@@ -324,6 +346,7 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         {!rails.vodRails?.length && (
         <ContentRail
           title="Because You Watched"
+          mobileTitleClassName="max-md:text-[calc(14/390*var(--mvw))] max-md:font-normal max-md:text-gray-1/80"
           items={filterItems(data.becauseYouWatched)}
           gap={23}
           renderItem={(m) => <PosterCard image={m.image} title={m.title} metadata={m.metadata} onClick={() => m.raw && goToDetails(navigate, m)} />}
@@ -334,7 +357,7 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
            it used to be fixture-only, so dummy channels shipped on every live load). */}
         {!filterActive && data.liveOnTvNow.length > 0 && (
         <ContentRail
-          title="🔴 Live On Tv Now"
+          title={isMobile ? "🔴 Live on TV Now" : "🔴 Live On Tv Now"}
           items={data.liveOnTvNow}
           gap={23}
           renderItem={(c) => (
@@ -349,9 +372,16 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         />
         )}
 
+        {/* Fixture mode: WONA comp places the promo banner between Live On Tv Now and
+            Top 10 (in API mode it follows the first channel rail, inside vodRails). */}
+        {!isMobile && !rails.vodRails?.length && !filterActive && promoImage && (
+          <AdBanner data={{ asset: promoImage, title: rails.promoBannerTitle }} />
+        )}
+
         {!rails.vodRails?.length && (
         <ContentRail
-          title="Top 10 Movies"
+          title={isMobile ? "Top 10 Movies & Shows" : "Top 10 Movies"}
+          mobileTitleClassName="max-md:text-[calc(16/390*var(--mvw))] max-md:font-bold"
           items={filterItems(data.top10Movies)}
           gap={23}
           renderItem={(m) => <PosterCard image={m.image} title={m.title} metadata={m.metadata} rank={m.rank} onClick={() => m.raw && goToDetails(navigate, m)} />}
@@ -361,7 +391,7 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         {/* Fixture Genres rail — design-review fallback only; in API mode the
             branded-categories Genres rail renders halfway through vodRails
             (brief). Kept when the API has no branded categories at all. */}
-        {!filterActive && !(rails.vodRails?.length > 0 && rails.brandedGenres?.length > 0) && (
+        {!isMobile && !filterActive && !(rails.vodRails?.length > 0 && rails.brandedGenres?.length > 0) && (
           <ContentRail
             title="Genres"
             showArrow={false}
@@ -386,6 +416,7 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         {!filterActive && (
         <ContentRail
           title="Browse Live Channels"
+          mobileTitleClassName="max-md:text-[calc(13/390*var(--mvw))] max-md:font-normal max-md:text-gray-1/60"
           items={data.browseLiveChannels}
           gap={23}
           onArrowClick={() => navigate("/live")}
@@ -400,25 +431,54 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         />
         )}
 
+        {isMobile && !apiHome && (
+          <ContentRail
+            title="Trending Now"
+            items={filterItems(homeFixtures.trendingNow)}
+            gap={23}
+            renderItem={(m) => <PosterCard image={m.image} title={m.title} metadata={m.metadata} />}
+          />
+        )}
+
+        {/* Wona Bundle promo cards (mobile comp) → subscriptions */}
+        {isMobile && !filterActive && (
+          <div className="flex gap-[calc(16/390*var(--mvw))] overflow-x-auto scrollbar-hide">
+            {homeFixtures.wonaBundles.map((b) => (
+              <BundlePromoCard
+                key={b.id}
+                image={b.image}
+                title={b.title}
+                features={b.features}
+                onClick={() => navigate("/subscriptions")}
+              />
+            ))}
+          </div>
+        )}
+
         {!rails.vodRails?.length && (
         <ContentRail
           title="Only on Wona"
+          mobileTitleClassName="max-md:text-[calc(16/390*var(--mvw))] max-md:font-bold max-md:text-brand-light"
           items={filterItems(data.onlyOnAfriplay)}
           gap={23}
           renderItem={(m) => <PosterCard image={m.image} title={m.title} metadata={m.metadata} onClick={() => m.raw && goToDetails(navigate, m)} />}
         />
         )}
 
-        {/* Fixture-only teaser rail — no API source exists for "upcoming", so it is
-           gated to fixture/design mode. Without that gate it rendered dummy shows
-           alongside real API rails on the live site. */}
-        {filter !== "Movies" && !apiHome && (
-        <ContentRail
-          title="Upcoming TV Shows"
-          items={data.upcomingTvShows}
-          gap={23}
-          renderItem={(m) => <PosterCard image={m.image} title={m.title} metadata={m.metadata} />}
-        />
+        {isMobile && filter !== "Movies" && !apiHome && (
+          <ContentRail
+            title="Upcoming TV Shows"
+            mobileTitleClassName="max-md:text-[calc(14/390*var(--mvw))] max-md:font-medium max-md:text-gray-1/80"
+            items={homeFixtures.upcomingTvShowsMobile}
+            gap={12}
+            renderItem={(m) => (
+              <img
+                src={m.image}
+                alt={m.title}
+                className="h-[calc(303/390*var(--mvw))] w-[calc(245/390*var(--mvw))] shrink-0 rounded-[5px] border border-[#e1e7f8] object-cover"
+              />
+            )}
+          />
         )}
       </div>
       </div>

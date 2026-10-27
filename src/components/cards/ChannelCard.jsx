@@ -11,11 +11,9 @@ const ChannelCard = React.forwardRef(
         // Desktop-only reduction 388x224 -> 331x191 (live dot 14 -> 12 at 11/10):
         // the same 0.8533 factor PosterCard's desktop shrink uses (glotv-main
         // GTV-092 applied it to its ChannelCard too), so the page reads as one
-        // consistent shrink. Mobile (186x107) untouched.
+        // consistent shrink. Mobile follows the WONA mobile comp (164x92).
         "relative h-[calc(191/1728*var(--vw))] w-[calc(331/1728*var(--vw))] shrink-0 rounded-[20px] overflow-clip cursor-pointer",
-        // Mobile: widen so the rail's rightmost card peeks past the screen edge.
-        // Same reasoning as GenreCard: 388->186 wide, so the fixed 20px radius scales to ~10.
-        "max-md:h-[calc(107/390*var(--mvw))] max-md:w-[calc(186/390*var(--mvw))] max-md:rounded-[calc(10/390*var(--mvw))]",
+        "max-md:h-[calc(92/390*var(--mvw))] max-md:w-[calc(164/390*var(--mvw))] max-md:rounded-[calc(10/390*var(--mvw))]",
         live && "border border-error-8",
         className
       )}

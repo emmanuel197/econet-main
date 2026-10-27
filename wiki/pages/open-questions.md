@@ -17,3 +17,5 @@
 | 11 | Subscription packages/plan ids in `src/data/subscriptionsData.js` are AfriPlay's; MTN-specific billing logic is now inert | Subscriptions | ❓ open |
 | 12 | FAQ copy (`components/sections/landing/FaqSection.jsx`) is AfriPlay's text with the name swapped | Landing page | ❓ open |
 | 13 | Phone input still allows any 10 digits; Zimbabwe numbers (07…) not validated | Sign-in | ❓ open |
+| 14 | WonaPremiere, Trending Now, Wona Bundle and mobile Upcoming TV Shows have no known API/CRM source; they render from fixtures only (hidden in API mode except the bundle promo) | Mobile home with real data | ❓ open |
+| 15 | Desktop comp has no WonaPremiere / Trending / Bundle rails — confirm they are mobile-only | Desktop home | ❓ open |

@@ -20,10 +20,11 @@ const ContinueCard = React.forwardRef(
           // PosterCard's desktop shrink uses (glotv-main GTV-092 applied it to
           // its ContinueCard too) — every other desktop calc() below is rescaled
           // by the same factor. Backs both Keep Watching and Live On Tv Now.
-          // Mobile (186x101) untouched.
+          // Mobile follows the WONA mobile comp: Keep Watching 199x130, Live on TV 155x95.
           "relative h-[calc(179/1728*var(--vw))] w-[calc(330/1728*var(--vw))] shrink-0 rounded-sm overflow-clip cursor-pointer",
-          // Mobile: widen so the rail's rightmost card peeks past the screen edge.
-          "max-md:h-[calc(101/390*var(--mvw))] max-md:w-[calc(186/390*var(--mvw))]",
+          variant === "live"
+            ? "max-md:h-[calc(95/390*var(--mvw))] max-md:w-[calc(155/390*var(--mvw))]"
+            : "max-md:h-[calc(130/390*var(--mvw))] max-md:w-[calc(199/390*var(--mvw))]",
           className
         )}
         {...props}

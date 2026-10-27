@@ -23,16 +23,17 @@ const PosterCard = React.forwardRef(
         // real desktops. Same shrink glotv-main applied to its PosterCard (GTV-092)
         // and every other rail card — every --vwh calc() in the overlay below is
         // rescaled by the same factor so the card's internal proportions hold.
-        // Mobile (186x256 on the 390 comp) is unaffected.
+        // Mobile follows the WONA mobile comp: 118x182, 5px radius, thin light border,
+        // artwork only (no title overlay).
         "group relative h-[calc(441/1728*var(--vwh))] w-[calc(320/1728*var(--vwh))] shrink-0 cursor-pointer",
-        "max-md:h-[calc(256/390*var(--mvw))] max-md:w-[calc(186/390*var(--mvw))]",
+        "max-md:h-[calc(182/390*var(--mvw))] max-md:w-[calc(118/390*var(--mvw))]",
         "transition-transform duration-300 ease-in hover:-translate-y-1",
         className
       )}
       {...props}
     >
       {/* Media is clipped in its own layer, not the outer div, so the rank numeral below can overhang past the rounded corner unclipped. */}
-      <div className="absolute inset-0 rounded-xl overflow-clip">
+      <div className="absolute inset-0 rounded-xl overflow-clip max-md:rounded-[5px] max-md:border max-md:border-[#e1e7f8]">
         {image ? (
           <img
             src={image}
@@ -43,9 +44,9 @@ const PosterCard = React.forwardRef(
           <div className="absolute inset-0 bg-navy-9" />
         )}
 
-        <div className="absolute inset-x-0 bottom-0 h-[calc(170/1728*var(--vwh))] bg-gradient-to-b from-transparent to-black/30 backdrop-blur-[1.25px]" />
+        <div className="absolute inset-x-0 bottom-0 h-[calc(170/1728*var(--vwh))] max-md:hidden bg-gradient-to-b from-transparent to-black/30 backdrop-blur-[1.25px]" />
 
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between px-[calc(17/1728*var(--vwh))] pb-[calc(24/1728*var(--vwh))] max-md:px-[calc(12/390*var(--mvw))] max-md:pb-[calc(12/390*var(--mvw))]">
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between max-md:hidden px-[calc(17/1728*var(--vwh))] pb-[calc(24/1728*var(--vwh))] max-md:px-[calc(12/390*var(--mvw))] max-md:pb-[calc(12/390*var(--mvw))]">
         <div className="flex flex-col gap-[calc(5/1728*var(--vwh))] max-w-[calc(131/1728*var(--vwh))] max-md:max-w-full max-md:gap-[calc(3/390*var(--mvw))]">
           {/* Type sizes inlined on --vwh: the global text-* tokens scale on --vw,
               which reads oversized inside the height-capped card. max-md: scales
@@ -89,10 +90,10 @@ const PosterCard = React.forwardRef(
           style={rank % 2 === 0 ? { left: pf(-41), top: pf(195) } : { left: pf(14), top: pf(0) }}
         >
           <span
-            className="font-primary font-bold leading-none tracking-[-2px] text-brand-6"
+            className="font-primary font-extrabold leading-none tracking-[-2px] text-[#d97aa9]"
             style={{
               fontSize: pf(200),
-              WebkitTextStroke: "2px #ffffff",
+              WebkitTextStroke: "3px #e7eaf4", // WONA Figma: fill #d97aa9, 3px #e7eaf4 stroke
               paintOrder: "stroke",
               textShadow: "0px 8px 12.9px rgba(0,0,0,0.14)",
             }}
