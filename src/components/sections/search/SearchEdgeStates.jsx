@@ -75,7 +75,7 @@ export const ZeroResultsMessage = ({ query, suggestion, onSuggestionClick }) => 
         onClick={() => onSuggestionClick?.(suggestion)}
         className="mt-[calc(4/1728*var(--vw))] rounded-full bg-gray-1/10 px-[calc(20/1728*var(--vw))] py-[calc(10/1728*var(--vw))] font-primary text-base text-gray-1 cursor-pointer hover:bg-gray-1/15"
       >
-        Did you mean <span className="font-semibold text-brand">{suggestion}</span>?
+        Did you mean: <span className="font-semibold text-brand">”{suggestion}?”</span>
       </button>
     )}
   </div>

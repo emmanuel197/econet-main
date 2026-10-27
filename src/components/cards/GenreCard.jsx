@@ -3,7 +3,7 @@ import classNames from "../../utils/classNames";
 
 // 10px radius isn't in the token scale [3/5/8/12/16] — kept as a literal to match the design.
 const GenreCard = React.forwardRef(
-  ({ image, label = "Genre", className = "", onClick, ...props }, ref) => (
+  ({ image, label = "Genre", large = false, className = "", onClick, ...props }, ref) => (
     <div
       ref={ref}
       onClick={onClick}
@@ -12,7 +12,11 @@ const GenreCard = React.forwardRef(
         // 36/24 -> 31/20): the same 0.8533 factor PosterCard's desktop shrink
         // uses (glotv-main GTV-092 applied it to its GenreCard too). Also lands
         // on Search's "Browse By Categories" — same component. Mobile untouched.
-        "group relative h-[calc(191/1728*var(--vw))] w-[calc(282/1728*var(--vw))] shrink-0 rounded-[10px] overflow-clip cursor-pointer flex items-end p-[calc(20/1728*var(--vw))]",
+        "group relative shrink-0 rounded-[10px] overflow-clip cursor-pointer flex items-end",
+        // `large`: Search's Browse By Categories keeps the full WONA comp size (330x224, padding 24).
+        large
+          ? "h-[calc(224/1728*var(--vw))] w-[calc(330/1728*var(--vw))] p-[calc(24/1728*var(--vw))]"
+          : "h-[calc(191/1728*var(--vw))] w-[calc(282/1728*var(--vw))] p-[calc(20/1728*var(--vw))]",
         // Below md the --vw system floors at 768 (0.444x) — re-scale on the 390 comp
         // so the card stays phone-sized and its label readable.
         // Radius scales WITH the card: the desktop 10px is a fixed px, so on the smaller

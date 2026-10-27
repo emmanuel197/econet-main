@@ -29,29 +29,29 @@ const CATEGORIES = [...genres, ...browseCategories];
 const RESULT_GROUPS = [
   { type: "movie", label: "Movies" },
   { type: "show", label: "Tv Shows" },
-  { type: "channel", label: "TV Channels" },
+  { type: "channel", label: "Tv Channels" },
 ];
 const RESULT_TABS = [{ id: "all", label: "All" }, ...RESULT_GROUPS.map((g) => ({ id: g.type, label: g.label }))];
 const pad2 = (n) => String(n).padStart(2, "0");
 
 const MobilePosterTile = ({ item, onClick }) => (
-  <button type="button" onClick={onClick} className="aspect-[2/3] overflow-clip rounded-[calc(10/390*var(--mvw))] border border-brand/70 cursor-pointer">
+  <button type="button" onClick={onClick} className="aspect-[109/147] overflow-clip rounded-[5px] border border-[#e1e7f8] cursor-pointer">
     <img src={item.image} alt={item.title} className="size-full object-cover" />
   </button>
 );
 
 const MobileChannelTile = ({ item, onClick }) => (
-  <button type="button" onClick={onClick} className="aspect-[3/2] overflow-clip rounded-[calc(10/390*var(--mvw))] border border-brand/70 cursor-pointer">
+  <button type="button" onClick={onClick} className="aspect-[3/2] overflow-clip rounded-[5px] border border-[#e1e7f8] cursor-pointer">
     <img src={item.image} alt={item.title} className="size-full object-cover" />
   </button>
 );
 
 // Featured/sponsored card at the top of the All view (Advertisement + NTA logo).
 const MobileBestResult = () => (
-  <div className="relative aspect-[350/290] w-full overflow-clip rounded-2xl">
+  <div className="relative aspect-[350/270] w-full overflow-clip rounded-[calc(5/390*var(--mvw))] border border-[#e1e7f8]">
     <img src={bestResultBg} alt="" className="absolute inset-0 size-full object-cover" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-    <span className="absolute left-0 top-[calc(16/390*var(--mvw))] rounded-r-md bg-[#da1375] px-[calc(14/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-medium text-gray-1">
+    <span className="absolute left-0 top-0 rounded-br-[calc(6/390*var(--mvw))] border border-brand bg-gradient-to-b from-[#0e152c] to-[#2a4086] px-[calc(12/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(10/390*var(--mvw))] font-medium text-gray-1">
       Best Results
     </span>
     <img src={ntaLogo} alt="NTA" className="absolute bottom-[calc(20/390*var(--mvw))] right-[calc(18/390*var(--mvw))] h-[calc(34/390*var(--mvw))] w-auto object-contain" />
@@ -93,9 +93,8 @@ const MobileResultsSkeleton = () => (
 );
 
 /**
- * MobileSearchPage (below md). DEFAULT landing = browse view: filter tabs + Best Results
- * hero + Movies/Tv Shows/TV Channels grids (all catalog content). FOCUS (tap the box) =
- * Recent Searches + Top 5 Trending + Browse By Categories. Typing → spinner → autocomplete
+ * MobileSearchPage (below md). Empty query (WONA comps 4041:5305 / 5407) = Recent Searches
+ * (when any) + Top 5 Trending + Browse By Categories, focused or not. Typing → spinner → autocomplete
  * → committed results (same tabbed view, query-filtered). Recent persists to the shared key.
  */
 const MobileSearchPage = () => {
@@ -106,7 +105,6 @@ const MobileSearchPage = () => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [committed, setCommitted] = useState(false);
   const [tab, setTab] = useState("all");
-  const [focused, setFocused] = useState(false);
   const [recent, setRecent] = useState(() => {
     try {
       const stored = localStorage.getItem(RECENT_KEY);
@@ -190,8 +188,8 @@ const MobileSearchPage = () => {
     const filtered = tab === "all" ? items : items.filter((m) => m.type === tab);
     const renderGroup = (type, label, list) => (
       <section key={type} className="flex flex-col gap-[calc(12/390*var(--mvw))]">
-        <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-bold text-gray-1">
-          {label} <span className="text-gray-1/50">({pad2(list.length)})</span>
+        <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">
+          {label} <span className="text-[calc(12/390*var(--mvw))] font-normal text-gray-1/50">({pad2(list.length)})</span>
         </h2>
         <div className={classNames("grid gap-[calc(12/390*var(--mvw))]", type === "channel" ? "grid-cols-2" : "grid-cols-3")}>
           {list.map((item) => (type === "channel" ? <MobileChannelTile key={item.id} item={item} /> : <MobilePosterTile key={item.id} item={item} />))}
@@ -235,7 +233,7 @@ const MobileSearchPage = () => {
   const trendingSection = (
     <section className="flex flex-col gap-[calc(4/390*var(--mvw))]">
       <div className="flex items-center justify-between">
-        <h2 className="font-primary text-[calc(17/390*var(--mvw))] font-bold text-gray-1">Top 5 Trending Searches</h2>
+        <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">Top 5 Trending Searches</h2>
         <button type="button" onClick={() => setTrendingOpen((v) => !v)} aria-label={trendingOpen ? "Hide trending searches" : "Show trending searches"} aria-expanded={trendingOpen} className="flex size-[calc(28/390*var(--mvw))] items-center justify-center cursor-pointer">
           <img src={chevronIcon} alt="" aria-hidden="true" className={classNames("size-[calc(16/390*var(--mvw))]", trendingOpen ? "rotate-90" : "-rotate-90")} />
         </button>
@@ -259,15 +257,15 @@ const MobileSearchPage = () => {
     </section>
   );
 
-  // Focus panel — shown only while the box is focused + empty. mousedown-preventDefault
+  // Landing panel — shown whenever the query is empty. mousedown-preventDefault
   // keeps the input focused so item clicks register (commit) instead of blurring first.
   const focusPanel = (
     <div onMouseDown={(e) => e.preventDefault()} className="flex flex-col gap-[calc(24/390*var(--mvw))]">
       {recent.length > 0 && (
         <section className="flex flex-col gap-[calc(4/390*var(--mvw))]">
           <div className="flex items-center justify-between">
-            <h2 className="font-primary text-[calc(17/390*var(--mvw))] font-bold text-gray-1">Recent Searches</h2>
-            <button type="button" onClick={clearAllRecent} className="font-primary text-[calc(13/390*var(--mvw))] font-medium text-brand cursor-pointer">Clear All</button>
+            <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">Recent Searches</h2>
+            <button type="button" onClick={clearAllRecent} className="font-primary text-[calc(12/390*var(--mvw))] font-medium text-brand cursor-pointer">Clear All</button>
           </div>
           <div className="flex flex-col">
             {visibleRecent.map((label) => (
@@ -293,13 +291,13 @@ const MobileSearchPage = () => {
       {trendingSection}
 
       <section className="flex flex-col gap-[calc(14/390*var(--mvw))]">
-        <h2 className="font-primary text-[calc(17/390*var(--mvw))] font-bold text-gray-1">Browse By Categories</h2>
-        <div className="grid grid-cols-3 gap-[calc(10/390*var(--mvw))]">
+        <h2 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">Browse By Categories</h2>
+        <div className="grid grid-cols-3 gap-[calc(8/390*var(--mvw))]">
           {CATEGORIES.map((cat) => (
-            <button key={cat.id} type="button" onClick={() => commit(cat.label)} className="relative aspect-[105/84] overflow-clip rounded-[calc(10/390*var(--mvw))] cursor-pointer">
+            <button key={cat.id} type="button" onClick={() => commit(cat.label)} className="relative aspect-[111/124] overflow-clip rounded-[5px] cursor-pointer">
               <img src={cat.image} alt={cat.label} className="absolute inset-0 size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-              <span className="absolute bottom-[calc(8/390*var(--mvw))] left-[calc(8/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-semibold text-gray-1">{cat.label}</span>
+              <span className="absolute bottom-[calc(8/390*var(--mvw))] left-[calc(8/390*var(--mvw))] font-primary text-[calc(14/390*var(--mvw))] font-semibold text-gray-1">{cat.label}</span>
             </button>
           ))}
         </div>
@@ -323,8 +321,8 @@ const MobileSearchPage = () => {
       </div>
     );
   } else if (trimmed === "") {
-    // empty: focused → recent/trending/categories; otherwise → default browse
-    body = focused ? focusPanel : renderTabbedContent(library, null);
+    // WONA comp: the empty state is Recent (when any) + Top 5 Trending + Browse By Categories
+    body = focusPanel;
   } else if (trimmed.length < MIN) {
     body = null;
   } else if (committed && resultsLoading) {
@@ -377,17 +375,14 @@ const MobileSearchPage = () => {
 
   return (
     <div className="min-h-screen font-primary text-gray-1">
-      {/* pt clears MainLayout's fixed MobileTopBar (14px reservation + 32px row); the
-         search field is this page's own top control, not a header, so the app bar sits
-         above it. */}
-      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(62/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
+      {/* WONA comp: no app bar on mobile search — the search field is the top control
+         (bottom nav still provides navigation). */}
+      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(16/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
         <div className="flex h-[calc(52/390*var(--mvw))] items-center gap-[calc(12/390*var(--mvw))] rounded-full border border-gray-1/15 bg-gray-1/10 px-[calc(20/390*var(--mvw))] transition-colors focus-within:border-brand">
           <img src={searchIcon} alt="" aria-hidden="true" className="size-[calc(18/390*var(--mvw))] opacity-70" />
           <input
             value={query}
             onChange={(e) => onType(e.target.value)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
             onKeyDown={(e) => {
               if (e.key === "Escape") e.currentTarget.blur();
               if (e.key === "Enter" && trimmed.length >= MIN) {
@@ -396,7 +391,7 @@ const MobileSearchPage = () => {
               }
             }}
             placeholder="Search for movies, shows, genres"
-            className="min-w-0 flex-1 bg-transparent font-primary text-[calc(14/390*var(--mvw))] text-gray-1 placeholder:text-gray-1/50 outline-none"
+            className="min-w-0 flex-1 bg-transparent font-primary text-[calc(14/390*var(--mvw))] text-gray-1 placeholder:text-gray-1/40 outline-none"
           />
           {query && (
             <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={clearQuery} aria-label="Clear search" className="shrink-0 cursor-pointer opacity-70">

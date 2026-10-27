@@ -19,3 +19,5 @@
 | 13 | Phone input still allows any 10 digits; Zimbabwe numbers (07…) not validated | Sign-in | ❓ open |
 | 14 | WonaPremiere, Trending Now, Wona Bundle and mobile Upcoming TV Shows have no known API/CRM source; they render from fixtures only (hidden in API mode except the bundle promo) | Mobile home with real data | ❓ open |
 | 15 | Desktop comp has no WonaPremiere / Trending / Bundle rails — confirm they are mobile-only | Desktop home | ❓ open |
+| 16 | Mobile search comps show a different bottom nav (Home, Movies, Live Tv, Search, avatar "More") from the mobile home comp (Home, Live Tv, Shorts, Search, More). Code keeps the home version everywhere — which is final? | Mobile nav | ❓ open |
+| 17 | Mobile search has no app bar in the comps (so no bell/avatar there) — confirm that's intended | Mobile search | ❓ open |

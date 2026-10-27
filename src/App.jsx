@@ -58,10 +58,9 @@ function App() {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
 
-        {/* No footer — results/skeleton are self-contained. Mobile gets the standard app
-           bar: the page's own top control is the search field, not a header, so leaving it
-           on mobileTopBar="status" (as it was) meant /search had no top nav at all. */}
-        <Route element={<MainLayout showFooter={false} />}>
+        {/* No footer — results/skeleton are self-contained. Mobile: the WONA comps show no
+           app bar on search (the search field is the top control; bottom nav navigates). */}
+        <Route element={<MainLayout showFooter={false} mobileTopBar="status" />}>
           <Route path="/search" element={<ProtectedRoute><SearchScreen /></ProtectedRoute>} />
         </Route>
 

@@ -41,3 +41,10 @@
 - Per-rail mobile title styles via new `mobileTitleClassName` prop (ContentRail → SectionHeader); default mobile heading is now 16px semibold (was 17px bold).
 - Mobile card sizes now follow the comp: posters 118×182 (artwork only, 5px radius, `#e1e7f8` border), Keep Watching 199×130, Live 155×95, channels 164×92.
 - New images from Figma image fills → `assets/images/home-mobile-*.webp`.
+
+## 2026-10-27 — Search matched to WONA Figma (desktop 4041:21947/22031/27874, mobile 4041:5305/5407/7338)
+- Desktop landing: no "Search" title; 74px black/40 bar at y160; chips black/35 at 56%; "Browse By Categories" (20px semibold + arrow) with full-size 330×224 cards (`GenreCard large`); "Recommended" 28px semibold, 3 rows of 6 in a CSS grid (fixed widths wrapped to 5 because the scrollbar eats ~15px).
+- Poster tiles (`CompactPosterTile`): 253×348, 16px radius, 1.8px `#eef0f7` border (was pink). See More: white/30 glass pill.
+- Desktop panel: one 40px-radius black/70 card, pink underline under the input, 18px semibold titles, pink "Clear All", 44px recent rows, outlined pink trending numerals with hairline dividers.
+- Desktop results: 18px tabs, "Found N results for ”q”" 20px semibold, Best Results hero inset 56px / 550 tall / 24px radius / 2px border with a navy "Best Results" tag; 28px group titles with zero-padded counts; 6-col grid; channels scroll in a row. Zero results: `Did you mean: ”…?”`.
+- Mobile: the empty state is now Recent + Top 5 Trending + Browse By Categories (AfriPlay showed a browse/results grid until the box was focused). No app bar on mobile search (`mobileTopBar="status"`), as in the comps. 111×124 category cards, 16px semibold titles, results tiles with `#e1e7f8` hairline.

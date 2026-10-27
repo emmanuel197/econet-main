@@ -9,19 +9,19 @@ const SearchBar = React.forwardRef(
       className={classNames(
         "flex items-center gap-[calc(14/1728*var(--vw))] transition-colors",
         active
-          ? "rounded-t-2xl border-b border-brand/60 bg-black/50 backdrop-blur-2xl px-[calc(24/1728*var(--vw))] py-[calc(18/1728*var(--vw))]"
-          : "rounded-full border border-gray-1/15 bg-gray-1/10 px-[calc(22/1728*var(--vw))] py-[calc(14/1728*var(--vw))] focus-within:border-brand/60",
+          ? "rounded-t-[calc(40/1728*var(--vw))] bg-black/70 backdrop-blur-2xl px-[calc(40/1728*var(--vw))] pt-[calc(36/1728*var(--vw))] pb-[calc(26/1728*var(--vw))] [box-shadow:inset_0_-1px_0_var(--color-brand)]"
+          : "rounded-full border border-gray-1/15 bg-black/40 px-[calc(40/1728*var(--vw))] py-[calc(24/1728*var(--vw))] focus-within:border-brand/60",
         className
       )}
     >
-      <img src={searchIcon} alt="" aria-hidden="true" className="size-[calc(22/1728*var(--vw))] shrink-0 opacity-70" />
+      <img src={searchIcon} alt="" aria-hidden="true" className="size-[calc(24/1728*var(--vw))] shrink-0 opacity-[0.56]" />
       <input
         ref={ref}
         type="text"
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 min-w-0 bg-transparent font-primary text-lg text-gray-1 placeholder:text-gray-1/50 outline-none"
+        className="flex-1 min-w-0 bg-transparent font-primary text-xl text-gray-1 placeholder:text-gray-1/56 outline-none"
         {...props}
       />
       {value && (

@@ -12,7 +12,7 @@ const CompactPosterTile = React.forwardRef(
       ref={ref}
       onClick={onClick}
       className={classNames(
-        "group aspect-[2/3] w-[calc(250/1728*var(--vw))] shrink-0 cursor-pointer overflow-clip rounded-lg border border-brand/70",
+        "group aspect-[253/348] w-[calc(253/1728*var(--vw))] shrink-0 cursor-pointer overflow-clip rounded-[calc(16/1728*var(--vw))] border-[1.8px] border-[#eef0f7]",
         className
       )}
       {...props}

@@ -14,38 +14,38 @@ const RecentSearchesSection = ({ items = [], onSelect, onRemove, onClearAll, cla
   const visible = expanded ? items : items.slice(0, VISIBLE_COUNT);
 
   return (
-    <section className={classNames("flex flex-col gap-[calc(16/1728*var(--vw))]", className)}>
+    <section className={classNames("flex flex-col gap-[calc(14/1728*var(--vw))] border-b border-[#e1e7f8]/20 pb-[calc(32/1728*var(--vw))]", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="font-primary font-bold text-h6 text-gray-1">Recent Searches</h2>
+        <h2 className="font-primary font-semibold text-xl text-gray-1">Recent Searches</h2>
         <button
           type="button"
           onClick={onClearAll}
-          className="font-primary text-base text-gray-1/60 cursor-pointer hover:text-gray-1"
+          className="font-primary text-lg text-brand cursor-pointer hover:text-brand-light"
         >
-          Clear all
+          Clear All
         </button>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-[calc(10/1728*var(--vw))]">
         {visible.map((label) => (
           <div
             key={label}
-            className="flex w-full items-center gap-[calc(12/1728*var(--vw))] rounded-lg px-[calc(6/1728*var(--vw))] py-[calc(10/1728*var(--vw))] transition-colors hover:bg-gray-1/5"
+            className="flex h-[calc(44/1728*var(--vw))] w-full items-center gap-[calc(12/1728*var(--vw))] rounded-[10px] pl-[calc(6/1728*var(--vw))] transition-colors hover:bg-gray-1/5"
           >
             <button
               type="button"
               onClick={() => onSelect?.(label)}
               className="flex flex-1 items-center gap-[calc(12/1728*var(--vw))] cursor-pointer text-left"
             >
-              <img src={recentIcon} alt="" aria-hidden="true" className="size-[calc(16/1728*var(--vw))] opacity-60" />
-              <span className="font-primary text-base text-gray-1">{label}</span>
+              <img src={recentIcon} alt="" aria-hidden="true" className="size-[calc(18/1728*var(--vw))] opacity-70" />
+              <span className="font-primary text-lg text-gray-1/70">{label}</span>
             </button>
             <button
               type="button"
               onClick={() => onRemove?.(label)}
               aria-label={`Remove ${label} from recent searches`}
-              className="shrink-0 cursor-pointer opacity-50 hover:opacity-100"
+              className="shrink-0 cursor-pointer opacity-70 hover:opacity-100"
             >
-              <img src={closeIcon} alt="" aria-hidden="true" className="size-[calc(14/1728*var(--vw))]" />
+              <img src={closeIcon} alt="" aria-hidden="true" className="size-[calc(26/1728*var(--vw))]" />
             </button>
           </div>
         ))}
@@ -54,10 +54,10 @@ const RecentSearchesSection = ({ items = [], onSelect, onRemove, onClearAll, cla
         <button
           type="button"
           onClick={() => setExpanded(true)}
-          className="mx-auto flex items-center gap-[calc(4/1728*var(--vw))] cursor-pointer"
+          className="mx-auto flex items-center gap-[calc(8/1728*var(--vw))] py-[calc(18/1728*var(--vw))] cursor-pointer"
         >
-          <span className="font-primary text-base font-medium text-brand">See More</span>
-          <img src={seeMoreIcon} alt="" aria-hidden="true" className="size-[calc(14/1728*var(--vw))] rotate-90" />
+          <span className="font-primary text-lg text-brand">See More</span>
+          <img src={seeMoreIcon} alt="" aria-hidden="true" className="size-[calc(18/1728*var(--vw))] rotate-90" />
         </button>
       )}
     </section>

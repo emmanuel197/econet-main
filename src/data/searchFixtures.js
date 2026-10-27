@@ -83,7 +83,7 @@ export const genreChips = [
   "Thriller",
   "Stand-Up",
   "Events",
-  "WONA Originals",
+  "Wona Originals",
   "Fantasy",
   "Crime",
   "War & Military",
