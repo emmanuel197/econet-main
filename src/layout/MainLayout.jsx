@@ -89,8 +89,8 @@ const MainLayout = ({
             "fixed inset-x-0 top-0 z-40 transition-all duration-300 md:hidden",
             navVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-full opacity-0",
             // Uniform glass band (no gradient tail); bottom padding mirrors
-            // MobileTopBar's own 14px top reservation so the band is symmetric.
-            scrolled && "bg-page/80 backdrop-blur-md pb-[max(calc(14/390*var(--mvw)),env(safe-area-inset-top))]"
+            // MobileTopBar's own 18px top reservation so the band is symmetric.
+            scrolled && "bg-page/80 backdrop-blur-md pb-[max(calc(18/390*var(--mvw)),env(safe-area-inset-top))]"
           )}
         >
           <MobileTopBar variant="app" />

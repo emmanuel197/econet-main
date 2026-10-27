@@ -68,3 +68,7 @@
 - All pink buttons/chips/badges now use white text (WONA comps) instead of AfriPlay's dark-on-gold `text-page` (26 places, incl. the shared `Button` primary variant).
 - Mobile search gets its app bar back (AfriPlay behaviour) so the bell/account menu are reachable there.
 - Subscription prices still show "GHS" — package data, with the PM.
+
+## 2026-10-28 — TV Guide sample data; mobile top bar spacing
+- `/tv-guide` (navbar "Tv Channels") only loaded from the API, so in fixture mode it sat on its skeleton. It now uses `guideChannels` + `buildGuideShows()` from `data/liveTvFixtures.js` when `VITE_USE_FIXTURES` is on (2-hourly schedule, 6 AM → midnight, any day).
+- User saw the mobile top-bar controls cut off at the top (not reproducible here). Removed the Get Bundle pill's own backdrop blur (nested inside the scrolled bar's backdrop blur — a known Chrome clipping case) and raised the bar's top/bottom reservation 14 → 18px.

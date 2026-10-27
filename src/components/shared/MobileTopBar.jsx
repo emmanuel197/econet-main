@@ -28,7 +28,7 @@ const MobileTopBar = ({ variant = "app", title = "Wona Shorts", onBack, onMore, 
     return (
       <header
         className={classNames("relative z-10 flex flex-col", className)}
-        style={{ paddingTop: "max(calc(14/390*var(--mvw)), env(safe-area-inset-top))" }}
+        style={{ paddingTop: "max(calc(18/390*var(--mvw)), env(safe-area-inset-top))" }}
       >
         <div className="flex h-[calc(32/390*var(--mvw))] items-center justify-between px-[calc(20/390*var(--mvw))]">
           {/* Figma logo frame is 84×32 (object-fill continues the wordmark's wide treatment,

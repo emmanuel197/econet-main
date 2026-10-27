@@ -48,7 +48,7 @@ const MobileNavActions = ({ className = "" }) => {
       <Link
         to={authed ? "/subscriptions" : "/signin"}
         // WONA Figma mobile home 4043:33561: 94×32 navy glass pill, 1px pink border
-        className="flex h-[calc(32/390*var(--mvw))] w-[calc(94/390*var(--mvw))] items-center justify-center rounded-full border border-brand bg-[rgba(22,37,88,0.6)] backdrop-blur-md"
+        className="flex h-[calc(32/390*var(--mvw))] w-[calc(94/390*var(--mvw))] items-center justify-center rounded-full border border-brand bg-[rgba(22,37,88,0.6)]"
       >
         <span className="font-primary text-[calc(12/390*var(--mvw))] font-medium leading-none text-gray-1/70">
           Get Bundle

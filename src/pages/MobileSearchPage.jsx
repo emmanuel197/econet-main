@@ -375,8 +375,8 @@ const MobileSearchPage = () => {
 
   return (
     <div className="min-h-screen font-primary text-gray-1">
-      {/* pt clears MainLayout's fixed MobileTopBar (14px reservation + 32px row). */}
-      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(62/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
+      {/* pt clears MainLayout's fixed MobileTopBar (18px reservation + 32px row). */}
+      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(66/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
         <div className="flex h-[calc(52/390*var(--mvw))] items-center gap-[calc(12/390*var(--mvw))] rounded-full border border-gray-1/15 bg-gray-1/10 px-[calc(20/390*var(--mvw))] transition-colors focus-within:border-brand">
           <img src={searchIcon} alt="" aria-hidden="true" className="size-[calc(18/390*var(--mvw))] opacity-70" />
           <input

@@ -4,6 +4,8 @@ import classNames from "../utils/classNames";
 import Badge from "../components/ui/Badge";
 import { Pulse } from "../components/shared/PageSkeleton";
 import { fetchChannels, fetchEpgGrid } from "../api/liveTv";
+import { USE_FIXTURES } from "../utils/devFlags";
+import { guideChannels, buildGuideShows } from "../data/liveTvFixtures";
 
 /**
  * TvGuidePage (/tv-guide) — the desktop "Full Guide" the Live TV hero links to.
@@ -46,6 +48,12 @@ const TvGuidePage = () => {
   const now = Date.now();
 
   useEffect(() => {
+    // Fixture mode (VITE_USE_FIXTURES): sample channels — the API isn't called.
+    if (USE_FIXTURES) {
+      setChannels(guideChannels);
+      setChannelId((id) => id ?? guideChannels[0]?.id ?? null);
+      return;
+    }
     fetchChannels()
       .then((rows) => {
         const sorted = [...rows].sort((a, b) => (a.position ?? 0) - (b.position ?? 0));
@@ -64,6 +72,10 @@ const TvGuidePage = () => {
     const startDate = new Date(tabs[dayIndex].date);
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 1);
+    if (USE_FIXTURES) {
+      setShows(buildGuideShows(channelId, startDate));
+      return;
+    }
     fetchEpgGrid(channelId, { startDate, endDate })
       .then((blocks) => {
         if (cancelled) return;

@@ -79,3 +79,27 @@ export const liveTvFixtures = {
   liveChannels,
   liveChannelsTotal,
 };
+
+// ── TV Guide (/tv-guide) sample data ──
+// The guide normally loads channels + a day's EPG from the API; in fixture mode it uses
+// the Live TV channels and builds a 2-hourly schedule (6 AM → midnight) for any day.
+export const guideChannels = liveChannels.map((ch) => ({ id: ch.id, name: ch.channel, short_name: ch.channel }));
+
+const guideTitles = [...new Set([...onAirToday.map((s) => s.title), ...liveChannels.map((c) => c.title)])];
+
+export const buildGuideShows = (channelId, dayStart) => {
+  const offset = Math.max(0, liveChannels.findIndex((c) => c.id === channelId));
+  return Array.from({ length: 9 }, (_, i) => {
+    const start = new Date(dayStart);
+    start.setHours(6 + i * 2, 0, 0, 0);
+    const end = new Date(start);
+    end.setHours(start.getHours() + 2);
+    return {
+      id: `${channelId}-${start.getTime()}`,
+      title: guideTitles[(offset + i) % guideTitles.length],
+      start: start.toISOString(),
+      end: end.toISOString(),
+      length: 120,
+    };
+  });
+};
