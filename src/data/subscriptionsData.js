@@ -1,0 +1,88 @@
+// Ported verbatim from legacy src/utils/formatSubscriptionData.js — packages are
+// static client-side data (there is no packages API). ID is either a flat
+// {mtn, other} pair or nested {mtn:{auto-renewal,on-demand}, other:{...}}.
+const SubscriptionsData = [
+  {
+    ID: {
+      mtn: { "auto-renewal": 1079, "on-demand": 1081 },
+      other: { "auto-renewal": 1136, "on-demand": 1136 },
+    },
+    UID: "basic",
+    Name: "Daily Live",
+    "Price Options": "daily",
+    Validity: "1 day",
+    "Rate Code": { mtn: 9921710002, other: null },
+    Price: 2.0,
+    Currency: "GHS",
+    DataBonus: "200 MB",
+    Details: ["Live TV Channels only", "200Mb data bonus"],
+  },
+  {
+    ID: {
+      mtn: { "auto-renewal": 1080, "on-demand": 1082 },
+      other: { "auto-renewal": 1137, "on-demand": 1137 },
+    },
+    UID: "basicplus",
+    Name: "Daily Cinema",
+    "Price Options": "daily",
+    Validity: "1 day",
+    "Rate Code": { mtn: 9921710003, other: null },
+    Price: 2.5,
+    Currency: "GHS",
+    DataBonus: "320 MB",
+    Details: ["Movies & Shows Only", "320Mb data bonus"],
+  },
+  {
+    ID: {
+      mtn: { "auto-renewal": 1083, "on-demand": 1084 },
+      other: { "auto-renewal": 1138, "on-demand": 1138 },
+    },
+    UID: "compact",
+    Name: "Daily Max",
+    "Price Options": "daily",
+    Validity: "1 day",
+    "Rate Code": { mtn: 9921710004, other: null },
+    Price: 5.0,
+    Currency: "GHS",
+    DataBonus: "600 MB",
+    Details: ["Unlimited access to Live TV, Movies & Shows", "600Mb data bonus"],
+  },
+  {
+    ID: { mtn: 1085, other: 1139 },
+    UID: "standard",
+    Name: "3-day Treat",
+    "Price Options": "daily",
+    Validity: "3 days",
+    "Rate Code": { mtn: 9921710005, other: null },
+    Price: 12.5,
+    Currency: "GHS",
+    DataBonus: "1.2 GB",
+    Details: ["3-Day unlimited access", "1.2GB data bonus"],
+  },
+  {
+    ID: { mtn: 1086, other: 1140 },
+    UID: "pro",
+    Name: "Weekly Wonder",
+    "Price Options": "daily",
+    Validity: "7 days",
+    "Rate Code": { mtn: 9921710006, other: null },
+    Price: 25.0,
+    Currency: "GHS",
+    DataBonus: "3 GB",
+    Details: ["7-Day unlimited access", "3GB data bonus"],
+  },
+  {
+    ID: { mtn: 1087, other: 1141 },
+    UID: "max",
+    Name: "Monthly Magic",
+    "Price Options": "daily",
+    Validity: "30 days",
+    "Rate Code": { mtn: 9921710007, other: null },
+    Price: 75.0,
+    Currency: "GHS",
+    DataBonus: "10 GB",
+    Details: ["30-Day unlimited access", "10GB data bonus"],
+  },
+];
+
+export default SubscriptionsData;

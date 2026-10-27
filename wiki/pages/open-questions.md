@@ -13,3 +13,7 @@
 | 9 | Designer to confirm `4041:26313` (mislabelled?) and which desktop home frame is final | Home, EPG | ❓ open |
 | 8 | Where are the sign-in, details, watch, My Stuff, profile, subscriptions and notifications designs? Not on "All pages (developers)" | Those phases | ❓ open |
 | 9 | Designer to confirm `4041:26313` (mislabelled?) and which desktop home frame is final | Home, EPG | ❓ open |
+| 10 | WONA CRM rail uids: the code looks up AfriPlay uids `afriplaytop10` and `onlyonafriplay` (`api/fetchMoviesApi.js`) | Home rails with real data | ❓ open |
+| 11 | Subscription packages/plan ids in `src/data/subscriptionsData.js` are AfriPlay's; MTN-specific billing logic is now inert | Subscriptions | ❓ open |
+| 12 | FAQ copy (`components/sections/landing/FaqSection.jsx`) is AfriPlay's text with the name swapped | Landing page | ❓ open |
+| 13 | Phone input still allows any 10 digits; Zimbabwe numbers (07…) not validated | Sign-in | ❓ open |

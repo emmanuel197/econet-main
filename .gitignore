@@ -1,14 +1,26 @@
-node_modules
-build
+# Logs
 *.log
+npm-debug.log*
 
-# Environment files hold machine-specific settings; only .env.example is committed
-.env
-.env.local
-.env.*.local
+node_modules
+dist
+build
+*.local
 
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+
+# Claude
 .claude/
+
+# Env — never commit
+.env
+.env.local
+.env.production
+.env.staging
+
+# Vercel
+.vercel

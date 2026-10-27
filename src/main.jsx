@@ -1,12 +1,16 @@
-// Entry point: index.html loads this file, which mounts the React app into <div id="root">.
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider } from "react-router";
-import { router } from "./app/router.jsx";
-import "./styles/global.css";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import App from "./App.jsx";
+import { setupAuthInterceptor } from "./api/refreshToken";
+
+setupAuthInterceptor(); // single global axios 401→refresh handler
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StrictMode>
 );

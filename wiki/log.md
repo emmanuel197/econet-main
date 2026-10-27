@@ -23,3 +23,8 @@
 - Mapped every frame on the page → `pages/screen-map.md`. Desktop home `4041:21334` has hidden content; use `4041:21538`. Auth/details/watch/profile/subscriptions screens are not on this page.
 - Exported nav logo SVG → `src/assets/brand/wona-logo.svg`.
 - Dev-only `/design` preview page. Gotcha: Tailwind 4 drops @theme variables no class uses → `@theme static`.
+
+## 2026-10-27 — Switched to the AfriPlay codebase
+- Deadline: replaced the from-scratch scaffold with the AfriPlay revamp code, re-branded for WONA (operator, colours, logo, wording) → see `pages/project-structure.md`.
+- AfriPlay wiki kept under `wiki/afriplay-reference/`.
+- Verified: build passes; `/home` renders with WONA colours and logo using fixtures + auth bypass.

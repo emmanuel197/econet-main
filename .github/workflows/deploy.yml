@@ -1,0 +1,34 @@
+name: server deploy
+on:
+  push:
+    branches:
+      - main # default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code
+        uses: actions/checkout@v4
+        with:
+          lfs: true # fetch real binary assets (webp/png/jpg) — without this the
+                    # runner gets LFS pointer stubs and Vite bundles broken images
+
+      - name: Node.js setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24" # node version
+
+      - name: Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: Sync files to server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/ # 'build' or 'dist' for Vite
+          server-dir: /

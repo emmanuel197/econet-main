@@ -1,0 +1,22 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 1209.47 817.778" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Background">
+<path id="Vector" d="M684.033 0.8V481.979M445.564 481.979V0.8H1208.67V481.979M1208.67 54.2248H445.564M1208.67 107.65H445.564M1208.67 161.074H445.564M1208.67 214.499H445.564M1208.67 267.924H445.564M1208.67 321.349H445.564M1208.67 374.773H445.564M1208.67 428.198H445.564M1208.67 481.623H445.564M970.197 0.8V481.979M731.727 0.8V481.979M493.258 0.8V481.979M1017.89 0.8V481.979M779.421 0.8V481.979M540.952 0.8V481.979M1065.58 0.8V481.979M827.115 0.8V481.979M588.646 0.8V481.979M1113.28 0.8V481.979M874.809 0.8V481.979M636.339 0.8V481.979M1160.97 0.8V481.979M922.503 0.8V481.979" stroke="url(#paint0_linear_0_107)" stroke-width="1.6"/>
+<g id="Rectangle 489" filter="url(#filter0_f_0_107)">
+<rect width="109.91" height="568.493" rx="54.955" transform="matrix(-0.458144 -0.888878 0.839698 -0.543053 181.609 689.219)" fill="var(--fill-0, black)" fill-opacity="0.25"/>
+<rect width="109.91" height="568.493" rx="54.955" transform="matrix(-0.458144 -0.888878 0.839698 -0.543053 181.609 689.219)" fill="var(--fill-1, #CCCCCC)" style="mix-blend-mode:plus-darker"/>
+<rect width="109.91" height="568.493" rx="54.955" transform="matrix(-0.458144 -0.888878 0.839698 -0.543053 181.609 689.219)" fill="var(--fill-2, #0D0D0D)" style="mix-blend-mode:plus-lighter"/>
+<rect width="109.91" height="568.493" rx="54.955" transform="matrix(-0.458144 -0.888878 0.839698 -0.543053 181.609 689.219)" fill="var(--fill-3, #262626)" fill-opacity="0.9" style="mix-blend-mode:luminosity"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_107" x="3.8147e-06" y="154.24" width="790.225" height="663.538" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_0_107"/>
+</filter>
+<linearGradient id="paint0_linear_0_107" x1="945.03" y1="-115.879" x2="338.405" y2="413.07" gradientUnits="userSpaceOnUse">
+<stop offset="0.436944" stop-color="#111111" stop-opacity="0"/>
+<stop offset="0.751647" stop-color="#535353" stop-opacity="0.27"/>
+</linearGradient>
+</defs>
+</svg>
