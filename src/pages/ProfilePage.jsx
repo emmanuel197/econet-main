@@ -23,13 +23,13 @@ const TABS = [
 
 // Support copy ported verbatim from legacy profile.js.
 const SUPPORT_ROWS = [
-  { label: "Call Us (Toll Free)", value: "100" },
-  { label: "From any other phone", value: "0244 300 000" },
-  { label: "Whatsapp", value: "0554 300 000" },
-  { label: "Ayoba", value: "0554 300 000" },
-  { label: "Email Us", value: "support@afriplay.tv" },
-  { label: "Facebook", value: "@MTNGhana" },
-  { label: "Twitter", value: "@MTNghana" },
+  // AfriPlay listed MTN Ghana's contacts here; WONA's (Econet Zimbabwe) are not known yet
+  // — see wiki open questions.
+  { label: "Call Us (Toll Free)", value: "To be confirmed" },
+  { label: "Whatsapp", value: "To be confirmed" },
+  { label: "Email Us", value: "To be confirmed" },
+  { label: "Facebook", value: "To be confirmed" },
+  { label: "Twitter", value: "To be confirmed" },
 ];
 
 const inputClass =
@@ -276,7 +276,7 @@ function ProfilePage() {
                   "rounded-xl px-[calc(16/1728*var(--vw))] py-[calc(12/1728*var(--vw))] text-left font-primary font-medium text-base cursor-pointer transition-colors",
                   "max-md:shrink-0 max-md:rounded-full max-md:px-[calc(16/390*var(--mvw))] max-md:py-[calc(8/390*var(--mvw))] max-md:text-[calc(13/390*var(--mvw))]",
                   tab === t.id
-                    ? "bg-brand text-page"
+                    ? "bg-brand text-gray-1"
                     : "text-gray-1/80 hover:bg-gray-1/10 max-md:bg-gray-1/10"
                 )}
               >

@@ -64,7 +64,7 @@ const SubscriptionHistoryPage = () => {
             className={classNames(
               "cursor-pointer rounded-full px-[calc(20/1728*var(--vw))] py-[calc(10/1728*var(--vw))] text-base max-md:px-[calc(14/390*var(--mvw))] max-md:py-[calc(8/390*var(--mvw))] max-md:text-[calc(12/390*var(--mvw))]",
               activeSubscription === tab.value
-                ? "bg-brand font-medium text-page"
+                ? "bg-brand font-medium text-gray-1"
                 : "bg-gray-1/10 text-gray-1 hover:bg-gray-1/20"
             )}
           >

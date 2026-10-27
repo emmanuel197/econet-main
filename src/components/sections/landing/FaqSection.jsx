@@ -5,7 +5,7 @@ import SectionHeader from "../../ui/SectionHeader";
 // FAQ copy ported verbatim from legacy landing/Faq.js.
 const FAQS = [
   {
-    question: "WHAT IS AFRIPLAY?",
+    question: "WHAT IS WONA?",
     answer:
       "WONA is a video streaming entertainment service offering unlimited access to TV shows, movies, live TV channels, and more. Stream and watch on a wide range of devices, just the way you would like to. No commitments, no hassles, and an all-pass to enjoyable satisfying content. Enjoy unlimited access using any of the six (6) available plans: WONA Daily Live, Daily Cinema, Daily Max, 3-day Binge, Weekly Wonder, Monthly Magic.",
   },
@@ -22,7 +22,7 @@ const FAQS = [
   {
     question: "CAN I WATCH WITHOUT DATA OR WIFI?",
     answer:
-      "You will need reliable internet connectivity to enjoy AFRIPlay. You may use Wi-Fi and/or data. You can also manage how much data consumption you would like to have as you watch. Simply go to Settings -> Video Quality -> choose from any of the options outlined.",
+      "You will need reliable internet connectivity to enjoy WONA. You may use Wi-Fi and/or data. You can also manage how much data consumption you would like to have as you watch. Simply go to Settings -> Video Quality -> choose from any of the options outlined.",
   },
   {
     question: "CAN I CATCH UP OR RECORD TV PROGRAMS?",

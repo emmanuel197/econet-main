@@ -1,4 +1,4 @@
-# Open questions
+# ✅ decided 2026-10-28: follow AfriPlay — same CRM IP network ✅ decided 2026-10-28: follow AfriPlay — passwordless default ✅ decided 2026-10-28: follow AfriPlay — number sent as typed, leading 0 ✅ decided 2026-10-28: follow AfriPlay — AfriPlay layouts in WONA colours until designs ✅ decided 2026-10-28: follow AfriPlay — no extra validation (10 ✅ decided 2026-10-28: follow AfriPlay — AfriPlay/home bottom nav ✅ decided 2026-10-28: follow AfriPlay — app bar kept on mobile ✅ decided 2026-10-28: follow AfriPlay — ✅ decided 2026-10-28: follow AfriPlay — brand colour → WONA pink |||||||||questions
 
 | # | Question | Blocks | Status |
 |---|---|---|---|
@@ -23,3 +23,4 @@
 | 19 | Shorts player: comp is 500×881 but code keeps 420 wide (fits 1080p laptop viewports). Confirm 420 is acceptable | Shorts player | ❓ open |
 | 20 | Shorts spec frames say "gold" (likes, follow pill, share ring) — confirm WONA pink is intended | Shorts interactions | 🔶 assumed pink |
 | 21 | Share links use `wona.com/r/<slug>` per the spec — confirm the real domain and that deep links resolve | Sharing | ❓ open |
+| 22 | Profile → Support contacts: AfriPlay showed MTN Ghana's numbers/email/socials; now "To be confirmed" until WONA's are known | Profile | ❓ open (with PM) |

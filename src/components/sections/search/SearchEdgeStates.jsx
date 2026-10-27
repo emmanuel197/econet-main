@@ -91,7 +91,7 @@ export const NetworkErrorMessage = ({ onRetry }) => (
     <button
       type="button"
       onClick={onRetry}
-      className="mt-[calc(6/1728*var(--vw))] flex items-center gap-[calc(8/1728*var(--vw))] rounded-full bg-brand px-[calc(22/1728*var(--vw))] py-[calc(10/1728*var(--vw))] font-primary font-medium text-base text-page cursor-pointer"
+      className="mt-[calc(6/1728*var(--vw))] flex items-center gap-[calc(8/1728*var(--vw))] rounded-full bg-brand px-[calc(22/1728*var(--vw))] py-[calc(10/1728*var(--vw))] font-primary font-medium text-base text-gray-1 cursor-pointer"
     >
       <span aria-hidden="true">⟳</span>
       Try Again

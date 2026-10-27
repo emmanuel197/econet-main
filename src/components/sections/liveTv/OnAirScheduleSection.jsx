@@ -33,7 +33,7 @@ const ScheduleRow = ({ item, striped, onSelect }) => (
     <button
       type="button"
       onClick={(e) => e.stopPropagation()}
-      className="flex shrink-0 items-center gap-[calc(8/1728*var(--vw))] rounded-full bg-brand px-[calc(18/1728*var(--vw))] py-[calc(8/1728*var(--vw))] font-primary font-medium text-sm text-page cursor-pointer"
+      className="flex shrink-0 items-center gap-[calc(8/1728*var(--vw))] rounded-full bg-brand px-[calc(18/1728*var(--vw))] py-[calc(8/1728*var(--vw))] font-primary font-medium text-sm text-gray-1 cursor-pointer"
     >
       <img
         src={item.when === "earlier" ? replayIcon : bellIcon}

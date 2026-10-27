@@ -79,7 +79,7 @@ const SeriesDetailsPage = () => {
             className="max-md:px-[calc(18/390*var(--mvw))] max-md:py-[calc(10/390*var(--mvw))]"
             startIcon={<img src={playIcon} alt="" aria-hidden="true" className="size-[calc(20/1728*var(--vw))] max-md:size-[calc(15/390*var(--mvw))]" />}
           >
-            <span className="font-medium text-xl text-page max-md:text-[calc(13/390*var(--mvw))]">Play</span>
+            <span className="font-medium text-xl text-gray-1 max-md:text-[calc(13/390*var(--mvw))]">Play</span>
           </Button>
         )}
       </DetailsHero>

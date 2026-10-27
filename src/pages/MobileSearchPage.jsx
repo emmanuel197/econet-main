@@ -78,7 +78,7 @@ const MobileResultsSkeleton = () => (
   <div className="flex flex-col gap-[calc(20/390*var(--mvw))]">
     <div className="flex gap-[calc(8/390*var(--mvw))]">
       {RESULT_TABS.map((t, i) => (
-        <span key={t.id} className={classNames("rounded-full px-[calc(15/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none", i === 0 ? "bg-brand text-page" : "bg-gray-1/10 text-gray-1/70")}>{t.label}</span>
+        <span key={t.id} className={classNames("rounded-full px-[calc(15/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none", i === 0 ? "bg-brand text-gray-1" : "bg-gray-1/10 text-gray-1/70")}>{t.label}</span>
       ))}
     </div>
     <div className="h-[calc(16/390*var(--mvw))] w-[calc(90/390*var(--mvw))] animate-pulse rounded bg-gray-1/10" />
@@ -200,7 +200,7 @@ const MobileSearchPage = () => {
       <div className="flex flex-col gap-[calc(20/390*var(--mvw))]">
         <div className="flex gap-[calc(8/390*var(--mvw))]">
           {RESULT_TABS.map((t) => (
-            <button key={t.id} type="button" onClick={() => setTab(t.id)} className={classNames("rounded-full px-[calc(15/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors", tab === t.id ? "bg-brand text-page" : "bg-gray-1/10 text-gray-1/70")}>
+            <button key={t.id} type="button" onClick={() => setTab(t.id)} className={classNames("rounded-full px-[calc(15/390*var(--mvw))] py-[calc(7/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors", tab === t.id ? "bg-brand text-gray-1" : "bg-gray-1/10 text-gray-1/70")}>
               {t.label}
             </button>
           ))}
@@ -315,7 +315,7 @@ const MobileSearchPage = () => {
         <img src={wifiErrorIcon} alt="" aria-hidden="true" className="size-[calc(40/390*var(--mvw))]" />
         <h3 className="font-primary text-[calc(16/390*var(--mvw))] font-semibold text-gray-1">Connection Error</h3>
         <p className="max-w-[calc(260/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] text-gray-1/60">We couldn't reach the server. Check your connection and try again.</p>
-        <button type="button" onClick={clearQuery} className="mt-[calc(4/390*var(--mvw))] flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(22/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium text-page cursor-pointer">
+        <button type="button" onClick={clearQuery} className="mt-[calc(4/390*var(--mvw))] flex items-center gap-[calc(6/390*var(--mvw))] rounded-full bg-brand px-[calc(22/390*var(--mvw))] py-[calc(9/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium text-gray-1 cursor-pointer">
           <span aria-hidden="true">⟳</span> Try Again
         </button>
       </div>
@@ -375,9 +375,8 @@ const MobileSearchPage = () => {
 
   return (
     <div className="min-h-screen font-primary text-gray-1">
-      {/* WONA comp: no app bar on mobile search — the search field is the top control
-         (bottom nav still provides navigation). */}
-      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(16/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
+      {/* pt clears MainLayout's fixed MobileTopBar (14px reservation + 32px row). */}
+      <div className="flex flex-col gap-[calc(24/390*var(--mvw))] px-[calc(20/390*var(--mvw))] pt-[calc(62/390*var(--mvw))] pb-[calc(120/390*var(--mvw))]">
         <div className="flex h-[calc(52/390*var(--mvw))] items-center gap-[calc(12/390*var(--mvw))] rounded-full border border-gray-1/15 bg-gray-1/10 px-[calc(20/390*var(--mvw))] transition-colors focus-within:border-brand">
           <img src={searchIcon} alt="" aria-hidden="true" className="size-[calc(18/390*var(--mvw))] opacity-70" />
           <input

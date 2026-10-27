@@ -189,7 +189,7 @@ function MoviesPage() {
                     "flex h-[calc(38/1728*var(--vw))] items-center justify-center rounded-full px-[calc(20/1728*var(--vw))]",
                     "font-primary font-medium text-base cursor-pointer transition-colors",
                     isActive
-                      ? "bg-brand text-page"
+                      ? "bg-brand text-gray-1"
                       : "bg-gray-1/10 text-gray-1 border border-gray-1/15 hover:bg-gray-1/15"
                   )}
                 >

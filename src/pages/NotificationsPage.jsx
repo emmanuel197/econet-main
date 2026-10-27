@@ -46,7 +46,7 @@ const NotificationsPage = () => {
                   className={classNames(
                     "cursor-pointer rounded-full px-[calc(14/390*var(--mvw))] py-[calc(6/390*var(--mvw))] text-[calc(12/390*var(--mvw))] font-medium md:px-[calc(18/1728*var(--vw))] md:py-[calc(8/1728*var(--vw))] md:text-base",
                     active
-                      ? "bg-brand text-page"
+                      ? "bg-brand text-gray-1"
                       : "border border-gray-1/20 text-gray-1/80 hover:bg-gray-1/10"
                   )}
                 >

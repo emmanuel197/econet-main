@@ -58,9 +58,10 @@ function App() {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
 
-        {/* No footer — results/skeleton are self-contained. Mobile: the WONA comps show no
-           app bar on search (the search field is the top control; bottom nav navigates). */}
-        <Route element={<MainLayout showFooter={false} mobileTopBar="status" />}>
+        {/* No footer — results/skeleton are self-contained. Mobile keeps the standard app
+           bar (AfriPlay behaviour; the WONA comps omit it, but without it the bell and
+           account menu are unreachable on search — decision 2026-10-28). */}
+        <Route element={<MainLayout showFooter={false} />}>
           <Route path="/search" element={<ProtectedRoute><SearchScreen /></ProtectedRoute>} />
         </Route>
 

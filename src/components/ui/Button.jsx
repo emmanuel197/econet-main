@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "../../utils/classNames";
 
 const VARIANTS = {
-  primary: "bg-brand text-page border border-gray-1/80",
+  primary: "bg-brand text-gray-1 border border-gray-1/80",
   secondary: "bg-gray-1/30 text-gray-1",
   bare: "",
 };

@@ -142,7 +142,7 @@ const TvGuidePage = () => {
                     "cursor-pointer rounded-xl px-[calc(16/1728*var(--vw))] py-[calc(10/1728*var(--vw))] text-left text-lg transition-colors",
                     "max-md:shrink-0 max-md:rounded-full max-md:px-[calc(14/390*var(--mvw))] max-md:py-[calc(7/390*var(--mvw))] max-md:text-[calc(12/390*var(--mvw))]",
                     ch.id === channelId
-                      ? "bg-brand font-semibold text-page"
+                      ? "bg-brand font-semibold text-gray-1"
                       : "bg-gray-1/5 text-gray-1/80 hover:bg-gray-1/10"
                   )}
                 >
@@ -189,7 +189,7 @@ const TvGuidePage = () => {
                       <button
                         type="button"
                         onClick={() => navigate(`/watch/live/${channel.uid}`)}
-                        className="shrink-0 cursor-pointer rounded-full bg-brand px-[calc(18/1728*var(--vw))] py-[calc(8/1728*var(--vw))] text-base font-semibold text-page max-md:px-[calc(12/390*var(--mvw))] max-md:py-[calc(6/390*var(--mvw))] max-md:text-[calc(12/390*var(--mvw))]"
+                        className="shrink-0 cursor-pointer rounded-full bg-brand px-[calc(18/1728*var(--vw))] py-[calc(8/1728*var(--vw))] text-base font-semibold text-gray-1 max-md:px-[calc(12/390*var(--mvw))] max-md:py-[calc(6/390*var(--mvw))] max-md:text-[calc(12/390*var(--mvw))]"
                       >
                         Watch
                       </button>

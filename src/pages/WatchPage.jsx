@@ -188,7 +188,7 @@ const WatchPage = () => {
           className="pointer-events-none absolute left-1/2 top-1/2 size-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-[60px]"
           style={{
             background:
-              "radial-gradient(circle, rgba(120,22,190,0.65) 0%, rgba(120,22,190,0.25) 45%, transparent 72%)",
+              "radial-gradient(circle, rgba(218,19,117,0.65) 0%, rgba(218,19,117,0.25) 45%, transparent 72%)",
           }}
         />
       )}
@@ -207,7 +207,7 @@ const WatchPage = () => {
         <div className="flex flex-col items-center gap-6 px-6 text-center">
           <p className="max-w-xl text-2xl">{error}</p>
           <Button variant="primary" size="lg" onClick={() => window.location.reload()}>
-            <span className="font-medium text-xl text-page">Try Again</span>
+            <span className="font-medium text-xl text-gray-1">Try Again</span>
           </Button>
         </div>
       )}
@@ -216,7 +216,7 @@ const WatchPage = () => {
         <div className="flex flex-col items-center gap-6 px-6 text-center">
           <p className="text-2xl">Trailer Was Not Found</p>
           <Button variant="primary" size="lg" onClick={() => navigate(-1)}>
-            <span className="font-medium text-xl text-page">Back</span>
+            <span className="font-medium text-xl text-gray-1">Back</span>
           </Button>
         </div>
       )}
@@ -228,7 +228,7 @@ const WatchPage = () => {
             data bundles list to enjoy amazing WONA content.
           </p>
           <Button variant="primary" size="lg" onClick={() => navigate("/subscriptions")}>
-            <span className="font-medium text-xl text-page">Subscribe</span>
+            <span className="font-medium text-xl text-gray-1">Subscribe</span>
           </Button>
         </div>
       )}

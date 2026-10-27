@@ -35,7 +35,7 @@ const SubscriptionsPage = () => {
 
       <div className="mt-[calc(32/1728*var(--vw))] flex flex-col gap-[calc(4/1728*var(--vw))] text-sm text-gray-5 max-md:mt-[calc(20/390*var(--mvw))] max-md:gap-[calc(3/390*var(--mvw))] max-md:text-[calc(11/390*var(--mvw))]">
         <p>WONA Terms of Use apply for all bundles</p>
-        <p>*Data bundles are available only for MTN subscribers</p>
+        <p>*Data bundles are available only for Econet subscribers</p>
       </div>
     </div>
   );

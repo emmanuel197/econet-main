@@ -352,7 +352,7 @@ const MobileShortsPlayer = () => {
       {/* Filter chips */}
       <div className={classNames("absolute inset-x-0 top-[calc(88/390*var(--mvw))] z-10 flex gap-[calc(8/390*var(--mvw))] px-[calc(16/390*var(--mvw))] transition-opacity duration-300", !chromeVisible && "pointer-events-none opacity-0")}>
         {CHIPS.map((c) => (
-          <button key={c} type="button" onClick={() => setChip(c)} className={classNames("rounded-full px-[calc(16/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-medium leading-none", chip === c ? "bg-brand text-page" : "bg-black/30 text-gray-1")}>
+          <button key={c} type="button" onClick={() => setChip(c)} className={classNames("rounded-full px-[calc(16/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(12/390*var(--mvw))] font-medium leading-none", chip === c ? "bg-brand text-gray-1" : "bg-black/30 text-gray-1")}>
             {c}
           </button>
         ))}
@@ -369,7 +369,7 @@ const MobileShortsPlayer = () => {
       <div className="absolute right-[calc(14/390*var(--mvw))] top-1/2 z-10 flex -translate-y-1/2 flex-col items-center gap-[calc(20/390*var(--mvw))]">
         <button type="button" onClick={handleFollow} aria-label={following ? "Unfollow" : "Follow"} className="relative size-[calc(46/390*var(--mvw))] cursor-pointer">
           <img src={reel.creatorAvatar} alt="" className="size-full rounded-full border border-brand/70 object-cover" />
-          <span className={classNames("absolute -bottom-[calc(4/390*var(--mvw))] left-1/2 flex size-[calc(18/390*var(--mvw))] -translate-x-1/2 items-center justify-center rounded-full text-[calc(11/390*var(--mvw))] font-bold leading-none", following ? "bg-brand text-page" : "bg-brand text-page")}>
+          <span className={classNames("absolute -bottom-[calc(4/390*var(--mvw))] left-1/2 flex size-[calc(18/390*var(--mvw))] -translate-x-1/2 items-center justify-center rounded-full text-[calc(11/390*var(--mvw))] font-bold leading-none", following ? "bg-brand text-gray-1" : "bg-brand text-gray-1")}>
             {following ? "✓" : "+"}
           </span>
         </button>
@@ -438,7 +438,7 @@ const MobileShortsPlayer = () => {
             <p className="font-primary text-[calc(15/390*var(--mvw))] font-semibold text-gray-1">Unfollow {reel.handle}?</p>
             <div className="flex gap-[calc(12/390*var(--mvw))]">
               <button type="button" onClick={() => setUnfollowAsk(false)} className="flex-1 rounded-full border border-gray-1/30 py-[calc(10/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] text-gray-1 cursor-pointer">Cancel</button>
-              <button type="button" onClick={() => { setFollowing(false); setUnfollowAsk(false); }} className="flex-1 rounded-full bg-brand py-[calc(10/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-semibold text-page cursor-pointer">Unfollow</button>
+              <button type="button" onClick={() => { setFollowing(false); setUnfollowAsk(false); }} className="flex-1 rounded-full bg-brand py-[calc(10/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-semibold text-gray-1 cursor-pointer">Unfollow</button>
             </div>
           </div>
         </div>

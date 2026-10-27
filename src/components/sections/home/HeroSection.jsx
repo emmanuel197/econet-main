@@ -198,7 +198,7 @@ const HeroSection = React.forwardRef(
                   <img src={playIcon} alt="" aria-hidden="true" className="size-[calc(20/1728*var(--vw))]" />
                 }
               >
-                <span className="font-medium text-xl text-page">Watch Now</span>
+                <span className="font-medium text-xl text-gray-1">Watch Now</span>
               </Button>
               <Button
                 variant="secondary"

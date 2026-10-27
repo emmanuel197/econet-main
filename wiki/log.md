@@ -61,3 +61,10 @@
 - Desktop player: caption 18px bold handle, 16px badge/caption, white-text "Watch full …" CTA, 14px bold hashtags; action labels 14px semibold pink, save action reads "My List"; 14px times. Player kept at 420px wide (comp is 500×881) so the 9:16 video fits 1080p laptop screens — see open questions.
 - Mobile feed/player: "WonaShorts"/"Wonashorts" 16px semibold headers, 12px chips, comp text sizes throughout; `@AfriSportsHQ` fixture handles → `@WonaSportsHQ`; share link domain `afriplay.com/r/…` → `wona.com/r/…` (per the Share Reel spec).
 - Spec frames say "gold" heart/ring/pill (copied from AfriPlay) — implemented with WONA pink.
+
+## 2026-10-28 — Undesigned screens and open design questions resolved "the AfriPlay way"
+- Decision (user): where WONA has no design or the question is open, keep AfriPlay's behaviour but make it look WONA. Data/API questions (#3, #6, #10–12, #14, #18, #21) and repo/branch questions are with the PM.
+- Sign-in, OTP, out-of-region, details, watch, My Stuff, profile, subscriptions, history, notifications, TV guide, Movies checked desktop + mobile: removed AfriPlay purple from the auth backdrop (`AuthShell`), flag badge and watch-page glow; FAQ "AfriPlay" → "WONA"; "only for MTN subscribers" → "Econet"; profile support contacts (MTN Ghana) → "To be confirmed".
+- All pink buttons/chips/badges now use white text (WONA comps) instead of AfriPlay's dark-on-gold `text-page` (26 places, incl. the shared `Button` primary variant).
+- Mobile search gets its app bar back (AfriPlay behaviour) so the bell/account menu are reachable there.
+- Subscription prices still show "GHS" — package data, with the PM.

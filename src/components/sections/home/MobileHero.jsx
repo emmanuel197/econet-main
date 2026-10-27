@@ -83,7 +83,7 @@ const MobileHero = ({
       )}
 
       {/* Filter chips — left edge aligned to the AfriPlay logo (top-bar row px 20/390·mvw).
-         Only the active chip is a gold pill; the rest are plain text (no glass pill).
+         Only the active chip is a pink pill; the rest are plain text (no glass pill).
          Container is pointer-events-none so its empty right half doesn't intercept
          taps meant for the mute pill; each chip re-enables pointer events. */}
       <div className="pointer-events-none absolute inset-x-0 top-[calc(100/390*var(--mvw))] z-10 flex justify-start gap-[calc(4/390*var(--mvw))] pl-[calc(20/390*var(--mvw))]">
@@ -94,7 +94,7 @@ const MobileHero = ({
             onClick={() => setChip(c)}
             className={classNames(
               "pointer-events-auto rounded-full px-[calc(8/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors",
-              chip === c ? "bg-brand text-page" : "text-gray-1/70"
+              chip === c ? "bg-brand text-gray-1" : "text-gray-1/70"
             )}
           >
             {c}
@@ -167,7 +167,7 @@ const MobileHero = ({
           <button
             type="button"
             onClick={handleWatch}
-            className="flex h-[calc(40/390*var(--mvw))] items-center gap-[calc(7/390*var(--mvw))] rounded-full bg-brand px-[calc(22/390*var(--mvw))] font-primary text-[calc(14/390*var(--mvw))] font-semibold text-page cursor-pointer"
+            className="flex h-[calc(40/390*var(--mvw))] items-center gap-[calc(7/390*var(--mvw))] rounded-full bg-brand px-[calc(22/390*var(--mvw))] font-primary text-[calc(14/390*var(--mvw))] font-semibold text-gray-1 cursor-pointer"
           >
             <img src={playing ? playCenter : playIcon} alt="" aria-hidden="true" className="size-[calc(14/390*var(--mvw))]" />
             Watch Now

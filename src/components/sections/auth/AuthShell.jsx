@@ -10,7 +10,7 @@ import classNames from "../../../utils/classNames";
 // Same backdrop the legacy auth pages used (auth.scss .auth): Cloudinary hero image
 // under a dark purple overlay so the card and copy stay readable.
 const AUTH_BG =
-  "linear-gradient(rgba(26, 5, 43, 0.58), rgba(26, 5, 43, 0.58)), url('https://res.cloudinary.com/dou9sjstz/image/upload/v1664554166/auth-page-bg_hx5p9o.png')";
+  "linear-gradient(rgba(14, 21, 44, 0.58), rgba(14, 21, 44, 0.58)), url('https://res.cloudinary.com/dou9sjstz/image/upload/v1664554166/auth-page-bg_hx5p9o.png')";
 
 // Scaling: below md the card follows the 390 mobile comp (--mvw); at md+ it uses
 // the 1728 desktop comp (--vw). Without the mobile basis, --vw's 768 floor made

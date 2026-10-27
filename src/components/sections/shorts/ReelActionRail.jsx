@@ -62,7 +62,7 @@ const ReelActionRail = ({ reel, liked = false, onToggleLike, onOpenDetails, clas
       >
         <img src={reel.creatorAvatar} alt="" className="size-full rounded-full object-cover" />
         {!following && (
-          <span className="absolute -bottom-[calc(2/1728*var(--vw))] -right-[calc(2/1728*var(--vw))] flex size-[calc(18/1728*var(--vw))] items-center justify-center rounded-full bg-brand text-xs font-bold leading-none text-page">
+          <span className="absolute -bottom-[calc(2/1728*var(--vw))] -right-[calc(2/1728*var(--vw))] flex size-[calc(18/1728*var(--vw))] items-center justify-center rounded-full bg-brand text-xs font-bold leading-none text-gray-1">
             +
           </span>
         )}
