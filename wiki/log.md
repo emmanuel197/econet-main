@@ -39,3 +39,4 @@ Short record of what was done. Superseded steps were removed on 2026-10-28; git 
 
 ## 2026-10-28 — Wiki tidy
 - Removed answered questions and superseded log entries; rewrote open questions in plain words; added `pages/auth-flow.md`.
+- Sign-up now sends the name "WONA User" (was AfriPlay's "Afri Play"); users can change it in Profile.

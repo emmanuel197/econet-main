@@ -185,9 +185,10 @@ export const verifyOTP = async (isPhoneNumber, OTPCode) => {
 
     let signupResponse;
     try {
+      // Sign-up collects no name — placeholder until the user edits it in Profile
       signupResponse = await axios.post(signUpAPI(), {
-        first_name: "Afri",
-        last_name: "Play",
+        first_name: "WONA",
+        last_name: "User",
         email: email,
         phone_number: mobileNumber,
         password: DEFAULT_PASSWORD,
