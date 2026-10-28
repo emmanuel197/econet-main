@@ -23,6 +23,13 @@ import ProfilePage from "./pages/ProfilePage";
 import MyStuffPage from "./pages/MyStuffPage";
 import MoviesPage from "./pages/MoviesPage";
 import NotificationsPage from "./pages/NotificationsPage";
+import TvodPage from "./pages/tvod/TvodPage";
+import TvodTitlePage from "./pages/tvod/TvodTitlePage";
+import OrderSummaryPage from "./pages/tvod/OrderSummaryPage";
+import PayWithCardPage from "./pages/tvod/PayWithCardPage";
+import MobileMoneyPage from "./pages/tvod/MobileMoneyPage";
+import MomoProcessingPage from "./pages/tvod/MomoProcessingPage";
+import PaymentResultPage from "./pages/tvod/PaymentResultPage";
 
 
 // MainLayout is used as a layout route — the matched page renders through its <Outlet/>.
@@ -91,6 +98,18 @@ function App() {
         </Route>
         <Route element={<MainLayout showFooter={false} showNavbar={false} mobileChrome={false} />}>
           <Route path="/watch/:type/:id" element={<ProtectedRoute><WatchPage /></ProtectedRoute>} />
+        </Route>
+
+        {/* WonaPremiere / TVOD (rent or buy) — WONA mobile designs; each screen has its own
+            header, so no mobile chrome; on desktop they sit in a phone-width column. */}
+        <Route element={<MainLayout showFooter={false} mobileChrome={false} />}>
+          <Route path="/premiere" element={<ProtectedRoute><TvodPage /></ProtectedRoute>} />
+          <Route path="/premiere/:id" element={<ProtectedRoute><TvodTitlePage /></ProtectedRoute>} />
+          <Route path="/premiere/:id/checkout" element={<ProtectedRoute><OrderSummaryPage /></ProtectedRoute>} />
+          <Route path="/premiere/:id/pay/card" element={<ProtectedRoute><PayWithCardPage /></ProtectedRoute>} />
+          <Route path="/premiere/:id/pay/momo" element={<ProtectedRoute><MobileMoneyPage /></ProtectedRoute>} />
+          <Route path="/premiere/:id/pay/momo/processing" element={<ProtectedRoute><MomoProcessingPage /></ProtectedRoute>} />
+          <Route path="/premiere/:id/result/:status" element={<ProtectedRoute><PaymentResultPage /></ProtectedRoute>} />
         </Route>
       </Routes>
     </BrowserRouter>

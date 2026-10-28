@@ -24,3 +24,6 @@ build
 
 # Vercel
 .vercel
+
+# Figma design exports (SVG, ~55MB) — local reference only; screens are built from them
+assets/wonastuff/

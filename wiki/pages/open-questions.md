@@ -24,3 +24,6 @@
 | 20 | Shorts spec frames say "gold" (likes, follow pill, share ring) — confirm WONA pink is intended | Shorts interactions | 🔶 assumed pink |
 | 21 | Share links use `wona.com/r/<slug>` per the spec — confirm the real domain and that deep links resolve | Sharing | ❓ open |
 | 22 | Profile → Support contacts: AfriPlay showed MTN Ghana's numbers/email/socials; now "To be confirmed" until WONA's are known | Profile | ❓ open (with PM) |
+| 23 | TVOD prices/currency (GH₵), MoMo providers (MTN/Vodafone/AirtelTigo) and +233 are Ghana values from the designs — WONA is Zimbabwe (Econet/EcoCash?) | TVOD checkout | ❓ open (PM) |
+| 24 | TVOD/rental and payment APIs (catalogue, entitlement, card + MoMo charge, receipts) | TVOD with real data | ❓ open (PM) |
+| 25 | Desktop has no WonaPremiere entry point in the desktop comps (banner/chip are mobile-only); `/premiere` works on desktop in a phone-width column | Desktop TVOD | ❓ open |

@@ -15,6 +15,7 @@ import GenreCard from "../components/cards/GenreCard";
 import ChannelCard from "../components/cards/ChannelCard";
 import PremiereCard from "../components/cards/PremiereCard";
 import BundlePromoCard from "../components/cards/BundlePromoCard";
+import TvodBanner from "../components/sections/tvod/TvodBanner";
 
 import { selectHomeRails, selectHomeLoading } from "../store/slice/homeSlice";
 import PageSkeleton from "../components/shared/PageSkeleton";
@@ -376,6 +377,13 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
 
         {/* Fixture mode: WONA comp places the promo banner between Live On Tv Now and
             Top 10 (in API mode it follows the first channel rail, inside vodRails). */}
+        {/* Mobile: WonaPremiere / TVOD banner (design "btwnliveontv_and_top10movies") */}
+        {isMobile && !filterActive && (
+          <div className="pr-[calc(53/1728*var(--vw))] max-md:pr-[calc(21/390*var(--mvw))]">
+            <TvodBanner />
+          </div>
+        )}
+
         {!isMobile && !rails.vodRails?.length && !filterActive && promoImage && (
           <AdBanner data={{ asset: promoImage, title: rails.promoBannerTitle }} />
         )}

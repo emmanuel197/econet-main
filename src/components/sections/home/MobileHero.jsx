@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classNames from "../../../utils/classNames";
 import playIcon from "../../../../assets/icons/home-mobile-hero-play.svg";
 import addIcon from "../../../../assets/icons/home-mobile-hero-add-circle.svg";
@@ -7,7 +8,8 @@ import speakerIcon from "../../../../assets/icons/comments-reel-player-control-s
 import PaginationDots from "../../ui/PaginationDots";
 import { HeroTrailer } from "./HeroSection";
 
-const CHIPS = ["All", "Movies", "Tv Shows"];
+// "Wona Premiere" (WONA mobile home) is a link to the TVOD page, not a filter.
+const CHIPS = ["All", "Movies", "Tv Shows", "Wona Premiere"];
 
 /**
  * MobileHero — portrait home hero for the 390 comp. Two states, toggled by Watch Now:
@@ -30,6 +32,7 @@ const MobileHero = ({
   onChipChange,
   className = "",
 }) => {
+  const navigate = useNavigate();
   const [playing, setPlaying] = useState(false);
   // Once the trailer can play it takes over the whole hero background (like the
   // desktop hero) and the poster circle is hidden.
@@ -91,7 +94,7 @@ const MobileHero = ({
           <button
             key={c}
             type="button"
-            onClick={() => setChip(c)}
+            onClick={() => (c === "Wona Premiere" ? navigate("/premiere") : setChip(c))}
             className={classNames(
               "pointer-events-auto rounded-full px-[calc(8/390*var(--mvw))] py-[calc(6/390*var(--mvw))] font-primary text-[calc(13/390*var(--mvw))] font-medium leading-none transition-colors",
               chip === c ? "bg-brand text-gray-1" : "text-gray-1/70"

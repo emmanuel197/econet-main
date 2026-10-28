@@ -79,3 +79,10 @@
 - Movie/Series details show a skeleton while loading (was a blank 60vh box).
 - Like button vs double-tap kept as is (spec US-05: big heart on double-tap only; button just fills).
 - WonaPremiere (3894:687) and TVOD (3912:255) Figma pages: REST rate-limited (429, ~83h) — user exporting frames as images instead.
+
+## 2026-10-28 — WonaPremiere / TVOD flow (from SVG exports in assets/wonastuff)
+- Figma REST was rate-limited, so the user exported the frames as SVG (outline text off). Pieces map to screens by export time; measurements read from the SVG rects/text, images extracted from embedded patterns → `assets/images/tvod-*.webp`, `home-mobile-tvod-banner-*`, MTN logo, Ghana flag. The SVGs are gitignored (~55MB).
+- Mobile home: "Wona Premiere" chip (→ `/premiere`) and the TVOD banner (`components/sections/tvod/TvodBanner.jsx`) between Live on TV Now and Top 10.
+- Routes (`App.jsx`, own headers, no mobile chrome, phone-width column on desktop): `/premiere` TvodPage · `/premiere/:id` TvodTitlePage (+ `AccessSheet`) · `/premiere/:id/checkout` OrderSummaryPage · `/pay/card` PayWithCardPage · `/pay/momo` MobileMoneyPage · `/pay/momo/processing` MomoProcessingPage · `/result/:status` PaymentResultPage (confirmed | failed | not-approved). Shared pieces in `components/sections/tvod/TvodUi.jsx`; checkout state in `utils/tvodCheckout.js` (sessionStorage); data in `data/tvodFixtures.js`.
+- No TVOD/payment API → preview outcomes: card ending 0002 declined; MoMo number ending 0000 not approved, 1111 insufficient balance; otherwise confirmed (after ~6s for MoMo).
+- Design copy fixed: MoMo provider label "Card Number" → "Service Provider"; confirmed subtitle (repeated the failure text) and "My Libary"; "By clicking , you agree" → "pay"; Terms link gold → pink. Buy price in the sheet follows the title's buy price (design: sheet GH₵55 vs page GH₵250).
