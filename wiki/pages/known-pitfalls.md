@@ -63,7 +63,7 @@ Flow: select network → CRM network check → OTP generate → OTP validate →
 
 ## Network check
 
-- CRM `/api/auth` validates the caller's **IP** against the operator's ranges; off-network (wifi) → `valid:false`. AfriPlay could only test on MTN mobile data. ❓ WONA: Econet ranges, and what wifi users should see.
+- CRM `/api/auth` validates the caller's **IP** against the operator's ranges; off-network (wifi) → `valid:false`. AfriPlay could only test on MTN mobile data. WONA: same check, decided 2026-10-28 (off-Econet users see "not on this network").
 
 ## Images
 

@@ -1,33 +1,28 @@
-# ✅ decided 2026-10-28: follow AfriPlay — same CRM IP network ✅ decided 2026-10-28: follow AfriPlay — passwordless default ✅ decided 2026-10-28: follow AfriPlay — number sent as typed, leading 0 ✅ decided 2026-10-28: follow AfriPlay — AfriPlay layouts in WONA colours until designs ✅ decided 2026-10-28: follow AfriPlay — no extra validation (10 ✅ decided 2026-10-28: follow AfriPlay — AfriPlay/home bottom nav ✅ decided 2026-10-28: follow AfriPlay — app bar kept on mobile ✅ decided 2026-10-28: follow AfriPlay — ✅ decided 2026-10-28: follow AfriPlay — brand colour → WONA pink |||||||||questions
+# Open questions
 
-| # | Question | Blocks | Status |
-|---|---|---|---|
-| 1 | Figma access (figma-console token) | Design tokens, every screen | ✅ resolved 2026-10-26 |
-| 2 | Test account (`ecozw` + 10-digit number) | Live verification of auth + content | deferred by user |
-| 3 | Do the AfriPlay API hosts serve `econetzw`? CRM settings call failed to connect from the dev machine (for AfriPlay's uid too) | Homepage | ❓ open |
-| 4 | Network check: Econet IP ranges; what wifi/broadband users see | Sign-in | ❓ open |
-| 5 | Passwordless default-password model like AfriPlay? | Sign-in | ❓ open |
-| 6 | Homepage rail order and channel-rail slots for WONA | Homepage | ❓ open |
-| 7 | Username format: is the 10-digit number sent with the leading 0 (`ecozw0777123456`) as in the brief? | Sign-in | 🔶 brief example says yes |
-| 8 | Where are the sign-in, details, watch, My Stuff, profile, subscriptions and notifications designs? Not on "All pages (developers)" | Those phases | ❓ open |
-| 9 | Designer to confirm `4041:26313` (mislabelled?) and which desktop home frame is final | Home, EPG | ❓ open |
-| 10 | WONA CRM rail uids: the code looks up AfriPlay uids `afriplaytop10` and `onlyonafriplay` (`api/fetchMoviesApi.js`) | Home rails with real data | ❓ open |
-| 11 | Subscription packages/plan ids in `src/data/subscriptionsData.js` are AfriPlay's; MTN-specific billing logic is now inert | Subscriptions | ❓ open |
-| 12 | FAQ copy (`components/sections/landing/FaqSection.jsx`) is AfriPlay's text with the name swapped | Landing page | ❓ open |
-| 13 | Phone input still allows any 10 digits; Zimbabwe numbers (07…) not validated | Sign-in | ❓ open |
-| 14 | WonaPremiere, Trending Now, Wona Bundle and mobile Upcoming TV Shows have no known API/CRM source; they render from fixtures only (hidden in API mode except the bundle promo) | Mobile home with real data | ❓ open |
-| 15 | Desktop comp has no WonaPremiere / Trending / Bundle rails — confirm they are mobile-only | Desktop home | ❓ open |
-| 16 | Mobile search comps show a different bottom nav (Home, Movies, Live Tv, Search, avatar "More") from the mobile home comp (Home, Live Tv, Shorts, Search, More). Code keeps the home version everywhere — which is final? | Mobile nav | ❓ open |
-| 17 | Mobile search has no app bar in the comps (so no bell/avatar there) — confirm that's intended | Mobile search | ❓ open |
-| 18 | Featured live panel: viewer count, scoreboard (teams/score/minute) only exist in fixtures — is there an API/CRM source for them? | Live TV with real data | ❓ open |
-| 19 | Shorts player: comp is 500×881 but code keeps 420 wide (fits 1080p laptop viewports). Confirm 420 is acceptable | Shorts player | ❓ open |
-| 20 | Shorts spec frames say "gold" (likes, follow pill, share ring) — confirm WONA pink is intended | Shorts interactions | 🔶 assumed pink |
-| 21 | Share links use `wona.com/r/<slug>` per the spec — confirm the real domain and that deep links resolve | Sharing | ❓ open |
-| 22 | Profile → Support contacts: AfriPlay showed MTN Ghana's numbers/email/socials; now "To be confirmed" until WONA's are known | Profile | ❓ open (with PM) |
-| 23 | TVOD prices/currency (GH₵), MoMo providers (MTN/Vodafone/AirtelTigo) and +233 are Ghana values from the designs — WONA is Zimbabwe (Econet/EcoCash?) | TVOD checkout | ❓ open (PM) |
-| 24 | TVOD/rental and payment APIs (catalogue, entitlement, card + MoMo charge, receipts) | TVOD with real data | ❓ open (PM) |
-| 25 | Desktop has no WonaPremiere entry point in the desktop comps (banner/chip are mobile-only); `/premiere` works on desktop in a phone-width column | Desktop TVOD | ❓ open |
-| 26 | WonaPremiere routing: live/past → standard movie or series page by type, upcoming → countdown page, movies/series split by the list tabs — confirm with design | WonaPremiere | ❓ open (user deciding) |
-| 27 | WonaPremiere data source (premiere schedule, live status, reminders/notifications) | WonaPremiere with real data | ❓ open (PM) |
-| 28 | My Library data: rentals (expiry, progress), purchases, expired rentals — no API known; outside sample mode the library shows its empty state | My Library | ❓ open (PM) |
-| 29 | More → Downloads and Settings have no screens in the designs or AfriPlay web (preview notice for now); plan pill ("Wona Pro · Active") not wired to the subscriber's plan | More tab | ❓ open |
+Only unanswered items. Answered ones were removed on 2026-10-28; the decisions are in `log.md`.
+Each row says what is unknown, what it holds up, and who can answer.
+
+## For the PM — data, accounts, servers
+| # | What we don't know | What it holds up |
+|---|---|---|
+| 1 | A test WONA account (`ecozw` + 10-digit number) | Trying the real sign-in and real content |
+| 2 | Do the AfriPlay servers serve WONA (`econetzw`)? The settings call failed from our machine | Every page with real data |
+| 3 | Sign-up sends the name "Afri Play" for every new user (`api/auth.js`, AfriPlay leftover). What name should WONA send? | Correct names in the CRM |
+| 4 | Home rail order, and the WONA ids for the Top 10 / Only on Wona rails (code still uses AfriPlay's `afriplaytop10`, `onlyonafriplay`) | Home rails with real data |
+| 5 | Subscription packages are AfriPlay's, priced in GHS (`src/data/subscriptionsData.js`) | Subscriptions page |
+| 6 | Landing-page FAQ text is AfriPlay's with the name changed | Landing page |
+| 7 | WONA support contacts (phone, WhatsApp, email, socials) — "To be confirmed" for now | Profile → Support |
+| 8 | Real share-link domain (code uses `wona.com/r/…` from the spec) | Shorts sharing |
+| 9 | Where the data comes from for: WonaPremiere schedule and reminders, Trending Now, Wona Bundle, Upcoming TV Shows, live scores / viewer counts, My Library (rentals, purchases) — sample data only today | Those sections with real data |
+| 10 | TVOD and payment APIs (catalogue, card and Mobile Money charges, receipts) | Rent or buy with real money |
+| 11 | TVOD screens use Ghana values from the designs (GH₵, MTN/Vodafone/AirtelTigo, +233). WONA is Zimbabwe — EcoCash? USD/ZiG? | TVOD checkout |
+
+## For the designer
+| # | What we don't know | What it holds up |
+|---|---|---|
+| 12 | Which desktop home frame is final, and is `4041:26313` mislabelled? | Desktop home, TV guide |
+| 13 | WonaPremiere, Trending and Wona Bundle only appear in the mobile designs — mobile-only on purpose? Desktop has no way into WonaPremiere | Desktop home |
+| 14 | Shorts player is 420px wide in code (design 500) so it fits laptop screens — OK? | Shorts player |
+| 15 | More → Downloads and Settings have no screens (they show a "preview" message) | More tab |
+| 16 | The "Wona Pro · Active" label on the More page needs the user's real plan — confirm what it shows for no plan / expired | More tab |
