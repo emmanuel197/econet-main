@@ -13,17 +13,13 @@ const TABS = [
   { label: "Live Tv", Icon: IconLiveTv, to: "/live" },
   { label: "Shorts", Icon: IconShorts, to: "/shorts" },
   { label: "Search", Icon: IconSearch, to: "/search" },
-  // No dedicated "More" screen in the designs yet — it shows the homepage too, tagged with
-  // ?nav=more so it (not Home) highlights when the user arrived via this tab.
-  { label: "More", Icon: IconMore, to: "/home?nav=more" },
+  // "More" also covers the screens it opens (My Stuff, My Library)
+  { label: "More", Icon: IconMore, to: "/more", also: ["/my-stuff", "/library"] },
 ];
 
-const isHome = (pathname) => pathname === "/home" || pathname === "/";
-
-const isActive = (tab, pathname, isMoreView) => {
-  if (tab.label === "More") return isHome(pathname) && isMoreView;
-  if (tab.to === "/home") return isHome(pathname) && !isMoreView;
-  return pathname === tab.to || pathname.startsWith(`${tab.to}/`);
+const isActive = (tab, pathname) => {
+  if (tab.to === "/home") return pathname === "/home" || pathname === "/";
+  return [tab.to, ...(tab.also || [])].some((p) => pathname === p || pathname.startsWith(`${p}/`));
 };
 
 /**
@@ -34,8 +30,7 @@ const isActive = (tab, pathname, isMoreView) => {
  * Rendered only below md (MainLayout swaps it in for the desktop Navbar).
  */
 const MobileBottomNav = ({ className = "" }) => {
-  const { pathname, search } = useLocation();
-  const isMoreView = new URLSearchParams(search).get("nav") === "more";
+  const { pathname } = useLocation();
 
   return (
     <nav
@@ -46,7 +41,7 @@ const MobileBottomNav = ({ className = "" }) => {
       )}
     >
       {TABS.map((tab) => {
-        const active = isActive(tab, pathname, isMoreView);
+        const active = isActive(tab, pathname);
         return (
           <Link
             key={tab.label}

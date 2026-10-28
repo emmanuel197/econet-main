@@ -29,3 +29,5 @@
 | 25 | Desktop has no WonaPremiere entry point in the desktop comps (banner/chip are mobile-only); `/premiere` works on desktop in a phone-width column | Desktop TVOD | ❓ open |
 | 26 | WonaPremiere routing: live/past → standard movie or series page by type, upcoming → countdown page, movies/series split by the list tabs — confirm with design | WonaPremiere | ❓ open (user deciding) |
 | 27 | WonaPremiere data source (premiere schedule, live status, reminders/notifications) | WonaPremiere with real data | ❓ open (PM) |
+| 28 | My Library data: rentals (expiry, progress), purchases, expired rentals — no API known; outside sample mode the library shows its empty state | My Library | ❓ open (PM) |
+| 29 | More → Downloads and Settings have no screens in the designs or AfriPlay web (preview notice for now); plan pill ("Wona Pro · Active") not wired to the subscriber's plan | More tab | ❓ open |

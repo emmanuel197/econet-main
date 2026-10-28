@@ -48,6 +48,8 @@ export const useReminder = (title) =>
     on: (t) => `We'll remind you when ${t.title} premieres.`,
     off: (t) => `Reminder for ${t.title} removed.`,
   });
+// Premiere ids the user saved to My Stuff on this device (read by the My Stuff page)
+export const savedPremiereIds = () => [...readSet("wona:premiereMyStuff")];
 export const useMyStuff = (title) =>
   useSavedToggle("wona:premiereMyStuff", title, {
     on: (t) => `${t.title} added to My Stuff.`,

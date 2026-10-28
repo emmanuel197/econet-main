@@ -60,3 +60,12 @@ Spec annotation frames (behaviour notes): double-tap like `4041:11505`, follow c
 
 ## Not on this page `❓`
 Sign-in/OTP, landing (signed-out), movie/series details, watch/player page, My Stuff, profile, subscriptions/packages, notifications. Other canvases that may hold them: "web" `2599:2`, "WED DESIGNS" `2837:7000`, "TVOD Flow" `3912:255`, "WonaPremiere moblie deisgns" `3894:687`, "design component" `2001:2124`. Confirm with the designer which are final.
+
+## "More" tab (mobile SVG exports More1–More15, 2026-10-28)
+| Screen | Exports | Route |
+|---|---|---|
+| More (profile row, My Stuff / My Library tiles, ACCOUNT list, Sign Out, bottom nav) | More1–More5 | `/more` |
+| My Library (All/Rentals/Purchased, Active Rentals, Owned, Expired, New Release) | More6 + More7 | `/library` |
+| My Stuff (All/Movies/Tv Shows/Premieres, Sort by Date Added, three rows) | More8 + More9 (More10/11 duplicates) | `/my-stuff` (mobile) |
+| My Stuff empty | More12 + More13 | `/my-stuff` when nothing saved (`?empty` in sample mode) |
+| My Library empty | More14 + More15 | `/library` with no rentals/purchases (`?empty` in sample mode) |

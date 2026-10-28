@@ -102,3 +102,11 @@
 - Reminder set (comp Frame 1000007051(6)): the Remind Me button becomes pink at 48% with a white/24 border and navy text, reading "Reminder Set". The same look applies on premiere cards and list rows (`REMINDER_SET_CLASS` in `PremiereUi.jsx`).
 - Added (comp Frame 1000007051 (5)): the My Stuff button narrows to 92 and reads "✓ Added"; Remind Me takes the freed width. Live/past pages also say "Added".
 - My Stuff on premiere titles is remembered per device (`useMyStuff`, localStorage `wona:premiereMyStuff`) until there is a premiere/My Stuff API.
+
+## 2026-10-28 — "More" tab (fourth SVG batch, More1–More15)
+- Bottom nav "More" now opens `/more` (was the homepage with `?nav=more`); it stays highlighted on `/my-stuff` and `/library`.
+- `/more` (`pages/more/MorePage.jsx`): profile row → `/profile`; My Stuff tile (saved count) → `/my-stuff`; My Library tile (active rentals) → `/library`; Profile & Account → `/profile`; Notifications → `/notifications` (pink dot when inbox has unread); Help & Support → `/profile?tab=support` (ProfilePage now reads `?tab=`); Downloads / Settings → preview notice; Sign Out → `logout()`. Name from `getProfile` outside sample mode; plan pill sample-only.
+- `/my-stuff`: `MyStuffScreen` — mobile `pages/more/MobileMyStuffPage.jsx` (WONA design), desktop keeps the AfriPlay grid. Movies/shows from `fetchWatchlist` (sample titles in sample mode); premieres = ones saved on the device from premiere pages (`savedPremiereIds`). One filter → 3-up grid. Sort: Date Added / Title.
+- `/library` (`pages/more/MyLibraryPage.jsx`): sample rentals/purchases from `data/moreFixtures.js` (TVOD titles fill the comps' empty boxes; cards open `/tvod/:id`). No library API → empty state outside sample mode.
+- Shared pieces: `components/sections/more/MoreUi.jsx` (header, filter chips, sort menu, section row, poster tile, empty state). Images: `more-profile-avatar.webp`, `my-stuff-poster-*.webp`.
+- Add `?empty` to `/my-stuff` or `/library` to see the empty-state comps in sample mode.

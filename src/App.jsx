@@ -20,7 +20,9 @@ import SeriesDetailsPage from "./pages/SeriesDetailsPage";
 import WatchPage from "./pages/WatchPage";
 import TvGuidePage from "./pages/TvGuidePage";
 import ProfilePage from "./pages/ProfilePage";
-import MyStuffPage from "./pages/MyStuffPage";
+import MyStuffScreen from "./pages/MyStuffScreen";
+import MorePage from "./pages/more/MorePage";
+import MyLibraryPage from "./pages/more/MyLibraryPage";
 import MoviesPage from "./pages/MoviesPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import PremierePage from "./pages/premiere/PremierePage";
@@ -58,7 +60,6 @@ function App() {
           <Route path="/subscriptions" element={<ProtectedRoute><SubscriptionsPage /></ProtectedRoute>} />
           <Route path="/subscription-history" element={<ProtectedRoute><SubscriptionHistoryPage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-          <Route path="/my-stuff" element={<ProtectedRoute><MyStuffPage /></ProtectedRoute>} />
           <Route path="/notifications" element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
           <Route path="/movie/:id" element={<ProtectedRoute><MovieDetailsPage /></ProtectedRoute>} />
           <Route path="/series/:id" element={<ProtectedRoute><SeriesDetailsPage /></ProtectedRoute>} />
@@ -101,6 +102,15 @@ function App() {
         </Route>
         <Route element={<MainLayout showFooter={false} showNavbar={false} mobileChrome={false} />}>
           <Route path="/watch/:type/:id" element={<ProtectedRoute><WatchPage /></ProtectedRoute>} />
+        </Route>
+
+        {/* "More" tab (WONA comps More1–More15) — status bar only on mobile: the More page
+            starts with the profile row, My Stuff / My Library have back-button headers.
+            Bottom nav stays (More highlighted). Desktop /my-stuff keeps the AfriPlay grid. */}
+        <Route element={<MainLayout mobileTopBar="status" />}>
+          <Route path="/more" element={<ProtectedRoute><MorePage /></ProtectedRoute>} />
+          <Route path="/my-stuff" element={<ProtectedRoute><MyStuffScreen /></ProtectedRoute>} />
+          <Route path="/library" element={<ProtectedRoute><MyLibraryPage /></ProtectedRoute>} />
         </Route>
 
         {/* WonaPremiere — landing keeps the standard mobile app bar + bottom nav (as in its

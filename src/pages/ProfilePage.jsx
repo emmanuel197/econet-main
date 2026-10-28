@@ -253,7 +253,11 @@ const FaqsTab = () => {
 };
 
 function ProfilePage() {
-  const [tab, setTab] = useState("profile");
+  // ?tab=support etc. opens a tab directly (More → Help & Support)
+  const [tab, setTab] = useState(() => {
+    const t = new URLSearchParams(window.location.search).get("tab");
+    return TABS.some((x) => x.id === t) ? t : "profile";
+  });
 
   // Desktop: left "My Account" nav beside the tab content. Mobile (max-md,
   // legacy profile.scss <768 pattern): stack into a column with the nav as a
