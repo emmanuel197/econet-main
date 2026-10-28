@@ -9,7 +9,7 @@ Short record of what was done. Superseded steps were removed on 2026-10-28; git 
 ## 2026-10-27 — AfriPlay code, re-skinned as WONA
 - Deadline: switched to the AfriPlay code and changed operator, colours, logo and wording to WONA (`pages/project-structure.md`).
 - Matched to the WONA Figma, desktop and mobile: navbar, footer, mobile top bar and bottom nav, homepage, search, Live TV, Shorts.
-- Kept on purpose (differs from the comps): bell and avatar on mobile (they hold notifications and the account menu); Shorts player 420 wide (open question 14); "gold" in the Shorts spec done in WONA pink.
+- Kept on purpose (differs from the comps): bell and avatar on mobile (they hold notifications and the account menu); Shorts player 420 wide (open question 13); "gold" in the Shorts spec done in WONA pink.
 
 ## 2026-10-28 — Decisions: where there is no WONA design, follow AfriPlay
 - User's rule: undesigned screens keep AfriPlay's behaviour but look WONA. Data and API questions go to the PM.
