@@ -6,7 +6,7 @@ import { startCheckout } from "../../utils/tvodCheckout";
 import { m, PhoneColumn, BackButton, IconLock, IconCart, IconTimer, IconChevronRight } from "../../components/sections/tvod/TvodUi";
 
 /**
- * TvodPage (/premiere) — WONA "TVOD page" design (390×1069): hero with back button,
+ * TvodPage (/tvod) — WONA "TVOD page" design (390×1069): hero with back button,
  * "PREMIUM / Rent or Buy", All · Movies · Tv Shows chips, the Featured title with
  * Buy/Rent, then Movies and Tv Shows rails of lockable posters with Buy/Rent.
  * Tapping a poster opens the title page; Buy/Rent open it with the access sheet.
@@ -18,7 +18,7 @@ const BuyRent = ({ title, size = "sm" }) => {
   const open = (optionId) => (e) => {
     e.stopPropagation();
     startCheckout(title.id, optionId);
-    navigate(`/premiere/${title.id}?access=${optionId}`);
+    navigate(`/tvod/${title.id}?access=${optionId}`);
   };
   const big = size === "lg";
   const h = big ? 36 : 26;
@@ -41,8 +41,8 @@ const TvodPosterCard = ({ title }) => {
     <div
       role="button"
       tabIndex={0}
-      onClick={() => navigate(`/premiere/${title.id}`)}
-      onKeyDown={(e) => e.key === "Enter" && navigate(`/premiere/${title.id}`)}
+      onClick={() => navigate(`/tvod/${title.id}`)}
+      onKeyDown={(e) => e.key === "Enter" && navigate(`/tvod/${title.id}`)}
       className="relative shrink-0 cursor-pointer overflow-clip rounded-[8px] border-[0.8px] border-gray-1/40"
       style={{ width: m(150), height: m(200) }}
     >
@@ -117,7 +117,7 @@ const TvodPage = () => {
         <div
           role="button"
           tabIndex={0}
-          onClick={() => navigate(`/premiere/${featuredTitle.id}`)}
+          onClick={() => navigate(`/tvod/${featuredTitle.id}`)}
           className="relative mx-auto cursor-pointer overflow-clip rounded-[16px]"
           style={{ width: m(348), height: m(237), marginTop: m(16) }}
         >

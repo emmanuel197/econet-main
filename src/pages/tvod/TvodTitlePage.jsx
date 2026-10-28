@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useGoBack from "../../utils/useGoBack";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import classNames from "../../utils/classNames";
 import { getTvodTitle, formatPrice } from "../../data/tvodFixtures";
@@ -9,7 +10,7 @@ import logo from "../../../assets/logos/wona-logo.svg";
 import { m, PhoneColumn, BackButton, PrimaryButton, SecondaryButton, BarHeading, IconTimer, IconCart, IconPlay, IconShare, IconInfo } from "../../components/sections/tvod/TvodUi";
 
 /**
- * TvodTitlePage (/premiere/:id) — WONA "standard movie" design: trailer still with back +
+ * TvodTitlePage (/tvod/:id) — WONA "standard movie" design: trailer still with back +
  * play (390×254), logo/TVOD row, title + meta + quality tags + genre pills, the pink
  * "Not in your plan" notice, Rent / Buy, Synopsis, credits, Lead Casts, and a
  * More Like This / Trailer tab. Rent and Buy open the "Choose your access" sheet;
@@ -18,6 +19,7 @@ import { m, PhoneColumn, BackButton, PrimaryButton, SecondaryButton, BarHeading,
 const TvodTitlePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const goBack = useGoBack();
   const [searchParams, setSearchParams] = useSearchParams();
   const title = getTvodTitle(id);
   const [tab, setTab] = useState("more");
@@ -32,16 +34,16 @@ const TvodTitlePage = () => {
     return (
       <PhoneColumn className="flex min-h-[60vh] flex-col items-center justify-center gap-4">
         <p style={{ fontSize: m(18) }}>We couldn&apos;t find this title.</p>
-        <PrimaryButton style={{ width: m(200) }} onClick={() => navigate("/premiere")}>Back to Rent or Buy</PrimaryButton>
+        <PrimaryButton style={{ width: m(200) }} onClick={() => navigate("/tvod")}>Back to Rent or Buy</PrimaryButton>
       </PhoneColumn>
     );
 
-  const openSheet = (optionId) => setSearchParams({ access: optionId }, { replace: true });
-  const closeSheet = () => setSearchParams({}, { replace: true });
+  const openSheet = (optionId) => setSearchParams({ access: optionId });
+  const closeSheet = () => goBack(`/tvod/${title.id}`);
   const continueToCheckout = (option) => {
     startCheckout(title.id, option.id);
     updateCheckout({ titleId: title.id, optionId: option.id });
-    navigate(`/premiere/${title.id}/checkout`);
+    navigate(`/tvod/${title.id}/checkout`);
   };
 
   return (

@@ -23,6 +23,9 @@ import ProfilePage from "./pages/ProfilePage";
 import MyStuffPage from "./pages/MyStuffPage";
 import MoviesPage from "./pages/MoviesPage";
 import NotificationsPage from "./pages/NotificationsPage";
+import PremierePage from "./pages/premiere/PremierePage";
+import PremiereListPage from "./pages/premiere/PremiereListPage";
+import PremiereTitlePage from "./pages/premiere/PremiereTitlePage";
 import TvodPage from "./pages/tvod/TvodPage";
 import TvodTitlePage from "./pages/tvod/TvodTitlePage";
 import OrderSummaryPage from "./pages/tvod/OrderSummaryPage";
@@ -100,16 +103,26 @@ function App() {
           <Route path="/watch/:type/:id" element={<ProtectedRoute><WatchPage /></ProtectedRoute>} />
         </Route>
 
-        {/* WonaPremiere / TVOD (rent or buy) — WONA mobile designs; each screen has its own
+        {/* WonaPremiere — landing keeps the standard mobile app bar + bottom nav (as in its
+            comp); the list and title pages have their own back-button headers. */}
+        <Route element={<MainLayout showFooter={false} />}>
+          <Route path="/premiere" element={<ProtectedRoute><PremierePage /></ProtectedRoute>} />
+        </Route>
+        <Route element={<MainLayout showFooter={false} mobileChrome={false} />}>
+          <Route path="/premiere/list/:section" element={<ProtectedRoute><PremiereListPage /></ProtectedRoute>} />
+          <Route path="/premiere/title/:id" element={<ProtectedRoute><PremiereTitlePage /></ProtectedRoute>} />
+        </Route>
+
+        {/* TVOD (rent or buy) — WONA mobile designs; each screen has its own
             header, so no mobile chrome; on desktop they sit in a phone-width column. */}
         <Route element={<MainLayout showFooter={false} mobileChrome={false} />}>
-          <Route path="/premiere" element={<ProtectedRoute><TvodPage /></ProtectedRoute>} />
-          <Route path="/premiere/:id" element={<ProtectedRoute><TvodTitlePage /></ProtectedRoute>} />
-          <Route path="/premiere/:id/checkout" element={<ProtectedRoute><OrderSummaryPage /></ProtectedRoute>} />
-          <Route path="/premiere/:id/pay/card" element={<ProtectedRoute><PayWithCardPage /></ProtectedRoute>} />
-          <Route path="/premiere/:id/pay/momo" element={<ProtectedRoute><MobileMoneyPage /></ProtectedRoute>} />
-          <Route path="/premiere/:id/pay/momo/processing" element={<ProtectedRoute><MomoProcessingPage /></ProtectedRoute>} />
-          <Route path="/premiere/:id/result/:status" element={<ProtectedRoute><PaymentResultPage /></ProtectedRoute>} />
+          <Route path="/tvod" element={<ProtectedRoute><TvodPage /></ProtectedRoute>} />
+          <Route path="/tvod/:id" element={<ProtectedRoute><TvodTitlePage /></ProtectedRoute>} />
+          <Route path="/tvod/:id/checkout" element={<ProtectedRoute><OrderSummaryPage /></ProtectedRoute>} />
+          <Route path="/tvod/:id/pay/card" element={<ProtectedRoute><PayWithCardPage /></ProtectedRoute>} />
+          <Route path="/tvod/:id/pay/momo" element={<ProtectedRoute><MobileMoneyPage /></ProtectedRoute>} />
+          <Route path="/tvod/:id/pay/momo/processing" element={<ProtectedRoute><MomoProcessingPage /></ProtectedRoute>} />
+          <Route path="/tvod/:id/result/:status" element={<ProtectedRoute><PaymentResultPage /></ProtectedRoute>} />
         </Route>
       </Routes>
     </BrowserRouter>

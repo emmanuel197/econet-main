@@ -70,11 +70,6 @@ import only02 from "../../assets/images/home-only-on-afriplay-card-02-the-chi.we
 import only03 from "../../assets/images/home-only-on-afriplay-card-03-wure.webp";
 
 // WONA mobile-only sections
-import premiere01 from "../../assets/images/home-mobile-wona-premiere-card-01.webp";
-import premiere02 from "../../assets/images/home-mobile-wona-premiere-card-02.webp";
-import premiere03 from "../../assets/images/home-mobile-wona-premiere-card-03.webp";
-import premiere04 from "../../assets/images/home-mobile-wona-premiere-card-04.webp";
-import premiere05 from "../../assets/images/home-mobile-wona-premiere-card-05.webp";
 import bundle01 from "../../assets/images/home-mobile-wona-bundle-promo-card-01.webp";
 import upcomingWide01 from "../../assets/images/home-mobile-upcoming-tv-shows-card-01.webp";
 import upcomingWide02 from "../../assets/images/home-mobile-upcoming-tv-shows-card-02.webp";
@@ -225,16 +220,6 @@ export const adBanner = {
 };
 
 // ── Mobile-only sections from the WONA mobile home comp (4041:1205) ──
-// WonaPremiere: live premieres ("Watch Now") and upcoming ones with a date ("Remind Me").
-// No API source is known yet — see wiki open questions.
-export const wonaPremiere = [
-  { id: "wp1", image: premiere01, live: true },
-  { id: "wp2", image: premiere02, live: true },
-  { id: "wp3", image: premiere03, date: "June 30" },
-  { id: "wp4", image: premiere04, date: "July 20", title: "180" },
-  { id: "wp5", image: premiere05, date: "Aug 30", title: "Michael" },
-];
-
 // Trending Now reuses the Top 10 posters without rank numerals (as in the comp).
 export const trendingNow = top10Movies.map(({ rank, ...m }) => ({ ...m, id: `tr-${m.id}` })); // eslint-disable-line no-unused-vars
 
@@ -264,7 +249,6 @@ export const homeFixtures = {
   onlyOnAfriplay,
   upcomingTvShows,
   adBanner,
-  wonaPremiere,
   trendingNow,
   wonaBundles,
   upcomingTvShowsMobile,

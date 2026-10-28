@@ -6,7 +6,7 @@ import useTvodOrder from "./useTvodOrder";
 import { m, PhoneColumn, StatusBadge, InfoTable, PrimaryButton, SecondaryButton } from "../../components/sections/tvod/TvodUi";
 
 /**
- * PaymentResultPage (/premiere/:id/result/:status) — the three WONA outcome screens:
+ * PaymentResultPage (/tvod/:id/result/:status) — the three WONA outcome screens:
  *  confirmed     "Rental Confirmed!" — summary, Download Receipt, Watch Now, Go to My Library
  *  failed        "Payment Failed" — reason, summary, Try Another Method, Back to Title
  *  not-approved  "Request Not Approved" — what happened, Try Again, Pay with Card instead
@@ -24,7 +24,7 @@ const PaymentResultPage = () => {
   const { status } = useParams();
   const navigate = useNavigate();
   const order = useTvodOrder();
-  if (!order.title) return <Navigate to="/premiere" replace />;
+  if (!order.title) return <Navigate to="/tvod" replace />;
   const { title, option, isBuy, packageLabel, amount, checkout } = order;
   const noun = isBuy ? "purchase" : "rental";
 
@@ -37,7 +37,7 @@ const PaymentResultPage = () => {
     failed: { tone: "error", heading: "Payment Failed", sub: `Your ${noun} was not processed. You have not been charged.` },
     "not-approved": { tone: "error", heading: "Request Not Approved", sub: "The payment request timed out or was declined. You have not been charged." },
   }[status];
-  if (!content) return <Navigate to={`/premiere/${title.id}`} replace />;
+  if (!content) return <Navigate to={`/tvod/${title.id}`} replace />;
 
   return (
     <PhoneColumn className="flex min-h-screen flex-col" style={{ padding: `${m(60)} ${m(21)} ${m(30)}` }}>
@@ -90,14 +90,14 @@ const PaymentResultPage = () => {
         )}
         {status === "failed" && (
           <>
-            <PrimaryButton onClick={() => navigate(`/premiere/${title.id}/checkout`, { replace: true })}>Try Another Method</PrimaryButton>
-            <SecondaryButton onClick={() => navigate(`/premiere/${title.id}`, { replace: true })}>Back to Title</SecondaryButton>
+            <PrimaryButton onClick={() => navigate(`/tvod/${title.id}/checkout`, { replace: true })}>Try Another Method</PrimaryButton>
+            <SecondaryButton onClick={() => navigate(`/tvod/${title.id}`, { replace: true })}>Back to Title</SecondaryButton>
           </>
         )}
         {status === "not-approved" && (
           <>
-            <PrimaryButton style={{ height: m(43) }} onClick={() => navigate(`/premiere/${title.id}/pay/momo`, { replace: true })}>Try Again</PrimaryButton>
-            <SecondaryButton onClick={() => navigate(`/premiere/${title.id}/pay/card`, { replace: true })}>Pay with Card instead</SecondaryButton>
+            <PrimaryButton style={{ height: m(43) }} onClick={() => navigate(`/tvod/${title.id}/pay/momo`, { replace: true })}>Try Again</PrimaryButton>
+            <SecondaryButton onClick={() => navigate(`/tvod/${title.id}/pay/card`, { replace: true })}>Pay with Card instead</SecondaryButton>
           </>
         )}
       </div>

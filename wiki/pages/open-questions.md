@@ -27,3 +27,5 @@
 | 23 | TVOD prices/currency (GH₵), MoMo providers (MTN/Vodafone/AirtelTigo) and +233 are Ghana values from the designs — WONA is Zimbabwe (Econet/EcoCash?) | TVOD checkout | ❓ open (PM) |
 | 24 | TVOD/rental and payment APIs (catalogue, entitlement, card + MoMo charge, receipts) | TVOD with real data | ❓ open (PM) |
 | 25 | Desktop has no WonaPremiere entry point in the desktop comps (banner/chip are mobile-only); `/premiere` works on desktop in a phone-width column | Desktop TVOD | ❓ open |
+| 26 | WonaPremiere routing: live/past → standard movie or series page by type, upcoming → countdown page, movies/series split by the list tabs — confirm with design | WonaPremiere | ❓ open (user deciding) |
+| 27 | WonaPremiere data source (premiere schedule, live status, reminders/notifications) | WonaPremiere with real data | ❓ open (PM) |

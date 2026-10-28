@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useGoBack from "../../utils/useGoBack";
 import { Navigate, useNavigate } from "react-router-dom";
 import { PREVIEW_DECLINED_CARD_SUFFIX } from "../../data/tvodFixtures";
 import { updateCheckout } from "../../utils/tvodCheckout";
@@ -7,7 +8,7 @@ import useTvodOrder from "./useTvodOrder";
 import { m, CheckoutScreen, AmountDueCard, Field, Toggle, TermsLine, PrimaryButton, SecureNote, IconCard } from "../../components/sections/tvod/TvodUi";
 
 /**
- * PayWithCardPage (/premiere/:id/pay/card) — WONA "Pay with Card": Amount due, Card
+ * PayWithCardPage (/tvod/:id/pay/card) — WONA "Pay with Card": Amount due, Card
  * Number, Expiry / CVV, Cardholder Name, "Save card", terms, Confirm Purchase.
  * Preview mode (no payment API): a card ending 0002 is declined, anything else succeeds.
  */
@@ -20,13 +21,14 @@ const formatExpiry = (v) => {
 
 const PayWithCardPage = () => {
   const navigate = useNavigate();
+  const goBack = useGoBack();
   const order = useTvodOrder();
   const [card, setCard] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
   const [name, setName] = useState("");
   const [save, setSave] = useState(true);
-  if (!order.title) return <Navigate to="/premiere" replace />;
+  if (!order.title) return <Navigate to="/tvod" replace />;
   const { title, amount, amountDetail } = order;
 
   const valid = digits(card).length === 16 && digits(expiry).length === 4 && digits(cvv).length >= 3 && name.trim().length > 1;
@@ -36,13 +38,13 @@ const PayWithCardPage = () => {
     const number = digits(card);
     const declined = number.endsWith(PREVIEW_DECLINED_CARD_SUFFIX);
     updateCheckout({ paidVia: `Card ****${number.slice(-4)}`, failureReason: declined ? `Your card ending ${number.slice(-4)} was declined by your bank. Try another card or pay with Mobile Money.` : null });
-    navigate(`/premiere/${title.id}/result/${declined ? "failed" : "confirmed"}`, { replace: true });
+    navigate(`/tvod/${title.id}/result/${declined ? "failed" : "confirmed"}`, { replace: true });
   };
 
   return (
     <CheckoutScreen
       title="Pay with Card"
-      onBack={() => navigate(`/premiere/${title.id}/checkout`)}
+      onBack={() => goBack(`/tvod/${title.id}/checkout`)}
       footer={
         <>
           <TermsLine action="pay" />

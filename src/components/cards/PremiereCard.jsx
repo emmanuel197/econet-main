@@ -1,17 +1,12 @@
 import React from "react";
-import classNames from "../../utils/classNames";
+import { useNavigate } from "react-router-dom";
+import { m, IconPlay } from "../sections/tvod/TvodUi";
+import { StatusPill, useReminder } from "../sections/premiere/PremiereUi";
 
-// WonaPremiere card — WONA Figma mobile home, section 4041:1276 (cards 4041:1286…1330).
-// 118×182 poster with a top-right badge (red "Live" pill, or a pink date pill for an
-// upcoming premiere) and a frosted bottom button: "Watch Now" when live, "Remind Me"
-// when upcoming. Mobile-only, so every size is on the 390 basis (--mvw).
-const m = (px) => `calc(${px}/390*var(--mvw))`;
-
-const IconPlay = (props) => (
-  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" {...props}>
-    <path d="M3 1.8v8.4c0 .5.5.8.9.5l6.4-4.2c.4-.2.4-.8 0-1L3.9 1.3c-.4-.3-.9 0-.9.5z" />
-  </svg>
-);
+// WonaPremiere card — WONA comps (home rail 4041:1276 / "OnTopOfBecauseYouWatched", landing
+// rails): 118×182 poster, top-right status pill (red LIVE, pink date for upcoming, grey date
+// for past), title and a frosted button — "Watch Now" for live/past, "Remind Me" for
+// upcoming. The card opens the title page; the button acts in place.
 
 // lucide:bell
 const IconBell = (props) => (
@@ -21,55 +16,41 @@ const IconBell = (props) => (
   </svg>
 );
 
-const PremiereCard = ({ image, title, live = false, date, onClick, className = "" }) => (
-  <div
-    onClick={onClick}
-    className={classNames(
-      "relative shrink-0 cursor-pointer overflow-clip rounded-[5px] border border-[#e1e7f8]",
-      className
-    )}
-    style={{ width: m(118), height: m(182) }}
-  >
-    <img src={image} alt={title || ""} className="absolute inset-0 size-full object-cover" />
-    <div className="absolute inset-0 bg-black/20" />
+const PremiereCard = ({ title, className = "" }) => {
+  const navigate = useNavigate();
+  const [reminded, toggleReminder] = useReminder(title);
+  const open = () => navigate(`/premiere/title/${title.id}`);
+  const upcoming = title.status === "upcoming";
 
-    {live ? (
-      <span
-        className="absolute flex items-center rounded-lg bg-[#b42318] font-primary font-semibold text-gray-1"
-        style={{ top: m(7), right: m(6), gap: m(4), padding: `${m(2)} ${m(10)}`, fontSize: m(8), lineHeight: m(11) }}
-      >
-        <span className="rounded-full bg-gray-1" style={{ width: m(3), height: m(3) }} />
-        Live
-      </span>
-    ) : (
-      date && (
-        <span
-          className="absolute rounded-full bg-brand font-primary font-semibold uppercase text-gray-10"
-          style={{ top: m(5), right: m(6), padding: `${m(3)} ${m(6)}`, fontSize: m(9), lineHeight: m(11) }}
-        >
-          {date}
-        </span>
-      )
-    )}
-
+  return (
     <div
-      className="absolute inset-x-0 bottom-0 flex flex-col items-center bg-gradient-to-b from-transparent to-black/85"
-      style={{ gap: m(5), padding: `0 ${m(8)} ${m(8)}` }}
+      role="button"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className={`relative shrink-0 cursor-pointer overflow-clip rounded-[5px] ${className}`}
+      style={{ width: m(118), height: m(182) }}
     >
-      {title && (
+      <img src={title.poster} alt={title.title} className="absolute inset-0 size-full object-cover" />
+      <div className="absolute inset-0 bg-black/20" />
+      <StatusPill title={title} className="absolute" style={{ top: m(5), right: m(8) }} />
+
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center bg-gradient-to-b from-transparent to-black/70" style={{ gap: m(5), padding: `${m(20)} ${m(8)} ${m(8)}` }}>
         <span className="w-full truncate text-center font-primary font-semibold text-gray-1" style={{ fontSize: m(11), lineHeight: m(13) }}>
-          {title}
+          {title.title}
         </span>
-      )}
-      <span
-        className="flex w-full items-center justify-center rounded-full bg-gray-1/30 font-primary font-medium text-gray-1 backdrop-blur-md"
-        style={{ gap: m(4), padding: `${m(7)} 0`, fontSize: m(10), lineHeight: m(12) }}
-      >
-        {live ? <IconPlay style={{ width: m(12), height: m(12) }} /> : <IconBell style={{ width: m(12), height: m(12) }} />}
-        {live ? "Watch Now" : "Remind Me"}
-      </span>
+        <button
+          type="button"
+          onClick={upcoming ? toggleReminder : (e) => (e.stopPropagation(), open())}
+          className={`flex w-full cursor-pointer items-center justify-center rounded-full font-primary font-medium text-gray-1 backdrop-blur-md ${upcoming && reminded ? "bg-brand/80" : "bg-gray-1/30"}`}
+          style={{ gap: m(4), height: m(26), fontSize: m(10), lineHeight: m(12) }}
+        >
+          {upcoming ? <IconBell style={{ width: m(12), height: m(12) }} /> : <IconPlay size={12} />}
+          {upcoming ? (reminded ? "Reminder Set" : "Remind Me") : "Watch Now"}
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PremiereCard;

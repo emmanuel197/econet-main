@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useGoBack from "../../utils/useGoBack";
 import { Navigate, useNavigate } from "react-router-dom";
 import { momoCountry, momoProviders, PREVIEW_MOMO_NOT_APPROVED_SUFFIX, PREVIEW_MOMO_INSUFFICIENT_SUFFIX } from "../../data/tvodFixtures";
 import { updateCheckout } from "../../utils/tvodCheckout";
@@ -7,7 +8,7 @@ import useTvodOrder from "./useTvodOrder";
 import { m, CheckoutScreen, AmountDueCard, SecondaryButton, SecureNote, IconPhone } from "../../components/sections/tvod/TvodUi";
 
 /**
- * MomoProcessingPage (/premiere/:id/pay/momo/processing) — WONA "Processing": the
+ * MomoProcessingPage (/tvod/:id/pay/momo/processing) — WONA "Processing": the
  * request was sent, "Check your phone", waiting state and a 2-minute expiry countdown.
  * Preview mode (no payment API): resolves after a few seconds — numbers ending 0000 are
  * not approved, 1111 fail for insufficient balance, anything else is confirmed. If the
@@ -18,6 +19,7 @@ const PREVIEW_RESOLVE_MS = 6000;
 
 const MomoProcessingPage = () => {
   const navigate = useNavigate();
+  const goBack = useGoBack();
   const order = useTvodOrder();
   const [secondsLeft, setSecondsLeft] = useState(EXPIRY_SECONDS);
   const [attempt, setAttempt] = useState(0);
@@ -36,29 +38,29 @@ const MomoProcessingPage = () => {
     if (!order.title) return undefined;
     const t = setTimeout(() => {
       if (number.endsWith(PREVIEW_MOMO_NOT_APPROVED_SUFFIX)) {
-        navigate(`/premiere/${order.title.id}/result/not-approved`, { replace: true });
+        navigate(`/tvod/${order.title.id}/result/not-approved`, { replace: true });
       } else if (number.endsWith(PREVIEW_MOMO_INSUFFICIENT_SUFFIX)) {
         updateCheckout({ failureReason: `Insufficient balance on ${provider?.short || "MoMo"} ending ${number.slice(-4)}. Top up your wallet and try again, or choose a different payment method.` });
-        navigate(`/premiere/${order.title.id}/result/failed`, { replace: true });
+        navigate(`/tvod/${order.title.id}/result/failed`, { replace: true });
       } else {
-        navigate(`/premiere/${order.title.id}/result/confirmed`, { replace: true });
+        navigate(`/tvod/${order.title.id}/result/confirmed`, { replace: true });
       }
     }, PREVIEW_RESOLVE_MS);
     return () => clearTimeout(t);
   }, [attempt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (secondsLeft === 0 && order.title) navigate(`/premiere/${order.title.id}/result/not-approved`, { replace: true });
+    if (secondsLeft === 0 && order.title) navigate(`/tvod/${order.title.id}/result/not-approved`, { replace: true });
   }, [secondsLeft]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!order.title || !number) return <Navigate to="/premiere" replace />;
+  if (!order.title || !number) return <Navigate to="/tvod" replace />;
   const masked = `${momoCountry.dialCode} ** *** **${number.slice(-2)}`;
   const mmss = `${String(Math.floor(secondsLeft / 60)).padStart(2, "0")}:${String(secondsLeft % 60).padStart(2, "0")}`;
 
   return (
     <CheckoutScreen
       title="Mobile Money"
-      onBack={() => navigate(`/premiere/${order.title.id}/pay/momo`)}
+      onBack={() => goBack(`/tvod/${order.title.id}/pay/momo`)}
       footer={
         <>
           <SecondaryButton

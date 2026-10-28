@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import useGoBack from "../../../utils/useGoBack";
 import classNames from "../../../utils/classNames";
 
 // Shared pieces for the TVOD screens (WONA designs, 390-wide mobile comps). Sizes use
@@ -32,12 +32,12 @@ export const IconX = (p) => <Svg {...p}><path d="M6 6l12 12M18 6L6 18" /></Svg>;
 // 32px circular back button (black/40, 0.8px white border) — TVOD page & title page.
 // Checkout headers use the 26px variant.
 export const BackButton = ({ size = 32, onClick, className = "", style }) => {
-  const navigate = useNavigate();
+  const goBack = useGoBack();
   return (
     <button
       type="button"
       aria-label="Back"
-      onClick={onClick ?? (() => navigate(-1))}
+      onClick={onClick ?? (() => goBack())}
       className={classNames("flex shrink-0 cursor-pointer items-center justify-center rounded-full border-[0.8px] border-gray-1/80 bg-black/40 text-gray-1", className)}
       style={{ width: m(size), height: m(size), ...style }}
     >

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { openAfrishortsPlayer } from "../api/shorts";
 import { useSelector } from "react-redux";
 import classNames from "../utils/classNames";
@@ -22,6 +22,7 @@ import PageSkeleton from "../components/shared/PageSkeleton";
 import { fetchHomeContent, fetchTrailer } from "../api/fetchMoviesApi";
 import { updateWatchlist } from "../api/details";
 import { homeFixtures } from "../data/homeFixtures";
+import { homePremiereRail } from "../data/premiereFixtures";
 import { goToDetails } from "../utils/contentNavigation";
 import useIsMobile from "../utils/useIsMobile";
 import { showPreviewNotice } from "../utils/toast";
@@ -75,7 +76,8 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
   // (streaming-app pattern) — hero pool + poster rails narrow to the content
   // type; desktop always renders "All" (the chips only exist below md).
   const isMobile = useIsMobile();
-  const [mobileFilter, setMobileFilter] = useState("All");
+  const location = useLocation();
+  const [mobileFilter, setMobileFilter] = useState(location.state?.chip || "All");
   const filter = isMobile ? mobileFilter : "All";
   const typeOf = (m) => `${m?.contentType || m?.raw?.type || m?.raw?.vod_type || ""}`.toLowerCase();
   const matchesFilter = (m) => {
@@ -288,17 +290,29 @@ const HomePage = React.forwardRef(({ className, ...props }, ref) => {
         />
         )}
 
-        {/* WonaPremiere (mobile comp only): live premieres + upcoming ones with a date.
-            Fixture-only until an API source is known. */}
+        {/* WonaPremiere (mobile comp "OnTopOfBecauseYouWatched"): a #1B2134 band with live
+            premieres + the next upcoming ones, and "See all premieres" → the WonaPremiere
+            page. Sample data until a premiere API is known. */}
         {isMobile && !filterActive && !apiHome && (
-          <ContentRail
-            title="WonaPremiere"
-            titleIcon={<IconStar className="size-[calc(16/390*var(--mvw))] text-brand" />}
-            mobileTitleClassName="max-md:text-[calc(16/390*var(--mvw))] max-md:font-semibold max-md:text-brand"
-            items={homeFixtures.wonaPremiere}
-            gap={23}
-            renderItem={(p) => <PremiereCard image={p.image} title={p.title} live={p.live} date={p.date} />}
-          />
+          <div className="-ml-[calc(53/1728*var(--vw))] flex flex-col items-center bg-[#1b2134] pb-[calc(28/390*var(--mvw))] pl-[calc(53/1728*var(--vw))] pt-[calc(28/390*var(--mvw))]">
+            <ContentRail
+              className="w-full"
+              title="WonaPremiere"
+              titleIcon={<IconStar className="size-[calc(16/390*var(--mvw))] text-brand" />}
+              mobileTitleClassName="max-md:text-[calc(16/390*var(--mvw))] max-md:font-semibold max-md:text-brand"
+              items={homePremiereRail()}
+              gap={18}
+              onArrowClick={() => navigate("/premiere")}
+              renderItem={(p) => <PremiereCard title={p} />}
+            />
+            <button
+              type="button"
+              onClick={() => navigate("/premiere")}
+              className="mt-[calc(18/390*var(--mvw))] flex h-[calc(36/390*var(--mvw))] cursor-pointer items-center gap-[calc(8/390*var(--mvw))] rounded-full border border-gray-1/80 bg-brand px-[calc(14/390*var(--mvw))] font-primary text-[calc(11/390*var(--mvw))] font-semibold tracking-[-0.408px] text-gray-1"
+            >
+              See all premieres <span aria-hidden="true">→</span>
+            </button>
+          </div>
         )}
 
         {/* CRM-configured dashboard rails (API mode) — otherwise the named fixture

@@ -38,7 +38,7 @@ const TvodBanner = () => {
         <p className="font-primary text-gray-5" style={{ marginTop: m(6), fontSize: m(13) }}>{tvodBanner.subtitle}</p>
         <button
           type="button"
-          onClick={() => navigate("/premiere")}
+          onClick={() => navigate("/tvod")}
           className="flex cursor-pointer items-center justify-center rounded-full border border-gray-1/80 bg-brand font-primary font-semibold tracking-[-0.408px] text-gray-1"
           style={{ marginTop: m(17), width: m(132), height: m(36), gap: m(8), fontSize: m(11) }}
         >

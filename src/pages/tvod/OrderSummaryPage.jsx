@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useGoBack from "../../utils/useGoBack";
 import { Navigate, useNavigate } from "react-router-dom";
 import classNames from "../../utils/classNames";
 import { updateCheckout, startDeadline } from "../../utils/tvodCheckout";
@@ -6,7 +7,7 @@ import useTvodOrder from "./useTvodOrder";
 import { m, CheckoutScreen, TitleSummary, InfoTable, BarHeading, RadioDot, PrimaryButton, SecureNote, IconPhone, IconCard } from "../../components/sections/tvod/TvodUi";
 
 /**
- * OrderSummaryPage (/premiere/:id/checkout) — WONA "Order Summary": title + package tag,
+ * OrderSummaryPage (/tvod/:id/checkout) — WONA "Order Summary": title + package tag,
  * the package table (Package, Quality, Start/Watch window, Expiry, Total) and the
  * Payment Method choice (Mobile Money / Credit-Debit Card). Continue → that payment screen.
  */
@@ -17,9 +18,10 @@ const METHODS = [
 
 const OrderSummaryPage = () => {
   const navigate = useNavigate();
+  const goBack = useGoBack();
   const order = useTvodOrder();
   const [method, setMethod] = useState(order.checkout?.method || "card");
-  if (!order.title) return <Navigate to="/premiere" replace />;
+  if (!order.title) return <Navigate to="/tvod" replace />;
   const { title, option, isBuy, packageLabel, tag, amount } = order;
 
   const rows = [
@@ -36,13 +38,13 @@ const OrderSummaryPage = () => {
 
   const next = () => {
     updateCheckout({ method });
-    navigate(`/premiere/${title.id}/pay/${method}`);
+    navigate(`/tvod/${title.id}/pay/${method}`);
   };
 
   return (
     <CheckoutScreen
       title="Order Summary"
-      onBack={() => navigate(`/premiere/${title.id}?access=${option.id}`)}
+      onBack={() => goBack(`/tvod/${title.id}`)}
       footer={
         <>
           <PrimaryButton onClick={next}>Continue</PrimaryButton>

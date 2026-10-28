@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useGoBack from "../../utils/useGoBack";
 import { Navigate, useNavigate } from "react-router-dom";
 import classNames from "../../utils/classNames";
 import { momoProviders, momoCountry } from "../../data/tvodFixtures";
@@ -7,7 +8,7 @@ import useTvodOrder from "./useTvodOrder";
 import { m, CheckoutScreen, AmountDueCard, Field, Toggle, TermsLine, PrimaryButton, SecureNote, IconPhone, IconChevronDown } from "../../components/sections/tvod/TvodUi";
 
 /**
- * MobileMoneyPage (/premiere/:id/pay/momo) — WONA "Mobile Money": Amount due, service
+ * MobileMoneyPage (/tvod/:id/pay/momo) — WONA "Mobile Money": Amount due, service
  * provider picker, Mobile Money Number (+233), "Save this number", HOW IT WORKS, and
  * Send Payment Request (disabled until a provider and a 9-digit number are set).
  * The comp labels the provider field "Card Number" (copied from the card screen); it
@@ -24,26 +25,27 @@ const ProviderBadge = ({ provider, size = 18 }) =>
 
 const MobileMoneyPage = () => {
   const navigate = useNavigate();
+  const goBack = useGoBack();
   const order = useTvodOrder();
   const saved = getCheckout();
   const [providerId, setProviderId] = useState(saved.momoProvider || null);
   const [number, setNumber] = useState(saved.momoNumber || "");
   const [open, setOpen] = useState(false);
   const [save, setSave] = useState(true);
-  if (!order.title) return <Navigate to="/premiere" replace />;
+  if (!order.title) return <Navigate to="/tvod" replace />;
   const { title, amount, amountDetail } = order;
   const provider = momoProviders.find((p) => p.id === providerId);
   const ready = Boolean(provider) && number.length === 9;
 
   const send = () => {
     updateCheckout({ momoProvider: provider.id, momoNumber: number, paidVia: `${provider.short} ***${number.slice(-4)}` });
-    navigate(`/premiere/${title.id}/pay/momo/processing`);
+    navigate(`/tvod/${title.id}/pay/momo/processing`);
   };
 
   return (
     <CheckoutScreen
       title="Mobile Money"
-      onBack={() => navigate(`/premiere/${title.id}/checkout`)}
+      onBack={() => goBack(`/tvod/${title.id}/checkout`)}
       footer={
         <>
           <TermsLine action="confirm" />

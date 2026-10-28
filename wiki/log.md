@@ -86,3 +86,13 @@
 - Routes (`App.jsx`, own headers, no mobile chrome, phone-width column on desktop): `/premiere` TvodPage · `/premiere/:id` TvodTitlePage (+ `AccessSheet`) · `/premiere/:id/checkout` OrderSummaryPage · `/pay/card` PayWithCardPage · `/pay/momo` MobileMoneyPage · `/pay/momo/processing` MomoProcessingPage · `/result/:status` PaymentResultPage (confirmed | failed | not-approved). Shared pieces in `components/sections/tvod/TvodUi.jsx`; checkout state in `utils/tvodCheckout.js` (sessionStorage); data in `data/tvodFixtures.js`.
 - No TVOD/payment API → preview outcomes: card ending 0002 declined; MoMo number ending 0000 not approved, 1111 insufficient balance; otherwise confirmed (after ~6s for MoMo).
 - Design copy fixed: MoMo provider label "Card Number" → "Service Provider"; confirmed subtitle (repeated the failure text) and "My Libary"; "By clicking , you agree" → "pay"; Terms link gold → pink. Buy price in the sheet follows the title's buy price (design: sheet GH₵55 vs page GH₵250).
+
+## 2026-10-28 — TVOD back navigation; WonaPremiere flow (second SVG batch)
+- TVOD back buttons used to navigate *forward* to a fixed path (new history entry), so Back looped. New `utils/useGoBack.js` pops history (fallback path when there is none); the access sheet is now a history step (Back closes it). Verified: card → summary → title+sheet → title → TVOD → home.
+- TVOD moved to `/tvod/...` (home banner "Browse" → `/tvod`). `/premiere` is WonaPremiere.
+- WonaPremiere (user's second export batch, 08:49–09:46): `data/premiereFixtures.js`, `components/sections/premiere/PremiereUi.jsx` (countdown, Remind Me in localStorage, status pills), `PremiereCard` (now takes a premiere title).
+  - Home: rail on a #1B2134 band above Because You Watched + "See all premieres" (comp "OnTopOfBecauseYouWatched"); hero chip "Wona Premiere" → `/premiere`.
+  - `/premiere` landing (comps Frame 670 + 14247): chips (All/Movies/Tv Shows return to home with that chip), featured premiere with live countdown, Showing Now / Upcoming / Past rails.
+  - `/premiere/list/:section` (showing | upcoming | past): header, All/Movies/Tv Shows tabs with counts, rows with Watch Now / Remind Me.
+  - `/premiere/title/:id`: shared trailer frame; upcoming → countdown page; live/past movie → standard movie; live/past series → standard series (Episodes tab, season picker, episode cards).
+- Routing decision (for the user to confirm): standard movie/series pages are reached by tapping a Showing Now or Past premiere; the list tabs split movies from series; upcoming titles open the countdown page.
