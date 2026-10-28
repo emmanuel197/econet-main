@@ -96,3 +96,9 @@
   - `/premiere/list/:section` (showing | upcoming | past): header, All/Movies/Tv Shows tabs with counts, rows with Watch Now / Remind Me.
   - `/premiere/title/:id`: shared trailer frame; upcoming → countdown page; live/past movie → standard movie; live/past series → standard series (Episodes tab, season picker, episode cards).
 - Routing decision (for the user to confirm): standard movie/series pages are reached by tapping a Showing Now or Past premiere; the list tabs split movies from series; upcoming titles open the countdown page.
+
+## 2026-10-28 — WonaPremiere reminder / My Stuff states (third SVG batch)
+- Tab label is "Trailer" on every premiere title page (the upcoming page said "Trailer & More").
+- Reminder set (comp Frame 1000007051(6)): the Remind Me button becomes pink at 48% with a white/24 border and navy text, reading "Reminder Set". The same look applies on premiere cards and list rows (`REMINDER_SET_CLASS` in `PremiereUi.jsx`).
+- Added (comp Frame 1000007051 (5)): the My Stuff button narrows to 92 and reads "✓ Added"; Remind Me takes the freed width. Live/past pages also say "Added".
+- My Stuff on premiere titles is remembered per device (`useMyStuff`, localStorage `wona:premiereMyStuff`) until there is a premiere/My Stuff API.

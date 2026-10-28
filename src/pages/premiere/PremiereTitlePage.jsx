@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import classNames from "../../utils/classNames";
 import { getPremiereTitle, titleMeta } from "../../data/premiereFixtures";
-import { showPreviewNotice, TOAST } from "../../utils/toast";
+import { showPreviewNotice } from "../../utils/toast";
 import logo from "../../../assets/logos/wona-logo.svg";
-import { CountdownInline, GenrePills, useReminder } from "../../components/sections/premiere/PremiereUi";
-import { m, PhoneColumn, BackButton, PrimaryButton, SecondaryButton, BarHeading, IconPlay, IconShare, IconChevronDown } from "../../components/sections/tvod/TvodUi";
+import { CountdownInline, GenrePills, useReminder, useMyStuff, REMINDER_SET_CLASS } from "../../components/sections/premiere/PremiereUi";
+import { m, PhoneColumn, BackButton, PrimaryButton, SecondaryButton, BarHeading, IconPlay, IconShare, IconChevronDown, IconCheck } from "../../components/sections/tvod/TvodUi";
 
 /**
  * PremiereTitlePage (/premiere/title/:id) — one page, three WONA comps that share the same
@@ -48,11 +48,11 @@ const PremiereTitleContent = ({ id }) => {
   const title = getPremiereTitle(id);
   const [reminded, toggleReminder] = useReminder(title);
   const [expanded, setExpanded] = useState(false);
-  const [inStuff, setInStuff] = useState(false);
+  const [inStuff, toggleStuff] = useMyStuff(title);
   const upcoming = title?.status === "upcoming";
   const isSeries = title?.type === "series";
   const tabs = upcoming
-    ? [["more", "More Like This"], ["trailer", "Trailer & More"]]
+    ? [["more", "More Like This"], ["trailer", "Trailer"]]
     : isSeries
       ? [["episodes", "Episodes"], ["more", "More Like This"], ["trailer", "Trailer"]]
       : [["more", "More Like This"], ["trailer", "Trailer"]];
@@ -66,10 +66,6 @@ const PremiereTitleContent = ({ id }) => {
 
   if (!title) return <Navigate to="/premiere" replace />;
   const episodes = isSeries ? title.seasons.find((s) => s.n === season)?.episodes || [] : [];
-  const toggleStuff = () => {
-    setInStuff((v) => !v);
-    TOAST.success(inStuff ? "Removed from My Stuff" : "Added to My Stuff");
-  };
 
   return (
     <PhoneColumn style={{ paddingBottom: m(40) }}>
@@ -122,11 +118,17 @@ const PremiereTitleContent = ({ id }) => {
               <CountdownInline at={title.premiereAt} />
             </div>
             <div className="flex" style={{ marginTop: m(16), gap: m(6) }}>
-              <PrimaryButton style={{ flex: 1 }} onClick={toggleReminder}>
+              <PrimaryButton style={{ flex: 1 }} className={reminded ? REMINDER_SET_CLASS : ""} onClick={toggleReminder}>
                 <BellIcon /> {reminded ? "Reminder Set" : "Remind Me"}
               </PrimaryButton>
-              <SecondaryButton style={{ width: m(105) }} onClick={toggleStuff}>
-                {inStuff ? "In My Stuff" : "My Stuff"}
+              <SecondaryButton style={{ width: m(inStuff ? 92 : 105) }} onClick={toggleStuff}>
+                {inStuff ? (
+                  <>
+                    <IconCheck size={14} /> Added
+                  </>
+                ) : (
+                  "My Stuff"
+                )}
               </SecondaryButton>
             </div>
           </>
@@ -136,7 +138,13 @@ const PremiereTitleContent = ({ id }) => {
               <IconPlay size={14} /> Watch Now
             </PrimaryButton>
             <SecondaryButton style={{ height: m(40) }} onClick={toggleStuff}>
-              {inStuff ? "In My Stuff" : "My Stuff"}
+              {inStuff ? (
+                <>
+                  <IconCheck size={14} /> Added
+                </>
+              ) : (
+                "My Stuff"
+              )}
             </SecondaryButton>
           </div>
         )}

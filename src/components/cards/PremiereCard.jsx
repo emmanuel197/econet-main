@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { m, IconPlay } from "../sections/tvod/TvodUi";
-import { StatusPill, useReminder } from "../sections/premiere/PremiereUi";
+import { StatusPill, useReminder, REMINDER_SET_CLASS } from "../sections/premiere/PremiereUi";
 
 // WonaPremiere card — WONA comps (home rail 4041:1276 / "OnTopOfBecauseYouWatched", landing
 // rails): 118×182 poster, top-right status pill (red LIVE, pink date for upcoming, grey date
@@ -42,7 +42,7 @@ const PremiereCard = ({ title, className = "" }) => {
         <button
           type="button"
           onClick={upcoming ? toggleReminder : (e) => (e.stopPropagation(), open())}
-          className={`flex w-full cursor-pointer items-center justify-center rounded-full font-primary font-medium text-gray-1 backdrop-blur-md ${upcoming && reminded ? "bg-brand/80" : "bg-gray-1/30"}`}
+          className={`flex w-full cursor-pointer items-center justify-center rounded-full border font-primary font-medium backdrop-blur-md ${upcoming && reminded ? REMINDER_SET_CLASS : "border-transparent bg-gray-1/30 text-gray-1"}`}
           style={{ gap: m(4), height: m(26), fontSize: m(10), lineHeight: m(12) }}
         >
           {upcoming ? <IconBell style={{ width: m(12), height: m(12) }} /> : <IconPlay size={12} />}

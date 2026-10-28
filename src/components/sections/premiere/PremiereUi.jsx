@@ -17,33 +17,45 @@ export const useCountdown = (at) => {
   return at ? countdown(at, now) : null;
 };
 
-// "Remind Me" — remembered per device until a premiere API exists
-const REMINDERS_KEY = "wona:premiereReminders";
-const readReminders = () => {
+// "Remind Me" and "My Stuff" — remembered per device until a premiere API exists
+const readSet = (key) => {
   try {
-    return new Set(JSON.parse(localStorage.getItem(REMINDERS_KEY)) || []);
+    return new Set(JSON.parse(localStorage.getItem(key)) || []);
   } catch {
     return new Set();
   }
 };
-export const useReminder = (title) => {
-  const [on, setOn] = useState(() => readReminders().has(title?.id));
+const useSavedToggle = (key, title, messages) => {
+  const [on, setOn] = useState(() => readSet(key).has(title?.id));
   const toggle = (e) => {
     e?.stopPropagation?.();
-    const set = readReminders();
+    const set = readSet(key);
     const next = !set.has(title.id);
     if (next) set.add(title.id);
     else set.delete(title.id);
     try {
-      localStorage.setItem(REMINDERS_KEY, JSON.stringify([...set]));
+      localStorage.setItem(key, JSON.stringify([...set]));
     } catch {
       /* non-fatal */
     }
     setOn(next);
-    TOAST.info(next ? `We'll remind you when ${title.title} premieres.` : `Reminder for ${title.title} removed.`);
+    TOAST.info(next ? messages.on(title) : messages.off(title));
   };
   return [on, toggle];
 };
+export const useReminder = (title) =>
+  useSavedToggle("wona:premiereReminders", title, {
+    on: (t) => `We'll remind you when ${t.title} premieres.`,
+    off: (t) => `Reminder for ${t.title} removed.`,
+  });
+export const useMyStuff = (title) =>
+  useSavedToggle("wona:premiereMyStuff", title, {
+    on: (t) => `${t.title} added to My Stuff.`,
+    off: (t) => `${t.title} removed from My Stuff.`,
+  });
+
+// WONA comp "reminder set" state: the pink button drops to 48% with navy text
+export const REMINDER_SET_CLASS = "border-gray-1/24 bg-brand/48 text-page";
 
 // Top-right status pill: red LIVE, pink date (upcoming), grey date (past) — 17px tall
 export const StatusPill = ({ title, className = "", style }) => {

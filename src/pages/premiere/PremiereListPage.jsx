@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import classNames from "../../utils/classNames";
 import { premiereSections, premieresByStatus, titleMeta } from "../../data/premiereFixtures";
-import { StatusPill, GenrePills, useReminder } from "../../components/sections/premiere/PremiereUi";
+import { StatusPill, GenrePills, useReminder, REMINDER_SET_CLASS } from "../../components/sections/premiere/PremiereUi";
 import { m, PhoneColumn, BackButton, IconPlay } from "../../components/sections/tvod/TvodUi";
 
 /**
@@ -47,8 +47,8 @@ const Row = ({ title }) => {
           type="button"
           onClick={upcoming ? toggleReminder : (e) => (e.stopPropagation(), open())}
           className={classNames(
-            "mt-auto flex w-fit cursor-pointer items-center justify-center rounded-full border font-primary font-semibold tracking-[-0.408px] text-gray-1",
-            upcoming && !reminded ? "border-transparent bg-gray-1/30" : "border-gray-1/80 bg-brand"
+            "mt-auto flex w-fit cursor-pointer items-center justify-center rounded-full border font-primary font-semibold tracking-[-0.408px]",
+            upcoming ? (reminded ? REMINDER_SET_CLASS : "border-transparent bg-gray-1/30 text-gray-1") : "border-gray-1/80 bg-brand text-gray-1"
           )}
           style={{ height: m(32), padding: `0 ${m(16)}`, gap: m(6), fontSize: m(10) }}
         >
